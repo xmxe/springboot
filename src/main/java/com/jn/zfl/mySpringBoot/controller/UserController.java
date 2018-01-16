@@ -33,11 +33,6 @@ public class UserController {
 	Logger logger = Logger.getLogger(UserController.class);
 	@Autowired
 	UserService userservice;
-	
-	@RequestMapping("/helwo")
-	public String HelWo() {
-		return "Hello World";
-	}
 
 	@RequestMapping("/index")
 	public String index() {
