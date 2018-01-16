@@ -15,18 +15,20 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jn.zfl.mySpringBoot.bean.User;
 import com.jn.zfl.mySpringBoot.service.UserService;
 
-@RestController//@Controller+@ResponseBody
-
+//@RestController//@Controller+@ResponseBody
+@Controller
 public class UserController {	
 	Logger logger = Logger.getLogger(UserController.class);
 	@Autowired
@@ -37,6 +39,10 @@ public class UserController {
 		return "Hello World";
 	}
 
+	@RequestMapping("/index")
+	public String index() {
+		return "index";
+	}
 	@RequestMapping("/getUserById")
 	public JSONObject getUserById(@RequestParam("userId") String userId) {
 		User user = userservice.getUserById(Integer.valueOf(userId));
