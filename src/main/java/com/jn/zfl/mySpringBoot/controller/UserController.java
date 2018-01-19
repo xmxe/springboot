@@ -27,8 +27,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.jn.zfl.mySpringBoot.bean.User;
 import com.jn.zfl.mySpringBoot.service.UserService;
 
-//@RestController//@Controller+@ResponseBody
-@Controller
+@RestController//@Controller+@ResponseBody
+//@Controller
 public class UserController {	
 	Logger logger = Logger.getLogger(UserController.class);
 	@Autowired
