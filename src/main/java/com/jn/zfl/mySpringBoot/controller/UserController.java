@@ -54,7 +54,7 @@ public class UserController {
 				if(file != null) {
 					SimpleDateFormat sff = new SimpleDateFormat("yyyyMMdd");//20180101
 					String today = sff.format(new Date());
-					File f = new File("e://"+today);
+					File f = new File(request.getSession().getServletContext().getRealPath(File.separator) + today);//tomcat webapps路径+项目名 例:E:\apache-tomcat-7.0.82\webapps\club
 					if(!f.exists()) {f.mkdirs();}
 					String fileName = UUID.randomUUID().toString() + "." + FilenameUtils.getExtension(file.getOriginalFilename());//自定义文件名
 					/*①							
