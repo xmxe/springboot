@@ -4,4 +4,14 @@
 <select id="getUserById" parameterType="Integer" resultType="com.jn.zfl.mySpringBoot.bean.User">
 	select * from xxcl_user where id = #{user_id}
 </select>
+
+<select id="queryUserCount" parameterType="String" resultType="int">
+	select count(0) from xxcl_user where 1 = 1
+	<if test="tj!=null and ''!=tj">
+		and username=#{tj}
+	</if>
+</select>
+<select id="querySome" parameterType="int" resultType="com.jn.zfl.mySpringBoot.bean.User">
+	select * from xxcl_user limit #{start},#{end}
+</select>
 </mapper>

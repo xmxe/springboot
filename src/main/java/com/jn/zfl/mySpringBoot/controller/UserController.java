@@ -5,8 +5,10 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,9 +28,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.fastjson.JSONObject;
 import com.jn.zfl.mySpringBoot.bean.User;
 import com.jn.zfl.mySpringBoot.service.UserService;
+import com.jn.zfl.mySpringBoot.util.Page;
 
-@RestController//@Controller+@ResponseBody
-//@Controller
+//@RestController//@Controller+@ResponseBody
+@Controller
 public class UserController {	
 	Logger logger = Logger.getLogger(UserController.class);
 	@Autowired
@@ -80,4 +83,31 @@ public class UserController {
 			e.printStackTrace();
 		}
 	}
+	@RequestMapping("page")
+	public void page(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		//1.获得当前页参数
+		request.setCharacterEncoding("UTF-8");
+		String tj = request.getParameter("tj");
+		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		Page<User> page = new Page<User>();
+		//设置当前页 currentPage next pre  pageSize  start
+		page.setCurrentPage(currentPage);
+		//2.查询总记录数 total   pageCount
+		int total = userservice.queryUserCount(tj);
+		
+		page.setTotal(total);
+		//3.查询数据 rows
+		List<User> rows = userservice.querySome(page.getStart(),page.getPageSize());
+		page.setRows(rows);
+		//~~~~~~~~~~组装page对象 完毕 写出到客户端
+		response.setContentType("text/plain;charset=UTF-8");
+		//JSONObject jo = JSONObject.fromObject(page);
+		JSONObject jo = new JSONObject();
+		jo.put("jo", page);
+		PrintWriter out = response.getWriter();
+		out.print(jo);
+		out.flush();
+		out.close();
+	}
+		
 }

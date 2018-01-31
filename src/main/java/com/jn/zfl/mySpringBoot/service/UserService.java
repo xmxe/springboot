@@ -1,5 +1,7 @@
 package com.jn.zfl.mySpringBoot.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,13 @@ public class UserService {
 	
 	public User getUserById(Integer userId) {
 		return userDao.getUserById(userId);
+	}
+	
+	public int queryUserCount(String tj) {
+		return userDao.queryUserCount(tj);
+	}
+	
+	public List<User> querySome(int start,int end){
+		return userDao.querySome(start, end);
 	}
 }
