@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import com.jn.zfl.mySpringBoot.bean.User;
 
 /*@Mapper*/
-public interface UserDao {
+public interface MainDao {
 
 	/*@Select("select * from xxcl_user where id = #{user_id}")*/
 	User getUserById(@Param("user_id") Integer id);

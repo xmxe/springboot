@@ -27,29 +27,29 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jn.zfl.mySpringBoot.bean.User;
-import com.jn.zfl.mySpringBoot.service.UserService;
+import com.jn.zfl.mySpringBoot.service.MainService;
 import com.jn.zfl.mySpringBoot.util.Page;
 
 //@RestController//@Controller+@ResponseBody
 @Controller
-public class UserController {	
-	Logger logger = Logger.getLogger(UserController.class);
+public class MainController {	
+	Logger logger = Logger.getLogger(MainController.class);
 	@Autowired
-	UserService userservice;
+	MainService mainservice;
 
-	@RequestMapping("/index")
+	@RequestMapping("/main")
 	public String index() {
-		return "index";
+		return "main";
 	}
 	@RequestMapping("/getUserById")
 	public JSONObject getUserById(@RequestParam("userId") String userId) {
-		User user = userservice.getUserById(Integer.valueOf(userId));
+		User user = mainservice.getUserById(Integer.valueOf(userId));
 		JSONObject json = new JSONObject();
 		json.put("user",user);
 		return json;
 	}
 	
-	@RequestMapping("upload")
+	@RequestMapping("/upload")
 	public void upload(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			if (request instanceof MultipartHttpServletRequest) {
@@ -83,7 +83,7 @@ public class UserController {
 			e.printStackTrace();
 		}
 	}
-	@RequestMapping("page")
+	@RequestMapping("/page")
 	public void page(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//1.获得当前页参数
 		request.setCharacterEncoding("UTF-8");
@@ -93,11 +93,11 @@ public class UserController {
 		//设置当前页 currentPage next pre  pageSize  start
 		page.setCurrentPage(currentPage);
 		//2.查询总记录数 total   pageCount
-		int total = userservice.queryUserCount(tj);
+		int total = mainservice.queryUserCount(tj);
 		
 		page.setTotal(total);
 		//3.查询数据 rows
-		List<User> rows = userservice.querySome(page.getStart(),page.getPageSize());
+		List<User> rows = mainservice.querySome(page.getStart(),page.getPageSize());
 		page.setRows(rows);
 		//~~~~~~~~~~组装page对象 完毕 写出到客户端
 		response.setContentType("text/plain;charset=UTF-8");
