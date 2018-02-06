@@ -9,7 +9,7 @@
 <head>
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>page分页</title>
 <script src="js/jquery.min.js" ></script>
 <script type="text/javascript">
 	var next,pre,pageCount;

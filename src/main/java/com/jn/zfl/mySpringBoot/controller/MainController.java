@@ -7,8 +7,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,16 +22,19 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.alibaba.fastjson.JSONObject;
 import com.jn.zfl.mySpringBoot.bean.User;
 import com.jn.zfl.mySpringBoot.service.MainService;
 import com.jn.zfl.mySpringBoot.util.Page;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.jn.zfl.mySpringBoot.bean.Dept;
+
 
 //@RestController//@Controller+@ResponseBody
 @Controller
@@ -37,10 +43,19 @@ public class MainController {
 	@Autowired
 	MainService mainservice;
 
-	@RequestMapping("/main")
-	public String index() {
-		return "main";
+	//分页页面
+	@RequestMapping("/pageView")
+	public String pageView() {
+		return "page";
 	}
+	
+	//ztree页面
+	@RequestMapping("/ztreeView")
+	public String ztreeView() {
+		return "ztree";
+	}
+	
+	
 	@RequestMapping("/getUserById")
 	public JSONObject getUserById(@RequestParam("userId") String userId) {
 		User user = mainservice.getUserById(Integer.valueOf(userId));
@@ -49,6 +64,7 @@ public class MainController {
 		return json;
 	}
 	
+	//上传
 	@RequestMapping("/upload")
 	public void upload(HttpServletRequest request, HttpServletResponse response) {
 		try {
@@ -83,6 +99,7 @@ public class MainController {
 			e.printStackTrace();
 		}
 	}
+	//分页后台逻辑
 	@RequestMapping("/page")
 	public void page(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//1.获得当前页参数
@@ -108,6 +125,36 @@ public class MainController {
 		out.print(jo);
 		out.flush();
 		out.close();
+	}
+	
+	//ztree
+	@RequestMapping(value="/dept/aJsonObject",method = RequestMethod.POST)
+	@ResponseBody
+	public  JSONObject aJsonObject(HttpServletRequest request) {
+		List<Dept> depts = mainservice.findDept();
+		List<Map<String,Object>> list = new ArrayList<>();
+		Map<String,Object> map = new HashMap<String,Object>();
+		for (int i = 0; i < depts.size(); i++) {
+			Map<String,Object> newMap = new HashMap<String,Object>();
+			newMap.put("id",depts.get(i).getId());
+			newMap.put("pId", depts.get(i).getFather_id());
+			newMap.put("name", depts.get(i).getDept_name());
+			newMap.put("sort", depts.get(i).getSort());
+			newMap.put("dept_level", depts.get(i).getDept_level());
+			if (depts.get(i).getDept_level() == 1) {
+				newMap.put("open", true);
+				newMap.put("iconSkin", "pIcon01");
+			}else if (depts.get(i).getDept_level() == 2) {
+				newMap.put("iconSkin", "icon02");
+			}else {
+				newMap.put("iconSkin", "icon03");
+			}
+			list.add(newMap);
+		}
+		map.put("zNodes", list);
+		//JSONObject json = JSONObject.parseObject(JSON.toJSONString(map));
+		JSONObject json = (JSONObject) JSONObject.toJSON(map);
+		return json;
 	}
 		
 }

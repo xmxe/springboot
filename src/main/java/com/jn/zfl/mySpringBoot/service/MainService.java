@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jn.zfl.mySpringBoot.bean.Dept;
 import com.jn.zfl.mySpringBoot.bean.User;
 import com.jn.zfl.mySpringBoot.dao.MainDao;
+
 
 @Service
 public class MainService {
@@ -24,5 +26,10 @@ public class MainService {
 	
 	public List<User> querySome(int start,int end){
 		return mainDao.querySome(start, end);
+	}
+	
+	public List<Dept> findDept() {
+		// TODO Auto-generated method stub
+		return mainDao.findDept();
 	}
 }

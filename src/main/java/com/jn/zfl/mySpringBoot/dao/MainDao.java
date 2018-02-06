@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import com.jn.zfl.mySpringBoot.bean.Dept;
 import com.jn.zfl.mySpringBoot.bean.User;
 
 /*@Mapper*/
@@ -17,4 +18,6 @@ public interface MainDao {
 	int queryUserCount(@Param(value = "tj") String tj);
 	
 	List<User> querySome(@Param(value="start") int start,@Param(value="end") int end);
+	
+	List<Dept> findDept(); 
 }
