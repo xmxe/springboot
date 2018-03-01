@@ -18,32 +18,36 @@
 	layui.use('layer', function(){
 		var layer = layui.layer;
 	}); 
-
-	function PAGE(){
-		window.location.href="/pageView.do";
-	}
-	function ztree(){
-		window.location.href="/ztreeView.do";
-	}	
-	function forma(){
-		window.location.href="/form.do";
-	}
+	$(document).ready(function(){
+		$("#page").click(function(){
+			window.location.href="/pageView.do";
+		});
+		
+		$("#ztree").click(function(){
+			window.location.href="/ztreeView.do";
+		});
+		
+		$("#form").click(function(){
+			window.location.href="/form.do";
+		});
+		
+	})
 </script>
 </head>
 <body>
-	<button class="layui-btn layui-btn-primary" onclick="PAGE()">page分页</button>
-	<button class="layui-btn" onclick="ztree()">zTree</button>
-	<button class="layui-btn layui-btn-normal" onclick="forma()">form</button>
-	<button class="layui-btn layui-btn-warm" ></button>
-	<button class="layui-btn layui-btn-danger"></button>
-	<button class="layui-btn layui-btn-disabled"></button>
-	<button class="layui-btn layui-btn-lg"></button>
-	<button class="layui-btn"></button>
-	<button class="layui-btn layui-btn-sm"></button>
-	<button class="layui-btn layui-btn-xs"></button>
-	<button class="layui-btn layui-btn-lg layui-btn-normal"></button>
-	<button class="layui-btn layui-btn-warm"></button>
-	<button class="layui-btn layui-btn-sm layui-btn-danger"></button>
+	<button class="layui-btn layui-btn-primary" id="page">page分页</button>
+	<button class="layui-btn" id="ztree">zTree</button>
+	<button class="layui-btn layui-btn-normal" id="form">form</button>
+	<button class="layui-btn layui-btn-warm">1</button>
+	<button class="layui-btn layui-btn-danger">1</button>
+	<button class="layui-btn layui-btn-disabled">1</button>
+	<button class="layui-btn layui-btn-lg">1</button>
+	<button class="layui-btn">2</button>
+	<button class="layui-btn layui-btn-sm">2</button>
+	<button class="layui-btn layui-btn-xs">2</button>
+	<button class="layui-btn layui-btn-lg layui-btn-normal">3</button>
+	<button class="layui-btn layui-btn-warm">3</button>
+	<button class="layui-btn layui-btn-sm layui-btn-danger">3</button>
 	<button class=""></button>
 </body>
 </html>

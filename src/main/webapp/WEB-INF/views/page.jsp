@@ -66,7 +66,7 @@
   <body>
   	<div style="text-align:center">
   		<button type="button" class="layui-btn layui-btn-normal" onclick="searchbyconditions()">查询</button>
-	    <table align="center" border="1" cellspacing="0" width="600px">
+	    <table class="layui-table" lay-even="" lay-skin="row">
 	    	<thead>
 	    		<tr style="height:50px">
 	    			<th>名字</th>
