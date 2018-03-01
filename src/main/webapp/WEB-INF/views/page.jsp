@@ -11,6 +11,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>page分页</title>
 <script src="js/jquery.min.js" ></script>
+<script src="layui/layui.js"></script>
+<link rel="stylesheet" href="layui/css/layui.css" />
 <script type="text/javascript">
 	var next,pre,pageCount;
 	//当整个页面加载完毕时执行
@@ -63,21 +65,20 @@
   
   <body>
   	<div style="text-align:center">
-  		<button type="button" onclick="searchbyconditions()">查询</button>
-	    <table align="center" border="1" cellspacing="0" width="600px" 
-	    bgcolor="#CCCCCC">
+  		<button type="button" class="layui-btn layui-btn-normal" onclick="searchbyconditions()">查询</button>
+	    <table align="center" border="1" cellspacing="0" width="600px">
 	    	<thead>
-	    		<tr>
+	    		<tr style="height:50px">
 	    			<th>编号</th>
 	    			<th>名字</th>
 	    		</tr>
 	    	</thead>
 	    	<tbody id="data"></tbody>	
 	    </table>
-	    <button type="button" id="first">首页</button>
-	    <button type="button" id="pre">上一页</button>
-	    <button type="button" id="next">下一页</button>
-	    <button type="button" id="end">尾页</button>
+	    <button type="button" id="first" class="layui-btn layui-btn-radius">首页</button>
+	    <button type="button" id="pre" class="layui-btn layui-btn-radius">上一页</button>
+	    <button type="button" id="next" class="layui-btn layui-btn-radius">下一页</button>
+	    <button type="button" id="end" class="layui-btn layui-btn-radius">尾页</button>
     </div>
   </body>
 </html>

@@ -43,6 +43,11 @@ public class MainController {
 	@Autowired
 	MainService mainservice;
 
+	@RequestMapping("/")
+	public String index() {
+		return "index";
+	} 
+	
 	//分页页面
 	@RequestMapping("/pageView")
 	public String pageView() {
