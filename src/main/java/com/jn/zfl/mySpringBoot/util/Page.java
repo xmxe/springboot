@@ -6,7 +6,7 @@ import java.util.List;
 public class Page<T> {
 	private int currentPage;//当前也
 	
-	private int pageSize=2;//每页显示的记录数
+	private int pageSize=5;//每页显示的记录数
 	
 	private int pageCount;//总页数
 	

@@ -45,8 +45,8 @@
 					pageCount = msg.jo.pageCount;
 					var trs="";
 					$.each(msg.jo.rows,function(i,user){
-						trs+="<tr><td>"+(msg.jo.start+i+1)+"</td><td>"+user.realname
-						+"</td></tr>";
+						trs+="<tr><td>"+user.username+"</td><td>"+user.sex
+						+"</td><td>"+user.mobile+"</td></tr>";
 					});
 					$("#data").html(trs);
 				}
@@ -69,8 +69,9 @@
 	    <table align="center" border="1" cellspacing="0" width="600px">
 	    	<thead>
 	    		<tr style="height:50px">
-	    			<th>编号</th>
 	    			<th>名字</th>
+	    			<th>性别</th>
+	    			<th>电话</th>
 	    		</tr>
 	    	</thead>
 	    	<tbody id="data"></tbody>	

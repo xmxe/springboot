@@ -38,16 +38,12 @@ import com.jn.zfl.mySpringBoot.bean.Dept;
 
 //@RestController//@Controller+@ResponseBody
 @Controller
+@RequestMapping("**.do")
 public class MainController {	
 	Logger logger = Logger.getLogger(MainController.class);
 	@Autowired
 	MainService mainservice;
 
-	@RequestMapping("/")
-	public String index() {
-		return "index";
-	} 
-	
 	//分页页面
 	@RequestMapping("/pageView")
 	public String pageView() {
@@ -60,6 +56,12 @@ public class MainController {
 		return "ztree";
 	}
 	
+	//form
+	@RequestMapping("/form")
+	public String form() {
+		return "form";
+	}
+		
 	
 	@RequestMapping("/getUserById")
 	public JSONObject getUserById(@RequestParam("userId") String userId) {
