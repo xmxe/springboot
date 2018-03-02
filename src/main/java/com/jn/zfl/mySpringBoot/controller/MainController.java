@@ -47,19 +47,19 @@ public class MainController {
 	//分页页面
 	@RequestMapping("/pageView")
 	public String pageView() {
-		return "page";
+		return "content/page";
 	}
 	
 	//ztree页面
 	@RequestMapping("/ztreeView")
 	public String ztreeView() {
-		return "ztree";
+		return "content/ztree";
 	}
 	
 	//form
 	@RequestMapping("/form")
 	public String form() {
-		return "form";
+		return "content/form";
 	}
 		
 	
