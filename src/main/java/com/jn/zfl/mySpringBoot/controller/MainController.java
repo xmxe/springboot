@@ -1,5 +1,12 @@
 package com.jn.zfl.mySpringBoot.controller;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.font.FontRenderContext;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -12,8 +19,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.UUID;
 
+import javax.imageio.ImageIO;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -163,5 +173,81 @@ public class MainController {
 		JSONObject json = (JSONObject) JSONObject.toJSON(map);
 		return json;
 	}
+	
+	@RequestMapping(value="/code")
+	public void generate(HttpServletRequest request,HttpServletResponse response){
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		String code = drawImg(output);
+		request.getSession().setAttribute("code", code);	
+		try {
+			ServletOutputStream out = response.getOutputStream();
+			output.writeTo(out);
+			out.close();
+		} catch (Exception e) {
+			//e.printStackTrace();
+		}
+	}
+	
+	private String drawImg(ByteArrayOutputStream output){
+		String code = "";
+		for(int i=0; i<4; i++){
+			code += randomChar();
+		}
+		int width = 70;
+		int height = 25;
+		BufferedImage bi = new BufferedImage(width,height,BufferedImage.TYPE_3BYTE_BGR);
+		Font font = new Font("Times New Roman",Font.PLAIN,20);
+		Graphics2D g = bi.createGraphics();
+		g.setFont(font);
+		Color color = new Color(66,2,82);
+		g.setColor(color);
+		g.setBackground(new Color(226,226,240));
+		g.clearRect(0, 0, width, height);
+		FontRenderContext context = g.getFontRenderContext();
+		Rectangle2D bounds = font.getStringBounds(code, context);
+		double x = (width - bounds.getWidth()) / 2;
+		double y = (height - bounds.getHeight()) / 2;
+		double ascent = bounds.getY();
+		double baseY = y - ascent;
+		g.drawString(code, (int)x, (int)baseY);
+		g.dispose();
+		try {
+			ImageIO.write(bi, "jpg", output);
+		} catch (Exception e) {
+			//e.printStackTrace();
+		}
+		return code;
+	}
+	
+	private char randomChar(){
+		Random r = new Random();
+		String s = "ABCDEFGHJKLMNPRSTUVWXYZ0123456789";
+		return s.charAt(r.nextInt(s.length()));
+	}
+	
+	@RequestMapping(value="/check")
+	@ResponseBody
+	public JSONObject index(HttpServletRequest request) {
+		String code = request.getParameter("code");
+		String name =request.getParameter("username");
+		String password = request.getParameter("password");
+		String codeSession = (String) request.getSession().getAttribute("code");
+		JSONObject json = new JSONObject();
+		if(code == null || "".equals(code)) {
+			json.put("message", "请输入验证码");
+			return json;
+		}
+		if(code.equalsIgnoreCase(codeSession)) {
+			if(!("1").equals(name) || !("1").equals(password)) {
+				json.put("message", "用户名或密码不正确");
+			}else {
+				json.put("message", "success");
+			}		
+		}else {
+			json.put("message", "验证码不正确");
+		}
 		
+		return json;
+	} 
+	
 }
