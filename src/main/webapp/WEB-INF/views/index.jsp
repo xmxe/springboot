@@ -23,23 +23,71 @@
 		$("#page").click(function(){
 			window.location.href="/pageView.do";
 		});
-		
-		$("#ztree").click(function(){
-			window.location.href="/ztreeView.do";
-		});
-		
-		$("#form").click(function(){
-			window.location.href="/form.do";
-		});
-		
 	}) */
 	
 	layui.use('element', function(){
 	  var element = layui.element;	  
 	});
-	function returnIframe(url){
-		$("#myiframe").attr("src",url);
+	function returnIframe(url,id){
+		//$("#myiframe").attr("src",url);
+		$("#divf").hide();
+		$(".layui-tab").show();
+		layui.use('element', function(){
+			var element = layui.element;
+			var active = {
+		            tabAdd: function (url,id) {
+		                //新增一个Tab项
+		                element.tabAdd('demo', {
+		                    title: 'demo'+id,
+		                    content: '<iframe data-frameid="'+id+'" name="content" frameborder="0"  scrolling="no" width="100%" src="'+url+'"></iframe>',
+		                    id: id //实际使用一般是规定好的id，这里以时间戳模拟下
+		                })
+		                //CustomRightClick(id);//绑定右键菜单
+		                FrameWH();//计算框架高度
+		            }, 
+		           tabChange: function (id) {
+		              //切换到指定Tab项
+		              element.tabChange('demo', id); //切换到：用户管理
+		              $("iframe[data-frameid='"+id+"']").attr("src",$("iframe[data-frameid='"+id+"']").attr("src"))//切换后刷新框架
+		          },
+		             tabDelete: function (id) {
+		                element.tabDelete("demo", id);//删除
+		            },
+		              tabDeleteAll: function (ids) {//删除所有
+		                $.each(ids, function (i,item) {
+		                    element.tabDelete("demo", item);
+		                })
+		            }
+		        };
+			if ($(".layui-tab-title li[lay-id]").length <= 0) {
+                active.tabAdd(url, id);
+            }else {
+                var isData = false;
+                $.each($(".layui-tab-title li[lay-id]"), function () {
+                    if ($(this).attr("lay-id") == id) {
+                        isData = true;
+                    }
+                })
+                if (isData == false) {
+                    active.tabAdd(url, id);
+                }
+            }
+			//active.tabAdd(url,id);
+			active.tabChange(id);
+		})
 	}
+	//iframe自适应高度
+	function FrameWH() {
+        var h = $(window).height() -41- 10 - 60 -10-44 -10;
+        $("iframe").css("height",h+"px");
+		/* var ifm= document.getElementById("myiframe"); 
+	    ifm.height=document.documentElement.clientHeight; */
+    }
+
+	//窗口大小改变时触发
+    $(window).resize(function () {
+        FrameWH();
+    })
 </script>
 </head>
 <body>
@@ -86,9 +134,9 @@
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">所有商品</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;" onclick='returnIframe("/pageView.do")'>page</a></dd>
-            <dd><a href="javascript:;" onclick='returnIframe("/ztreeView.do")'>ztree</a></dd>
-            <dd><a href="javascript:;" onclick='returnIframe("/form.do")'>form</a></dd>
+            <dd><a href="javascript:;" onclick='returnIframe("/pageView.do","1")'>page</a></dd>
+            <dd><a href="javascript:;" onclick='returnIframe("/ztreeView.do","2")'>ztree</a></dd>
+            <dd><a href="javascript:;" onclick='returnIframe("/form.do","3")'>form</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
@@ -107,7 +155,13 @@
   
   <div class="layui-body">
     <!-- 内容主体区域 -->
-    <iframe scrolling="no" frameborder="0" width="100%" height="100%" id="myiframe" src="image/ace.jpg"></iframe>
+    <div id="divf" style="width:100%;height:100%">
+    	<iframe scrolling="no" frameborder="0" width="100%" height="100%"  id="myiframe" src="image/ace.jpg"></iframe>
+    </div>
+    <div class="layui-tab" lay-filter="demo" lay-allowclose="true" style="display: none">
+		<ul class="layui-tab-title"></ul>
+		<div class="layui-tab-content"></div>
+	</div>
   </div>
   
   <div class="layui-footer">
