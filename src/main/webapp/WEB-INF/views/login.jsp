@@ -144,7 +144,9 @@
 		<div>
 			<!-- 背景图片 -->
 			<div data-src="image/timg.jpg"></div>
-			<div data-src="image/goku.jpg"></div>			
+			<div data-src="image/goku.jpg"></div>
+			<div data-src="image/time.jpg"></div>
+			<div data-src="image/ace.jpg"></div>			
 		</div>
 	</div>
 	<div id="title">
@@ -166,7 +168,7 @@
 			</div>
 		</div>
 		<div class="layui-form-item">
-			<label class="layui-form-label" style="color:#D5D9E6">验证码:</label>
+			<label class="layui-form-label" style="color:#DCE5D7">验证码:</label>
 			<div class="layui-input-inline">
 				<input type="text" name="code" id="code" class="layui-input"
 					style="width: 100px; height: 25px; float: left"> <i><img
@@ -174,7 +176,7 @@
 			</div>
 		</div>
 		<div class="layui-form" lay-filter="test1">
-			<label style="position:absolute;right:200px;color:#F0DBCC">记住密码:</label>
+			<label style="position:absolute;right:200px;color:#DCE5D7">记住密码:</label>
 			<div style="position:absolute;left:120px;top:150px">
 				<input type="checkbox" id="yyy" lay-skin="switch" lay-text="ON|OFF" lay-filter="switchTest">
 			</div>
