@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -94,9 +95,8 @@
 	<!-- <button class="layui-btn layui-btn-primary" id="page">page分页</button>
 	<button class="layui-btn" id="ztree">zTree</button>
 	<button class="layui-btn layui-btn-normal" id="form">form</button> -->
-	
 	<div class="layui-layout layui-layout-admin">
-  <div class="layui-header">
+  	<div class="layui-header">
     <div class="layui-logo">XXX管理系统</div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class="layui-nav layui-layout-left">
