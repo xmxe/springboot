@@ -158,7 +158,7 @@
     <div id="divf" style="width:100%;height:100%">
     	<iframe scrolling="no" frameborder="0" width="100%" height="100%"  id="myiframe" src="image/ace.jpg"></iframe>
     </div>
-    <div class="layui-tab" lay-filter="demo" lay-allowclose="true" style="display: none">
+    <div class="layui-tab layui-tab-card" lay-filter="demo" lay-allowclose="true" style="display: none">
 		<ul class="layui-tab-title"></ul>
 		<div class="layui-tab-content"></div>
 	</div>
