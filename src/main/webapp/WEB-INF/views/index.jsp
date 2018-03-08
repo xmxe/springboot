@@ -39,7 +39,7 @@
 		            tabAdd: function (url,id) {
 		                //新增一个Tab项
 		                element.tabAdd('demo', {
-		                    title: 'demo'+id,
+		                    title: url,
 		                    content: '<iframe data-frameid="'+id+'" name="content" frameborder="0"  scrolling="no" width="100%" src="'+url+'"></iframe>',
 		                    id: id //实际使用一般是规定好的id，这里以时间戳模拟下
 		                })
@@ -100,15 +100,15 @@
     <div class="layui-logo">XXX管理系统</div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class="layui-nav layui-layout-left">
-      <li class="layui-nav-item"><a href="javascript:void(0)">控制台</a></li>
-      <li class="layui-nav-item"><a href="javascript:void(0)">商品管理</a></li>
-      <li class="layui-nav-item"><a href="javascript:void(0)">用户</a></li>
+      <li class="layui-nav-item"><a href="javascript:void(0)"><i class="layui-icon">&#xe614;控制台</i></a></li>
+      <li class="layui-nav-item"><a href="javascript:void(0)"><i class="layui-icon">&#xe705;商品管理</i></a></li>
+      <li class="layui-nav-item"><a href="javascript:void(0)"><i class="layui-icon">&#xe612;用户</i></a></li>
       <li class="layui-nav-item">
-        <a href="javascript:;">其它系统</a>
+        <a href="javascript:;"><i class="layui-icon">&#xe60c;其它系统</i></a>
         <dl class="layui-nav-child">
-          <dd><a href="javascript:void(0)">邮件管理</a></dd>
-          <dd><a href="javascript:void(0)">消息管理</a></dd>
-          <dd><a href="javascript:void(0)">授权管理</a></dd>
+          <dd><a href="javascript:void(0)"><i class="layui-icon">&#xe628;邮件管理</i></a></dd>
+          <dd><a href="javascript:void(0)"><i class="layui-icon">&#xe62c;消息管理</i></a></dd>
+          <dd><a href="javascript:void(0)"><i class="layui-icon">&#xe60e;授权管理</i></a></dd>
         </dl>
       </li>
     </ul>
@@ -127,7 +127,7 @@
     </ul>
   </div>
   
-  <div class="layui-side layui-bg-black">
+  <div class="layui-side layui-bg-black layui-anim layui-anim-upbit">
     <div class="layui-side-scroll">
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
