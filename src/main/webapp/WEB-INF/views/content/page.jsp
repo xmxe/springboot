@@ -69,9 +69,9 @@
 	    <table class="layui-table" lay-even="" lay-skin="row">
 	    	<thead>
 	    		<tr style="height:50px">
-	    			<th>名字</th>
-	    			<th>性别</th>
-	    			<th>电话</th>
+	    			<th style="text-align:center;font-family: 宋体;font-size:30px">名字</th>
+	    			<th style="text-align:center;font-family: 宋体;font-size:30px">性别</th>
+	    			<th style="text-align:center;font-family: 宋体;font-size:30px">电话</th>
 	    		</tr>
 	    	</thead>
 	    	<tbody id="data"></tbody>	
