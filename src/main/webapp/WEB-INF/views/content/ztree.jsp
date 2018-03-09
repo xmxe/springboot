@@ -15,6 +15,21 @@
 <script type="text/javascript" src="<%=basePath%>zTree_v3/js/jquery.ztree.excheck.js"></script>
 <script type="text/javascript" src="<%=basePath%>zTree_v3/js/jquery.ztree.exedit.js"></script>
 <style type="text/css">
+.ztree li span.button.icon02_ico_docu,.ztree li span.button.icon02_ico_close{
+	background: url(<%=basePath%>zTree_v3/css/zTreeStyle/img/diy/1_close.png)
+}
+.ztree li span.button.icon02_ico_open{
+	background: url(<%=basePath%>zTree_v3/css/zTreeStyle/img/diy/1_open.png)
+}
+.ztree li span.button.icon03_ico_docu{
+	background: url(<%=basePath%>zTree_v3/css/zTreeStyle/img/diy/3.png)
+}
+.ztree li span.button.pIcon01_ico_open,.ztree li span.button.pIcon01_ico_close{
+	background: url(<%=basePath%>zTree_v3/css/zTreeStyle/img/diy/7.png)
+}
+.ztree li span.button.pIcon01_ico_docu{
+	background: url(<%=basePath%>zTree_v3/css/zTreeStyle/img/diy/7.png)
+}
 </style>
 <script type="text/javascript">
 $(function() {
@@ -26,7 +41,10 @@ $(function() {
 				pIdKey: "pId",
 				rootPId: 0
 			}
-		}
+		},
+	callback:{
+		onClick:ck
+	}
 	};
 	var zNodes;
 	var treeNode_1;
@@ -47,7 +65,9 @@ $(function() {
 	})
 
 })
-
+function ck(){
+	alert("click");
+}
 </script>
 </head>
 <body>
