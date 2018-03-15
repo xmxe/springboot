@@ -13,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,6 +30,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +48,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.jn.zfl.mySpringBoot.bean.User;
 import com.jn.zfl.mySpringBoot.service.MainService;
 import com.jn.zfl.mySpringBoot.util.Page;
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.jn.zfl.mySpringBoot.bean.Dept;
 
@@ -253,4 +259,57 @@ public class MainController {
 		return json;
 	} 
 	
+	@RequestMapping(value="/excell")
+	@ResponseBody
+	public void excel(HttpServletRequest request,HttpServletResponse response){
+		String[] handers = {"id","name","sex","mobile"};
+		List<User> list = mainservice.querySome(1,5);	
+		try{
+			//由浏览器指定下载路径
+			response.reset();
+			request.setCharacterEncoding("UTF-8");
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("application/x-download");
+			response.setHeader("Content-dispostion","attachment;filename=test.xls");
+			response.setContentType("application/vnd.ms-excel;charset=utf-8");
+			String filedisplay = "test.xls";
+			filedisplay = URLEncoder.encode(filedisplay, "UTF-8");
+			response.addHeader("Content-Disposition", "attachment;filename="+ filedisplay);
+			HSSFWorkbook wb = new HSSFWorkbook();//创建工作簿
+			HSSFSheet sheet = wb.createSheet("操作");//第一个sheet
+			HSSFRow rowFirst = sheet.createRow(0);//第一个sheet第一行为标题
+			rowFirst.setHeight((short) 500);			   
+            HSSFCellStyle cellStyle = wb.createCellStyle();// 创建单元格样式对象  
+            cellStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER); // 居中
+            cellStyle.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+			for (int i = 0; i < handers.length; i++) {
+			   sheet.setColumnWidth((short) i, (short) 4000);// 设置列宽
+			}
+			//写标题了
+			 for (int i = 0; i < handers.length; i++) {
+				 //获取第一行的每一个单元格
+				 HSSFCell cell = rowFirst.createCell(i);
+				 //往单元格里面写入值
+				 cell.setCellValue(handers[i]);
+				 cell.setCellStyle(cellStyle);
+			 }
+			for (int i = 0; i < list.size(); i++) {
+				User u = list.get(i);			
+				//创建数据行
+				HSSFRow row = sheet.createRow(i + 1);				
+				row.setHeight((short) 400);   // 设置每行的高度
+				//设置对应单元格的值
+				row.createCell(0).setCellValue(u.getId());
+				row.createCell(1).setCellValue(u.getUsername());
+				row.createCell(2).setCellValue(u.getSex());
+				row.createCell(3).setCellValue(u.getMobile());						
+			}
+			OutputStream os = response.getOutputStream();  
+            wb.write(os);
+            os.close();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 }

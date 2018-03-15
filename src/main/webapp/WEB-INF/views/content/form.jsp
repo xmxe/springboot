@@ -10,6 +10,7 @@
 <base href="<%=basePath%>">
 <title>layui</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="js/jquery-1.7.2.js"></script>
 <script src="layui/layui.js"></script>
 <link rel="stylesheet" href="layui/css/layui.css" media="all" />
 <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
@@ -81,11 +82,11 @@
 		<div class="layui-form-item">
 			<div class="layui-input-block">
 				<button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				<button type="reset" class="layui-btn layui-btn-primary">重置</button>				
 			</div>
 		</div>
 	</form>
-
+<button id="down" class="layui-btn layui-btn-normal" onclick="down()" style="text-align: center">下载</button>
 <script type="text/javascript">
 //Demo
 layui.use('form', function(){
@@ -97,6 +98,9 @@ layui.use('form', function(){
     return false;
   });
 });
+function down(){
+	window.location.href="/excell.do"
+}
 </script>
 
 </body>
