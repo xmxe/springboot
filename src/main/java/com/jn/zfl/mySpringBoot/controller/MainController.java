@@ -51,7 +51,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.jn.zfl.mySpringBoot.bean.User;
-import com.jn.zfl.mySpringBoot.config.quarts.QuartzManager;
 import com.jn.zfl.mySpringBoot.config.redis.RedisUtils;
 import com.jn.zfl.mySpringBoot.service.MainService;
 import com.jn.zfl.mySpringBoot.util.Page;
@@ -99,10 +98,13 @@ public class MainController {
 		
 	
 	@RequestMapping("/getUserById")
-	public JSONObject getUserById(@RequestParam("userId") String userId) {
-		User user = mainservice.getUserById(Integer.valueOf(userId));
+	@ResponseBody
+	public JSONObject getUserById(@RequestParam("username") String userId,@RequestParam("userId") String username) {
+		User user = mainservice.getUserById(Integer.valueOf(username));
 		JSONObject json = new JSONObject();
 		json.put("user",user);
+		System.err.println(userId);
+		System.err.println(username);
 		return json;
 	}
 	
@@ -215,7 +217,7 @@ public class MainController {
 	
 	private String drawImg(ByteArrayOutputStream output){
 		String code = "";
-		for(int i=0; i<4; i++){
+		for(int i=0; i < 4; i++){
 			code += randomChar();
 		}
 		int width = 70;
