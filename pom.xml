@@ -13,7 +13,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.5.1.RELEASE</version>
+    <version>1.5.5.RELEASE</version>
     <relativePath/>
   </parent>
   
@@ -108,7 +108,12 @@
 		    <artifactId>poi</artifactId>
 		    <version>3.8</version>
 		</dependency>
-
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-redis</artifactId>
+		    <version>1.5.8.RELEASE</version>
+		</dependency>
 		
   </dependencies>
   

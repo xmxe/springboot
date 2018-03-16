@@ -1,4 +1,4 @@
-package com.jn.zfl.mySpringBoot.config;
+package com.jn.zfl.mySpringBoot.config.mybatis;
 
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;

@@ -1,4 +1,4 @@
-package com.jn.zfl.mySpringBoot.config;
+package com.jn.zfl.mySpringBoot.config.datasource;
 
 import javax.sql.DataSource;
 

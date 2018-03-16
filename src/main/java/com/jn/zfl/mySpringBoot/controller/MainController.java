@@ -46,6 +46,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.jn.zfl.mySpringBoot.bean.User;
+import com.jn.zfl.mySpringBoot.config.redis.RedisUtils;
 import com.jn.zfl.mySpringBoot.service.MainService;
 import com.jn.zfl.mySpringBoot.util.Page;
 import com.alibaba.fastjson.JSONObject;
@@ -60,6 +61,8 @@ public class MainController {
 	@Autowired
 	MainService mainservice;
 
+	@Autowired
+    private RedisUtils redisUtils;
 	//分页页面
 	@RequestMapping("/pageView")
 	public String pageView() {
@@ -312,4 +315,13 @@ public class MainController {
 			e.printStackTrace();
 		}
 	}
+	@RequestMapping("/redis")
+	@ResponseBody
+    public String redis(){
+        redisUtils.set("123", "hello world");
+        System.err.println("进入了方法");
+        String string= redisUtils.get("123").toString();
+        return string;
+    }
+	
 }

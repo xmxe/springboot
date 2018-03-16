@@ -1,4 +1,4 @@
-package com.jn.zfl.mySpringBoot.config;
+package com.jn.zfl.mySpringBoot.config.interceptor;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
