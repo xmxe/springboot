@@ -23,6 +23,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -32,10 +33,14 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
-import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.quartz.CronScheduleBuilder;
+import org.quartz.CronTrigger;
+import org.quartz.JobDetail;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,6 +51,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.jn.zfl.mySpringBoot.bean.User;
+import com.jn.zfl.mySpringBoot.config.quarts.QuartzManager;
 import com.jn.zfl.mySpringBoot.config.redis.RedisUtils;
 import com.jn.zfl.mySpringBoot.service.MainService;
 import com.jn.zfl.mySpringBoot.util.Page;
@@ -63,6 +69,16 @@ public class MainController {
 
 	@Autowired
     private RedisUtils redisUtils;
+	
+	@Resource(name = "jobDetail")  
+    private JobDetail jobDetail;
+
+    @Resource(name = "jobTrigger")  
+    private CronTrigger cronTrigger;  
+
+    @Resource(name = "scheduler")  
+    private Scheduler scheduler;   
+    
 	//分页页面
 	@RequestMapping("/pageView")
 	public String pageView() {
@@ -322,6 +338,22 @@ public class MainController {
         System.err.println("进入了方法");
         String string= redisUtils.get("123").toString();
         return string;
+    }
+	@ResponseBody
+    @RequestMapping("/quartz")
+    public String quartzTest() throws SchedulerException{
+         CronTrigger trigger = (CronTrigger) scheduler.getTrigger(cronTrigger.getKey());  
+         String currentCron = trigger.getCronExpression();// 当前Trigger使用的  
+         System.err.println("当前trigger使用的-"+currentCron);
+         //1秒钟执行一次
+         CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule("0/1 * * * * ?");  
+         // 按新的cronExpression表达式重新构建trigger  
+         trigger = (CronTrigger) scheduler.getTrigger(cronTrigger.getKey());  
+         trigger = trigger.getTriggerBuilder().withIdentity(cronTrigger.getKey())  
+                 .withSchedule(scheduleBuilder).build();  
+         // 按新的trigger重新设置job执行  
+         scheduler.rescheduleJob(cronTrigger.getKey(), trigger);  
+        return "-这是quartz测试";
     }
 	
 }
