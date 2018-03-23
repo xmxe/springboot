@@ -102,12 +102,12 @@ if (window != top)
 			return;
 		}
 		$.ajax({
-			url:'check.action',
+			url:'check.do',
 			data:{code:$("#code").val(),username:$("#username").val(),password:$("#password").val()},
 			dataType:'json',
 			success:function(data){
 				if(data.message == "success"){
-					window.location.href="index.action";
+					window.location.href="index.do";
 				}else{
 					layer.msg(data.message);
 				}
@@ -121,7 +121,7 @@ if (window != top)
 	}
 	
 	function changeCode(){
-		$("#codeImg").attr("src","code.action?t=" + genTimestamp());
+		$("#codeImg").attr("src","code.do?t=" + genTimestamp());
 	}
 	function genTimestamp() {
 		var time = new Date();

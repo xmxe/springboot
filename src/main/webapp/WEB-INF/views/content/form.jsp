@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="privilege" uri="/WEB-INF/privilege.tld"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -21,7 +22,6 @@
 </style>
 </head>
 <body>
-
 	<form class="layui-form" action="">
 		<div class="layui-form-item">
 			<label class="layui-form-label">输入框</label>
@@ -86,7 +86,8 @@
 			</div>
 		</div>
 	</form>
-<button id="down" class="layui-btn layui-btn-normal" onclick="down()" style="text-align: center">下载</button>
+	<!-- <button id="down" class="layui-btn layui-btn-normal" onclick="down()" style="text-align: center">下载</button> -->
+	<privilege:operation operationId="1" clazz="layui-btn layui-btn-normal" onClick="down()" name="下载"></privilege:operation>
 <script type="text/javascript">
 //Demo
 layui.use('form', function(){
