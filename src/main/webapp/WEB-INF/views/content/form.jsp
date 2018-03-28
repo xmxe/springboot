@@ -12,6 +12,7 @@
 <title>layui</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="js/jquery-1.7.2.js"></script>
+<script src="js/jquery.tips.js"></script>
 <script src="layui/layui.js"></script>
 <link rel="stylesheet" href="layui/css/layui.css" media="all" />
 <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
@@ -86,7 +87,7 @@
 			</div>
 		</div>
 	</form>
-	<!-- <button id="down" class="layui-btn layui-btn-normal" onclick="down()" style="text-align: center">下载</button> -->
+	<button id="tip" class="layui-btn layui-btn-primary" onclick="tip()" style="text-align: center">提示框</button>
 	<privilege:operation operationId="1" clazz="layui-btn layui-btn-normal" onClick="down()" name="下载"></privilege:operation>
 <script type="text/javascript">
 //Demo
@@ -101,6 +102,16 @@ layui.use('form', function(){
 });
 function down(){
 	window.location.href="/excell.do"
+}
+function tip(){
+	$("#tip").tips({
+		side:3,//1:上2:右3:下4:左
+		msg:'展示jquery.tips.js提示',
+		time:5,//5秒后关闭
+		bg:'#AE81FF',//背景色
+		color:'#FFF',//文字颜色，默认为白色
+		
+	});
 }
 </script>
 
