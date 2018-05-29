@@ -7,7 +7,7 @@ import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
 import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
-import com.jn.zfl.mySpringBoot.service.impl.ScheduleTask;
+import com.jn.zfl.mySpringBoot.service.ScheduleTask;
 
 @Configuration
 public class QuartzConfigration {

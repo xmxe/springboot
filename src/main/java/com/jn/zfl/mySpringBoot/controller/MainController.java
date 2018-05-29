@@ -16,11 +16,15 @@ import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -52,6 +56,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.jn.zfl.mySpringBoot.bean.User;
 import com.jn.zfl.mySpringBoot.config.redis.RedisUtils;
+import com.jn.zfl.mySpringBoot.service.LambdaService;
 import com.jn.zfl.mySpringBoot.service.MainService;
 import com.jn.zfl.mySpringBoot.util.Page;
 import com.alibaba.fastjson.JSONObject;
@@ -357,5 +362,21 @@ public class MainController {
          scheduler.rescheduleJob(cronTrigger.getKey(), trigger);  
         return "-这是quartz测试";
     }
-	
+	public static void main(String[] args) {
+		LambdaService lambdaservice = (a,b)->System.out.println(a+b);//相当于LambdaService的实现类
+		lambdaservice.lambdaTest(3,4);
+		
+		Set<Integer> set = new TreeSet<>();
+		Collections.addAll(set, 22,3,51,44,20,6);
+		set.stream().filter(x -> x>30).forEach(System.out::println);
+		
+		Set<Integer> set1 = new TreeSet<>(new Comparator<Integer>() {
+			@Override
+			public int compare(Integer i,Integer o) {
+				return i - o;
+			}
+		});
+		Collections.addAll(set1, 22,3,51,44,20,6);
+		set1.forEach(System.out::println);
+	}
 }
