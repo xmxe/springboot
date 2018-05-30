@@ -4,5 +4,5 @@ package com.jn.zfl.mySpringBoot.service;
 这样别人就无法在里面添加新的接口函数了**/
 @FunctionalInterface
 public interface LambdaService {
-	void lambdaTest(int a,int b);
+	int lambdaTest(int a,int b);
 }

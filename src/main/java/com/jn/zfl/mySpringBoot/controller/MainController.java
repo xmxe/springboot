@@ -363,9 +363,9 @@ public class MainController {
         return "-这是quartz测试";
     }
 	public static void main(String[] args) {
-		LambdaService lambdaservice = (a,b)->System.out.println(a+b);//相当于LambdaService的实现类
-		lambdaservice.lambdaTest(3,4);
-		
+		LambdaService lambdaservice = (a,b)->{return a + b;};//相当于LambdaService的实现类
+		int c = lambdaservice.lambdaTest(3,4);
+		System.out.println(c);
 		Set<Integer> set = new TreeSet<>();
 		Collections.addAll(set, 22,3,51,44,20,6);
 		set.stream().filter(x -> x>30).forEach(System.out::println);
