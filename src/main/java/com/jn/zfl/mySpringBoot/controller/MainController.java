@@ -58,9 +58,11 @@ import com.jn.zfl.mySpringBoot.bean.User;
 import com.jn.zfl.mySpringBoot.config.redis.RedisUtils;
 import com.jn.zfl.mySpringBoot.service.LambdaService;
 import com.jn.zfl.mySpringBoot.service.MainService;
+import com.jn.zfl.mySpringBoot.util.HttpClientUtil;
 import com.jn.zfl.mySpringBoot.util.Page;
 import com.alibaba.fastjson.JSONObject;
 import com.jn.zfl.mySpringBoot.bean.Dept;
+import com.jn.zfl.mySpringBoot.bean.HttpResult;
 
 
 //@RestController//@Controller+@ResponseBody
@@ -338,6 +340,7 @@ public class MainController {
 			e.printStackTrace();
 		}
 	}
+	
 	@RequestMapping("/redis")
 	@ResponseBody
     public String redis(){
@@ -346,6 +349,7 @@ public class MainController {
         String string= redisUtils.get("123").toString();
         return string;
     }
+	
 	@ResponseBody
     @RequestMapping("/quartz")
     public String quartzTest() throws SchedulerException{
@@ -362,6 +366,19 @@ public class MainController {
          scheduler.rescheduleJob(cronTrigger.getKey(), trigger);  
         return "-这是quartz测试";
     }
+	
+	@ResponseBody
+    @RequestMapping("/httpclient")
+	public String httpclient() throws Exception {
+		String url = "http://localhost:8080/zhongzhu/appnewhouse/newhouseLine.do";
+		Map<String,Object> map = new HashMap<>();
+		map.put("Id","6b340d4c17ed47449409f35a709ca298");//追加参数
+		HttpClientUtil client = new HttpClientUtil();
+		HttpResult result = client.doGet(url,map);
+		//System.err.println(result.getBody());
+		return result.getBody();
+	}
+				
 	public static void main(String[] args) {
 		LambdaService lambdaservice = (a,b)->{return a + b;};//相当于LambdaService的实现类
 		int c = lambdaservice.lambdaTest(3,4);

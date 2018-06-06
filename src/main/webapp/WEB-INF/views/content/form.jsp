@@ -86,8 +86,11 @@
 				<button type="reset" class="layui-btn layui-btn-primary">重置</button>				
 			</div>
 		</div>
+		
 	</form>
 	<button id="tip" class="layui-btn layui-btn-primary" onclick="tip()" style="text-align: center">提示框</button>
+	<button id="kuayu" class="layui-btn layui-btn-primary" onclick="kuayu()" style="text-align: center">跨域测试</button>
+	<button id="httpclient" class="layui-btn layui-btn-normal" onclick="httpclient()" style="text-align: center">httpclient</button>
 	<privilege:operation operationId="1" clazz="layui-btn layui-btn-normal" onClick="down()" name="下载"></privilege:operation>
 <script type="text/javascript">
 //Demo
@@ -111,6 +114,39 @@ function tip(){
 		bg:'#AE81FF',//背景色
 		color:'#FFF',//文字颜色，默认为白色
 		
+	});
+}
+function kuayu(){
+	$.ajax({
+		url:'http://127.0.0.1:8080/zhongzhu/appnewhouse/newhouseList.do',
+		data:{},
+		dataType : 'jsonp',
+		jsonp:"qqq",//此代码代表在路径后追加字段qqq: http://127.0.0.1:8080/zhongzhu/appnewhouse/newhouseList.do?qqq=success_jsonp,不加的话默认为callback
+		jsonpCallback:"success_jsonp", //代表追加字段的值，不写的话有默认值,jsonp默认会在路径后面追加参数，以便服务器调用
+		type:'get',//jsonp必须为get请求
+		success:function(data){
+			//服务器端返回示例:String qqq = request.getParameter("qqq");return qqq+"("+json+")";最终返回格式success_jsonp({"id":"3", "name":"zhangsan", "telephone":"13612345678"})    
+			console.log(data);
+			alert(data);
+		},
+		error:function(){
+			alert("why error?");
+		}
+	});
+}
+function httpclient(){
+	$.ajax({
+		url:'/httpclient.do',
+		data:{},
+		type:'post',
+		dataType:'json',
+		success:function(data){
+			console.log(data);
+			alert(data.doorList[0].address);
+		},
+		error:function(){
+			alert("why error");
+		}
 	});
 }
 </script>
