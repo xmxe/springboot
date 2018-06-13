@@ -40,7 +40,8 @@
 		                //新增一个Tab项
 		                element.tabAdd('demo', {
 		                    title: url,
-		                    content: '<iframe data-frameid="'+id+'" name="content" frameborder="0"  scrolling="no" width="100%" src="'+url+'"></iframe>',
+		                    //frameborder 属性规定是否显示框架周围的边框。0无边框1有边框       scrolling 规定是否在 iframe 中显示滚动条 yes no auto
+		                    content: '<iframe data-frameid="'+id+'" name="content" frameborder="0" width="100%" src="'+url+'"></iframe>',
 		                    id: id //实际使用一般是规定好的id，这里以时间戳模拟下
 		                })
 		                //CustomRightClick(id);//绑定右键菜单
