@@ -16,17 +16,12 @@ import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.Set;
-import java.util.TreeSet;
 import java.util.UUID;
-
 import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
@@ -56,7 +51,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.jn.zfl.mySpringBoot.bean.User;
 import com.jn.zfl.mySpringBoot.config.redis.RedisUtils;
-import com.jn.zfl.mySpringBoot.service.LambdaService;
 import com.jn.zfl.mySpringBoot.service.MainService;
 import com.jn.zfl.mySpringBoot.util.HttpClientUtil;
 import com.jn.zfl.mySpringBoot.util.Page;
@@ -380,20 +374,6 @@ public class MainController {
 	}
 				
 	public static void main(String[] args) {
-		LambdaService lambdaservice = (a,b)->{return a + b;};//相当于LambdaService的实现类
-		int c = lambdaservice.lambdaTest(3,4);
-		System.out.println(c);
-		Set<Integer> set = new TreeSet<>();
-		Collections.addAll(set, 22,3,51,44,20,6);
-		set.stream().filter(x -> x>30).forEach(System.out::println);
 		
-		Set<Integer> set1 = new TreeSet<>(new Comparator<Integer>() {
-			@Override
-			public int compare(Integer i,Integer o) {
-				return i - o;
-			}
-		});
-		Collections.addAll(set1, 22,3,51,44,20,6);
-		set1.forEach(System.out::println);
 	}
 }
