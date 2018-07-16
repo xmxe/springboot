@@ -4,7 +4,7 @@ import java.util.List;
 
 //分页的页面信息
 public class Page<T> {
-	private int currentPage;//当前也
+	private int currentPage;//当前页
 	
 	private int pageSize=5;//每页显示的记录数
 	
@@ -45,14 +45,13 @@ public class Page<T> {
 	}
 
 	public int getPre() {
-		if(currentPage>1){
+		if(currentPage>1)
 			return currentPage-1;
-		}return 1;
+		return 1;
 	}
 	public int getNext() {
-		if(currentPage<getPageCount()){
-		return currentPage+1;
-		}
+		if(currentPage<getPageCount())
+			return currentPage+1;	
 		return getPageCount();
 	}
 
@@ -66,9 +65,5 @@ public class Page<T> {
 
 	public void setRows(List<T> rows) {
 		this.rows = rows;
-	}
-	
-	
-	
-	
+	}	
 }

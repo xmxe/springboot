@@ -133,17 +133,17 @@
       <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
       <ul class="layui-nav layui-nav-tree"  lay-filter="test">
         <li class="layui-nav-item layui-nav-itemed">
-          <a class="" href="javascript:;">所有商品</a>
+          <a class="" href="javascript:;">One</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;" onclick='returnIframe("/pageView.do","1")'>page</a></dd>
+            <dd><a href="javascript:;" onclick='returnIframe("/pageView.do","1")'>page分页</a></dd>
             <dd><a href="javascript:;" onclick='returnIframe("/ztreeView.do","2")'>ztree</a></dd>
-            <dd><a href="javascript:;" onclick='returnIframe("/form.do","3")'>form</a></dd>
+            <dd><a href="javascript:;" onclick='returnIframe("/form.do","3")'>form表单</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
-          <a href="javascript:;">解决方案</a>
+          <a href="javascript:;">Two</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">列表一</a></dd>
+            <dd><a href="javascript:;">vue.js</a></dd>
             <dd><a href="javascript:;">列表二</a></dd>
             <dd><a href="javascript:;">超链接</a></dd>
           </dl>

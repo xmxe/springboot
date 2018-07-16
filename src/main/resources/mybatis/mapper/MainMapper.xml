@@ -19,10 +19,10 @@
 </select>
 
 <select id="queryUserCount" parameterType="String" resultType="int">
-	select count(0) from xxcl_user
+	select count(0) from t_book
 </select>
-<select id="querySome" parameterType="int" resultType="com.jn.zfl.mySpringBoot.bean.User">
-	select * from xxcl_user limit #{start},#{end}
+<select id="querySome" parameterType="int" resultType="com.jn.zfl.mySpringBoot.bean.Book">
+	select * from t_book limit #{start},#{end}
 </select>
 
 <select id="findDept"  resultMap="BaseResultMap">

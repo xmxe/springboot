@@ -55,6 +55,7 @@ import com.jn.zfl.mySpringBoot.service.MainService;
 import com.jn.zfl.mySpringBoot.util.HttpClientUtil;
 import com.jn.zfl.mySpringBoot.util.Page;
 import com.alibaba.fastjson.JSONObject;
+import com.jn.zfl.mySpringBoot.bean.Book;
 import com.jn.zfl.mySpringBoot.bean.Dept;
 import com.jn.zfl.mySpringBoot.bean.HttpResult;
 
@@ -151,7 +152,7 @@ public class MainController {
 		request.setCharacterEncoding("UTF-8");
 		String tj = request.getParameter("tj");
 		int currentPage = Integer.parseInt(request.getParameter("currentPage"));
-		Page<User> page = new Page<User>();
+		Page<Book> page = new Page<Book>();
 		//设置当前页 currentPage next pre  pageSize  start
 		page.setCurrentPage(currentPage);
 		//2.查询总记录数 total   pageCount
@@ -159,7 +160,7 @@ public class MainController {
 		
 		page.setTotal(total);
 		//3.查询数据 rows
-		List<User> rows = mainservice.querySome(page.getStart(),page.getPageSize());
+		List<Book> rows = mainservice.querySome(page.getStart(),page.getPageSize());
 		page.setRows(rows);
 		//~~~~~~~~~~组装page对象 完毕 写出到客户端
 		response.setContentType("text/plain;charset=UTF-8");
@@ -285,7 +286,7 @@ public class MainController {
 	@ResponseBody
 	public void excel(HttpServletRequest request,HttpServletResponse response){
 		String[] handers = {"id","name","sex","mobile"};
-		List<User> list = mainservice.querySome(1,5);	
+		List<Book> list = mainservice.querySome(1,5);	
 		try{
 			//由浏览器指定下载路径
 			response.reset();
@@ -316,15 +317,15 @@ public class MainController {
 				 cell.setCellStyle(cellStyle);
 			 }
 			for (int i = 0; i < list.size(); i++) {
-				User u = list.get(i);			
+				Book u = list.get(i);			
 				//创建数据行
 				HSSFRow row = sheet.createRow(i + 1);				
 				row.setHeight((short) 400);   // 设置每行的高度
 				//设置对应单元格的值
 				row.createCell(0).setCellValue(u.getId());
-				row.createCell(1).setCellValue(u.getUsername());
-				row.createCell(2).setCellValue(u.getSex());
-				row.createCell(3).setCellValue(u.getMobile());						
+				row.createCell(1).setCellValue(u.getBookname());
+				row.createCell(2).setCellValue(u.getBookauthor());
+				row.createCell(3).setCellValue(u.getBookprice());						
 			}
 			OutputStream os = response.getOutputStream();  
             wb.write(os);

@@ -111,6 +111,7 @@ if (window != top)
 			success:function(data){
 				if(data.message == "success"){
 					window.location.href="index.do";
+					//window.location.href="ace/index.html";
 				}else{
 					layer.msg(data.message);
 				}

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jn.zfl.mySpringBoot.bean.Book;
 import com.jn.zfl.mySpringBoot.bean.Dept;
 import com.jn.zfl.mySpringBoot.bean.User;
 import com.jn.zfl.mySpringBoot.dao.MainDao;
@@ -24,7 +25,7 @@ public class MainService {
 		return mainDao.queryUserCount(tj);
 	}
 	
-	public List<User> querySome(int start,int end){
+	public List<Book> querySome(int start,int end){
 		return mainDao.querySome(start, end);
 	}
 	

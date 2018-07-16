@@ -44,11 +44,12 @@
 					pre = msg.jo.pre;
 					pageCount = msg.jo.pageCount;
 					var trs="";
-					$.each(msg.jo.rows,function(i,user){
-						trs+="<tr><td>"+user.username+"</td><td>"+user.sex
-						+"</td><td>"+user.mobile+"</td></tr>";
+					$.each(msg.jo.rows,function(i,book){
+						trs+="<tr><td>"+book.bookname+"</td><td>"+book.bookauthor
+						+"</td><td>"+book.bookprice+"</td></tr>";
 					});
 					$("#data").html(trs);
+					$("#pageCount").html("共"+pageCount+"页"+ msg.jo.total+"条记录 " + "当前为第"+current+"页");
 				}
 			});	
 		}
@@ -70,12 +71,13 @@
 	    	<thead>
 	    		<tr style="height:50px">
 	    			<th style="text-align:center;font-family: 宋体;font-size:30px">名字</th>
-	    			<th style="text-align:center;font-family: 宋体;font-size:30px">性别</th>
-	    			<th style="text-align:center;font-family: 宋体;font-size:30px">电话</th>
+	    			<th style="text-align:center;font-family: 宋体;font-size:30px">作者</th>
+	    			<th style="text-align:center;font-family: 宋体;font-size:30px">价格</th>
 	    		</tr>
 	    	</thead>
 	    	<tbody id="data"></tbody>	
 	    </table>
+	    <span id="pageCount"></span>
 	    <button type="button" id="first" class="layui-btn layui-btn-radius">首页</button>
 	    <button type="button" id="pre" class="layui-btn layui-btn-radius">上一页</button>
 	    <button type="button" id="next" class="layui-btn layui-btn-radius">下一页</button>
