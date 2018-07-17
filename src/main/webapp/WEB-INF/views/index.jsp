@@ -143,7 +143,7 @@
         <li class="layui-nav-item">
           <a href="javascript:;">Two</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;">vue.js</a></dd>
+            <dd><a href="javascript:;" onclick='returnIframe("/vue.do","4")'>vue.js</a></dd>
             <dd><a href="javascript:;">列表二</a></dd>
             <dd><a href="javascript:;">超链接</a></dd>
           </dl>

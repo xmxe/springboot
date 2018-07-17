@@ -285,7 +285,7 @@ public class MainController {
 	@RequestMapping(value="/excell")
 	@ResponseBody
 	public void excel(HttpServletRequest request,HttpServletResponse response){
-		String[] handers = {"id","name","sex","mobile"};
+		String[] handers = {"id","书名","作者","价格"};
 		List<Book> list = mainservice.querySome(1,5);	
 		try{
 			//由浏览器指定下载路径
