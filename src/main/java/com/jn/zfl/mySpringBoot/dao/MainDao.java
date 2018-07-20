@@ -18,7 +18,7 @@ public interface MainDao {
 	
 	int queryUserCount(@Param(value = "tj") String tj);
 	
-	List<Book> querySome(@Param(value="start") int start,@Param(value="end") int end);
+	List<Book> querySome(@Param(value="tj")String tj, @Param(value="start") int start,@Param(value="end") int end);
 	
 	List<Dept> findDept(); 
 }

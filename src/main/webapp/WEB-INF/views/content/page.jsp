@@ -15,28 +15,29 @@
 <link rel="stylesheet" href="layui/css/layui.css" />
 <script type="text/javascript">
 	var next,pre,pageCount;
+	var tj = "";
 	//当整个页面加载完毕时执行
-	$(function(){
-		queryData(1);
+	$(function(){	
+		queryData(1,tj);
 		//~~~~~~~注册点击事件
 		$("#first").click(function(){
-			queryData(1);
+			queryData(1,tj);
 		});
 		$("#next").click(function(){
-			queryData(next);
+			queryData(next,tj);
 		});
 		$("#pre").click(function(){
-			queryData(pre);
+			queryData(pre,tj);
 		});
 		$("#end").click(function(){
-			queryData(pageCount);
+			queryData(pageCount,tj);
 		});
 	})
-		function queryData(current){
+		function queryData(current,tj){
 			$.ajax({
 				type:"post",
-				url:"page.do", //currentPage=1&tj=zhangsan
-				data:"currentPage="+current,
+				url:"page.do", 
+				data:"currentPage="+current+"&tj="+tj,
 				dataType:"json",
 				success:function(msg){// msg======>page
 					console.log(msg);
@@ -53,12 +54,8 @@
 				}
 			});	
 		}
-	var tj="";
 	function searchbyconditions(){
-		tj = $("input[name='tj']").val();
-		if(tj!="" && tj!=null){
-			tj="&tj="+tj;
-		}
+		tj = $("#tj").val();
 		queryData(1,tj);
 	}
 	</script>
@@ -66,7 +63,10 @@
   
   <body>
   	<div style="text-align:center">
-  		<button type="button" class="layui-btn layui-btn-normal" onclick="searchbyconditions()">查询</button>
+  	<div class="layui-input-inline">
+      <input type="text" name="tj" placeholder="请输入书名" autocomplete="off" class="layui-input" id="tj"/>
+    </div>
+      <button type="button"  onclick="searchbyconditions()" class="layui-btn layui-btn-sm layui-btn-normal">查询</button>		
 	    <table class="layui-table" lay-even="" lay-skin="row">
 	    	<thead>
 	    		<tr style="height:50px">

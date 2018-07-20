@@ -25,12 +25,11 @@ public class MainService {
 		return mainDao.queryUserCount(tj);
 	}
 	
-	public List<Book> querySome(int start,int end){
-		return mainDao.querySome(start, end);
+	public List<Book> querySome(String tj,int start,int end){
+		return mainDao.querySome(tj,start, end);
 	}
 	
 	public List<Dept> findDept() {
-		// TODO Auto-generated method stub
 		return mainDao.findDept();
 	}
 }

@@ -14,15 +14,22 @@
     <result column="created_time" jdbcType="TIMESTAMP" property="created_time" />
   </resultMap>
 
-<select id="getUserById" parameterType="Integer" resultType="com.jn.zfl.mySpringBoot.bean.User">
+<select id="getUserById" parameterType="Integer" resultType="user">
 	select * from xxcl_user where id = #{user_id}
 </select>
 
 <select id="queryUserCount" parameterType="String" resultType="int">
-	select count(0) from t_book
+	select count(0) from t_book where 1 = 1
+		<if test="tj != null and '' != tj">
+			and bookname like concat('%',#{tj},'%')
+		</if>
 </select>
-<select id="querySome" parameterType="int" resultType="com.jn.zfl.mySpringBoot.bean.Book">
-	select * from t_book limit #{start},#{end}
+<select id="querySome" resultType="book">
+	select * from t_book where 1 = 1
+		<if test="tj != null and '' != tj">
+			and bookname like concat('%',#{tj},'%')
+		</if>
+	 limit #{start},#{end}
 </select>
 
 <select id="findDept"  resultMap="BaseResultMap">

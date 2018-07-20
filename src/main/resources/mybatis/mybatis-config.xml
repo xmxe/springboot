@@ -6,18 +6,12 @@
 		<setting name="mapUnderscoreToCamelCase" value="true" />
 	</settings>
     <typeAliases>
-        <typeAlias alias="Integer" type="java.lang.Integer" />
-        <typeAlias alias="Long" type="java.lang.Long" />
-        <typeAlias alias="HashMap" type="java.util.HashMap" />
-        <typeAlias alias="LinkedHashMap" type="java.util.LinkedHashMap" />
-        <typeAlias alias="ArrayList" type="java.util.ArrayList" />
-        <typeAlias alias="LinkedList" type="java.util.LinkedList" />
+        <typeAlias alias="book" type="com.jn.zfl.mySpringBoot.bean.Book" />   
+        <typeAlias alias="user" type="com.jn.zfl.mySpringBoot.bean.User" />      
     </typeAliases>
     <plugins>
 		<plugin interceptor="com.github.pagehelper.PageInterceptor">		
-		</plugin>
+		</plugin>		
 	</plugins>
-	<mappers>
-		<mapper resource=mybatis/mapper/*Mapper.xml>
-	</mappers>
+
 </configuration>

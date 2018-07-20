@@ -7,14 +7,15 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.Consumer;
-
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import com.jn.zfl.mySpringBoot.service.LambdaService;
 
 public class MineTest {
 
-	@Test
+	protected Logger logger = Logger.getLogger(MineTest.class);
+	//@Test
 	public void lambda() {	
 		Consumer<String> methodParam = System.out::println;
 		
@@ -46,5 +47,9 @@ public class MineTest {
 		Collections.addAll(list,5,16,41,10);
 		/* stream().map()可以看作对象转换*/
 		list.stream().sorted((x,y)->(x-y)).map(String::valueOf).filter(x->x.startsWith("1")).forEach(x->methodParam.accept("④---"+x));
+	}
+	@Test
+	public void log() {
+		logger.info("记录手动将信息输出到文件");
 	}
 }

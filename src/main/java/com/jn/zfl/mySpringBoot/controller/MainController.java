@@ -55,6 +55,7 @@ import com.jn.zfl.mySpringBoot.service.MainService;
 import com.jn.zfl.mySpringBoot.util.HttpClientUtil;
 import com.jn.zfl.mySpringBoot.util.Page;
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageHelper;
 import com.jn.zfl.mySpringBoot.bean.Book;
 import com.jn.zfl.mySpringBoot.bean.Dept;
 import com.jn.zfl.mySpringBoot.bean.HttpResult;
@@ -159,8 +160,9 @@ public class MainController {
 		int total = mainservice.queryUserCount(tj);
 		
 		page.setTotal(total);
+		//PageHelper.startPage(2, 3);//分页插件
 		//3.查询数据 rows
-		List<Book> rows = mainservice.querySome(page.getStart(),page.getPageSize());
+		List<Book> rows = mainservice.querySome(tj,page.getStart(),page.getPageSize());
 		page.setRows(rows);
 		//~~~~~~~~~~组装page对象 完毕 写出到客户端
 		response.setContentType("text/plain;charset=UTF-8");
@@ -286,7 +288,7 @@ public class MainController {
 	@ResponseBody
 	public void excel(HttpServletRequest request,HttpServletResponse response){
 		String[] handers = {"id","书名","作者","价格"};
-		List<Book> list = mainservice.querySome(1,5);	
+		List<Book> list = mainservice.querySome(null,1,5);	
 		try{
 			//由浏览器指定下载路径
 			response.reset();
