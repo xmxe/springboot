@@ -35,7 +35,7 @@
 	})
 		function queryData(current,tj){
 			$.ajax({
-				type:"post",
+				type:"get",
 				url:"page.do", 
 				data:"currentPage="+current+"&tj="+tj,
 				dataType:"json",
@@ -51,6 +51,9 @@
 					});
 					$("#data").html(trs);
 					$("#pageCount").html("共"+pageCount+"页"+ msg.jo.total+"条记录 " + "当前为第"+current+"页");
+				},
+				error:function(){
+					alert("错误");
 				}
 			});	
 		}

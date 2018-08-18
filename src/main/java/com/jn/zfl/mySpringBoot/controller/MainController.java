@@ -35,6 +35,10 @@ import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.CronTrigger;
 import org.quartz.JobDetail;
@@ -42,6 +46,7 @@ import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -147,7 +152,8 @@ public class MainController {
 		}
 	}
 	//分页后台逻辑
-	@RequestMapping("/page")
+	@RequiresRoles("a")//指定角色才可以执行的权限
+	@GetMapping("/page")//相当于@RequestMapping(value="/page",method = RequestMethod.GET)
 	public void page(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		//1.获得当前页参数
 		request.setCharacterEncoding("UTF-8");
@@ -158,7 +164,6 @@ public class MainController {
 		page.setCurrentPage(currentPage);
 		//2.查询总记录数 total   pageCount
 		int total = mainservice.queryUserCount(tj);
-		
 		page.setTotal(total);
 		//PageHelper.startPage(2, 3);//分页插件
 		//3.查询数据 rows
@@ -176,7 +181,8 @@ public class MainController {
 	}
 	
 	//ztree
-	@RequestMapping(value="/dept/aJsonObject",method = RequestMethod.POST)
+	@RequiresPermissions("user:add")//指定拥有此权限的才可以执行
+	@RequestMapping(value="/dept/aJsonObject",method = RequestMethod.GET)
 	@ResponseBody
 	public  JSONObject aJsonObject(HttpServletRequest request) {
 		List<Dept> depts = mainservice.findDept();
@@ -275,6 +281,7 @@ public class MainController {
 			if(!("1").equals(name) || !("1").equals(password)) {
 				json.put("message", "用户名或密码不正确");
 			}else {
+				SecurityUtils.getSubject().login(new UsernamePasswordToken(name, password));
 				json.put("message", "success");
 			}		
 		}else {

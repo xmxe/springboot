@@ -42,15 +42,15 @@ $(function() {
 				rootPId: 0
 			}
 		},
-	callback:{
-		onClick:ck
-	}
+		callback:{
+			onClick:ck
+		}
 	};
 	var zNodes;
 	var treeNode_1;
 	$.ajax({
 		url : 'dept/aJsonObject.do',
-		type : 'POST', //GET
+		type : 'get', //GET
 		async : true, //或false,是否异步
 		dataType : 'json', //返回的数据格式：json/xml/html/script/jsonp/text
 		success : function(data) {
@@ -60,7 +60,6 @@ $(function() {
 		},
 		error : function(data) {
 			alert("错误");
-			console.log('错误')
 		}
 	})
 

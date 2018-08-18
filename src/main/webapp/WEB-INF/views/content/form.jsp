@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="privilege" uri="/WEB-INF/privilege.tld"%>
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -92,7 +93,16 @@
 	<button id="kuayu" class="layui-btn layui-btn-primary" onclick="kuayu()" style="text-align: center">跨域测试</button>
 	<button id="httpclient" class="layui-btn layui-btn-normal" onclick="httpclient()" style="text-align: center">httpclient</button>
 	<privilege:operation operationId="1" clazz="layui-btn layui-btn-normal" onClick="down()" name="下载"></privilege:operation>
-<script type="text/javascript">
+	<shiro:hasPermission name="user:add">
+		<button class="layui-btn layui-btn-primary" style="text-align: center">shiro:hasPermission</button>
+	</shiro:hasPermission>
+	<shiro:hasRole name="a">
+		<button class="layui-btn layui-btn-primary" style="text-align: center">shiro:hasRole</button>
+	</shiro:hasRole>
+	<shiro:hasAnyRoles name="a,b">
+		<button class="layui-btn layui-btn-primary" style="text-align: center">shiro:hasAnyRoles</button>
+	</shiro:hasAnyRoles>
+	<script type="text/javascript">
 //Demo
 layui.use('form', function(){
   var form = layui.form;
