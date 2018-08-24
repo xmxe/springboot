@@ -55,7 +55,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
-            <scope>test</scope>
+           <!--  <scope>test</scope> --><!-- maven在编译的时候,src/main/java下是不引用<scope>test</scope>的jar,而编译src/test/java下的测试会引用<scope>test</scope>的jar -->
         </dependency>
         
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->

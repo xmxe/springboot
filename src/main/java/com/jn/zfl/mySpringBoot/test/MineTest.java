@@ -15,7 +15,7 @@ import com.jn.zfl.mySpringBoot.service.LambdaService;
 public class MineTest {
 
 	protected Logger logger = Logger.getLogger(MineTest.class);
-	//@Test
+	@Test
 	public void lambda() {	
 		Consumer<String> methodParam = System.out::println;
 		
