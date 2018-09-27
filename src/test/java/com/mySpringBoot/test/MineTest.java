@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.Consumer;
+
+import org.apache.cxf.endpoint.Client;
+import org.apache.cxf.jaxws.endpoint.dynamic.JaxWsDynamicClientFactory;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
@@ -52,4 +55,24 @@ public class MineTest {
 	public void log() {
 		logger.info("记录手动将信息输出到文件");
 	}
+	@Test
+    public void testSend1(){
+
+        // 创建动态客户端
+        JaxWsDynamicClientFactory dcf = JaxWsDynamicClientFactory.newInstance();
+        Client client = dcf.createClient("http://localhost:8080/jn/ws/user?wsdl");
+
+        // 需要密码的情况需要加上用户名和密码
+        // client.getOutInterceptors().add(new ClientLoginInterceptor(USER_NAME,PASS_WORD));
+        Object[] objects = new Object[0];
+        try {
+
+            // invoke("方法名",参数1,参数2,参数3....);
+            objects = client.invoke("add1", "1","小明");
+            System.out.println("返回数据:" + objects[0]);
+        } catch (java.lang.Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

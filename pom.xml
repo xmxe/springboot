@@ -156,6 +156,25 @@
 		    <artifactId>shiro-web</artifactId>
 		    <version>1.4.0</version>
 		</dependency>
+		<!-- cxf相关 -->
+		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-transports-http -->
+		<dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-rt-transports-http</artifactId>
+		    <version>3.2.6</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-frontend-jaxws -->
+		<dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-rt-frontend-jaxws</artifactId>
+		    <version>3.2.6</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-core -->
+		<dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-core</artifactId>
+		    <version>3.2.6</version>
+		</dependency>
 		
   </dependencies>
   
