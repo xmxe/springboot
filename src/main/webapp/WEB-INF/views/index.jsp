@@ -17,6 +17,39 @@
 <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 
 <script type="text/javascript">
+	$(function(){
+		if (window.WebSocket) {
+			var oladress = "127.0.0.1:8889";
+			var websocket = new WebSocket(encodeURI('ws://'+oladress)); 
+			websocket.onopen = function() {//连接成功	
+				var user = "1";
+				websocket.send('[join]'+user);
+			};
+			websocket.onerror = function() {//连接失败
+				
+			};
+			websocket.onclose = function() {//连接断开
+				
+			};
+			//消息接收
+			websocket.onmessage = function(message) {
+				var message = JSON.parse(message.data);
+				if(message.type == 'goOut'){
+					$("body").html("");
+					goOut("1");
+				}else if(message.type == 'thegoout'){
+					$("body").html("");
+					goOut("2");
+				}
+			};
+		}
+	});
+	
+	function goOut(msg){
+		//var locat = (window.location+'').split('/'); 
+		window.location.href="logout.do?msg="+msg;
+	};
+	
 	layui.use('layer', function(){
 		var layer = layui.layer;
 	}); 
@@ -124,7 +157,7 @@
           <dd><a href="javascript:void(0)">安全设置</a></dd>
         </dl>
       </li>
-      <li class="layui-nav-item"><a href="">退了</a></li>
+      <li class="layui-nav-item"><a href="/logout.do">退了</a></li>
     </ul>
   </div>
   

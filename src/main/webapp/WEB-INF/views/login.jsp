@@ -1,10 +1,11 @@
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
-	String code = (String) request.getSession().getAttribute("code");
+	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -225,6 +226,21 @@ if (window != top)
 			<button class="layui-btn layui-btn-normal" id="ind" onclick="ind()">登录</button>
 		</div>		
 	</div>
-	
+	<c:if test="${'1' == msg}">
+		<script type="text/javascript">
+		$(tsMsg());
+		function tsMsg(){
+			alert('此用户在其它终端已经早于您登录,您暂时无法登录');
+		}
+		</script>
+	</c:if>
+	<c:if test="${'2' == msg}">
+		<script type="text/javascript">
+			$(tsMsg());
+			function tsMsg(){
+				alert('您被系统管理员强制下线或您的帐号在别处登录');
+			}
+		</script>
+	</c:if>
 </body>
 </html>
