@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mySpringBoot.config.quarts.QuartzManager;
+import com.mySpringBoot.config.quartz.QuartzManager;
 
 @Controller
 public class IndexController {

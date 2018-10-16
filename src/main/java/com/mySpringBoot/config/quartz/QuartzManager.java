@@ -1,4 +1,4 @@
-package com.mySpringBoot.config.quarts;
+package com.mySpringBoot.config.quartz;
 
 import org.quartz.CronScheduleBuilder;
 import org.quartz.CronTrigger;

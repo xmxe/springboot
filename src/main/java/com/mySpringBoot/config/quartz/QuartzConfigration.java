@@ -1,4 +1,4 @@
-package com.mySpringBoot.config.quarts;
+package com.mySpringBoot.config.quartz;
 
 import org.quartz.Trigger;
 import org.springframework.context.annotation.Bean;
