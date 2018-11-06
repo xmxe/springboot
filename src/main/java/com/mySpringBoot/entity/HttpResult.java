@@ -1,4 +1,4 @@
-package com.mySpringBoot.bean;
+package com.mySpringBoot.entity;
 
 public class HttpResult {
 	// 响应的状态码

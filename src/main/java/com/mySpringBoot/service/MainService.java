@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mySpringBoot.bean.Book;
-import com.mySpringBoot.bean.Dept;
-import com.mySpringBoot.bean.User;
 import com.mySpringBoot.dao.MainDao;
+import com.mySpringBoot.entity.Book;
+import com.mySpringBoot.entity.Dept;
+import com.mySpringBoot.entity.User;
 
 
 @Service

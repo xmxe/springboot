@@ -1,4 +1,4 @@
-package com.mySpringBoot.bean;
+package com.mySpringBoot.entity;
 
 import java.util.Date;
 

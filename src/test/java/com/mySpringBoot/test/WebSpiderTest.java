@@ -19,8 +19,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-import com.mySpringBoot.bean.Book;
-import com.mySpringBoot.bean.HttpResult;
+import com.mySpringBoot.entity.Book;
+import com.mySpringBoot.entity.HttpResult;
 import com.mySpringBoot.util.HttpClientUtil;
 
 public class WebSpiderTest {

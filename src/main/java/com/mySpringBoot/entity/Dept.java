@@ -1,4 +1,4 @@
-package com.mySpringBoot.bean;
+package com.mySpringBoot.entity;
 
 import java.io.Serializable;
 import java.util.Date;

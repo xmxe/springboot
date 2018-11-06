@@ -17,7 +17,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
-import com.mySpringBoot.bean.HttpResult;
+import com.mySpringBoot.entity.HttpResult;
 
 public class HttpClientUtil {
 

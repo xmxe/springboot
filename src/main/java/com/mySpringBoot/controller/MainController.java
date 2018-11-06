@@ -54,16 +54,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.mySpringBoot.bean.User;
 import com.mySpringBoot.config.redis.RedisUtils;
+import com.mySpringBoot.entity.Book;
+import com.mySpringBoot.entity.Dept;
+import com.mySpringBoot.entity.HttpResult;
+import com.mySpringBoot.entity.User;
 import com.mySpringBoot.service.MainService;
 import com.mySpringBoot.util.HttpClientUtil;
 import com.mySpringBoot.util.Page;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
-import com.mySpringBoot.bean.Book;
-import com.mySpringBoot.bean.Dept;
-import com.mySpringBoot.bean.HttpResult;
 
 
 //@RestController//@Controller+@ResponseBody
@@ -297,16 +297,17 @@ public class MainController {
 		String[] handers = {"id","书名","作者","价格"};
 		List<Book> list = mainservice.querySome(null,1,5);	
 		try{
-			//由浏览器指定下载路径
-			response.reset();
-			request.setCharacterEncoding("UTF-8");
-			response.setCharacterEncoding("UTF-8");
-			response.setContentType("application/x-download");
-			response.setHeader("Content-dispostion","attachment;filename=test.xls");
-			response.setContentType("application/vnd.ms-excel;charset=utf-8");
 			String filedisplay = "test.xls";
-			filedisplay = URLEncoder.encode(filedisplay, "UTF-8");
+			filedisplay = URLEncoder.encode(filedisplay, "UTF-8");			
+			//由浏览器指定下载路径
+			//response.reset();			
+			//response.setContentType("application/x-download");
+			//response.setContentType("application/vnd.ms-excel;charset=utf-8");
 			response.addHeader("Content-Disposition", "attachment;filename="+ filedisplay);
+			request.setCharacterEncoding("UTF-8");
+			response.setContentType("APPLICATION/OCTET-STREAM");
+			response.setHeader("Content-Dispostion","attachment;filename=".concat(filedisplay));
+				
 			HSSFWorkbook wb = new HSSFWorkbook();//创建工作簿
 			HSSFSheet sheet = wb.createSheet("操作");//第一个sheet
 			HSSFRow rowFirst = sheet.createRow(0);//第一个sheet第一行为标题

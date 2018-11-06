@@ -6,9 +6,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import com.mySpringBoot.bean.Book;
-import com.mySpringBoot.bean.Dept;
-import com.mySpringBoot.bean.User;
+import com.mySpringBoot.entity.Book;
+import com.mySpringBoot.entity.Dept;
+import com.mySpringBoot.entity.User;
 
 /*@Mapper*/
 public interface MainDao {
