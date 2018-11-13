@@ -35,7 +35,7 @@ public class ShiroConfiguration {
     }
     @Bean(name = "sessionIdCookie")
 	public SimpleCookie getSessionIdCookie() {
-		SimpleCookie cookie = new SimpleCookie("sid");
+		SimpleCookie cookie = new SimpleCookie("jeesite.session.id");
 		cookie.setHttpOnly(true);
 		cookie.setMaxAge(-1);
 		return cookie;
