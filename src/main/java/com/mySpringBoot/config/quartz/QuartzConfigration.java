@@ -7,7 +7,7 @@ import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
 import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
-import com.mySpringBoot.service.ScheduleTask;
+import com.mySpringBoot.service.job.ScheduleTask;
 
 @Configuration
 public class QuartzConfigration {
@@ -42,6 +42,7 @@ public class QuartzConfigration {
         tigger.setCronExpression("0/6 * * * * ?");// 表示每隔6秒钟执行一次
         //tigger.set
         tigger.setName("myTigger");// trigger的name  
+        tigger.setGroup("group");// trigger的groupname
         return tigger;  
 
     }

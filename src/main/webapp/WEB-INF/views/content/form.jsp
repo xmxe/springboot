@@ -89,7 +89,7 @@
 		</div>
 		
 	</form>
-	<button id="tip" class="layui-btn layui-btn-primary" onclick="tip()" style="text-align: center">提示框</button>
+	<button id="tip" class="layui-btn layui-btn-primary" onclick="tip()" style="text-align: center">提示框(quartz)</button>
 	<button id="kuayu" class="layui-btn layui-btn-primary" onclick="kuayu()" style="text-align: center">跨域测试</button>
 	<button id="httpclient" class="layui-btn layui-btn-normal" onclick="httpclient()" style="text-align: center">httpclient</button>
 	<privilege:operation operationId="1" clazz="layui-btn layui-btn-normal" onClick="down()" name="下载"></privilege:operation>
@@ -117,14 +117,22 @@ function down(){
 	window.location.href="/excell.do"
 }
 function tip(){
-	$("#tip").tips({
-		side:3,//1:上2:右3:下4:左
-		msg:'展示jquery.tips.js提示',
-		time:5,//5秒后关闭
-		bg:'#AE81FF',//背景色
-		color:'#FFF',//文字颜色，默认为白色
-		
-	});
+	$.ajax({
+		url:"/quartz.do",
+		type:"post",
+		dataType:"json",
+		success:function(data){
+			$("#tip").tips({
+				side:3,//1:上2:右3:下4:左
+				msg:data.msg,
+				time:5,//5秒后关闭
+				bg:'#AE81FF',//背景色
+				color:'#FFF',//文字颜色，默认为白色
+				
+			});
+		}
+	})
+	
 }
 function kuayu(){
 	$.ajax({

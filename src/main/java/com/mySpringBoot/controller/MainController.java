@@ -23,9 +23,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mySpringBoot.config.quartz.QuartzManager;
 import com.mySpringBoot.config.redis.RedisUtils;
 import com.mySpringBoot.entity.HttpResult;
 import com.mySpringBoot.entity.User;
+import com.mySpringBoot.service.job.Jobs;
 import com.mySpringBoot.service.MainService;
 import com.mySpringBoot.util.HttpClientUtil;
 import com.alibaba.fastjson.JSONObject;
@@ -42,9 +44,12 @@ public class MainController {
 	@Autowired
     private RedisUtils redisUtils;
 	
+	@Autowired
+	QuartzManager quartManager;
+	
 	@Resource(name = "jobDetail")  
-    private JobDetail jobDetail;
-
+    private JobDetail jobDetail;	
+	
     @Resource(name = "jobTrigger")  
     private CronTrigger cronTrigger;  
 
@@ -161,7 +166,7 @@ public class MainController {
     }
 	
 	@ResponseBody
-    @RequestMapping("/quartz")
+    @RequestMapping("/changeQuartz")
     public String quartzTest() throws SchedulerException{
          CronTrigger trigger = (CronTrigger) scheduler.getTrigger(cronTrigger.getKey());  
          String currentCron = trigger.getCronExpression();// 当前Trigger使用的  
@@ -176,6 +181,22 @@ public class MainController {
          scheduler.rescheduleJob(cronTrigger.getKey(), trigger);  
         return "-这是quartz测试";
     }
+	@ResponseBody
+    @RequestMapping("/quartz")
+	public JSONObject quartz(){
+		JSONObject json = new JSONObject();
+		try{
+			//quartManager.startJobs();
+			//quartManager.removeJob("scheduler", "scheduler_group", "myTigger", "group");
+			quartManager.addJob("a", "group", "t", "tri", Jobs.class, "0/6 * * * * ?");
+			quartManager.addJob("b", "group", "t1", "tri1", Jobs.class, "0/2 * * * * ?");
+			json.put("msg", "quartz成功启动");
+		}catch(Exception e){
+			e.printStackTrace();
+			json.put("msg", "quartz启动失败");
+		}
+		return json;
+	}
 	
 	@ResponseBody
     @RequestMapping("/httpclient")

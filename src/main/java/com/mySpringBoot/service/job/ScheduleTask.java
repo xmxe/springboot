@@ -1,4 +1,4 @@
-package com.mySpringBoot.service;
+package com.mySpringBoot.service.job;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;

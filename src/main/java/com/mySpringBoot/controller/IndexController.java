@@ -38,7 +38,8 @@ public class IndexController {
 	
 	@RequestMapping("/index")
 	public String index() {
-		quartManager.shutdownJobs();
+		//quartManager.shutdownJobs();
+		quartManager.removeJob("scheduler", "scheduler_group", "myTigger", "group");
 		return "index";
 	} 
 }
