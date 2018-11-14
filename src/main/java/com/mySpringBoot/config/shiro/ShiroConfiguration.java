@@ -35,9 +35,14 @@ public class ShiroConfiguration {
     }
     @Bean(name = "sessionIdCookie")
 	public SimpleCookie getSessionIdCookie() {
-		SimpleCookie cookie = new SimpleCookie("jeesite.session.id");
-		cookie.setHttpOnly(true);
-		cookie.setMaxAge(-1);
+    	/*
+    	 * 关于shiro报错 there is no session with id的相关问题 
+    	 * 登陆页面不记住密码就不会报这个错 或者关闭浏览器（只要浏览器地址没有jsessionid就不会报错）
+    	 * */
+		SimpleCookie cookie = new SimpleCookie("shiro.session");
+		//cookie.setHttpOnly(true);//表示js脚本无法读取cookie信息
+		cookie.setMaxAge(-1);//-1表示关闭浏览器 cookie就会消失
+		cookie.setPath("/");//正常的cookie只能在一个应用中共享，即：一个cookie只能由创建它的应用获得。可在同一应用服务器内共享cookie的方法：设置cookie.setPath("/");
 		return cookie;
 	}
     
