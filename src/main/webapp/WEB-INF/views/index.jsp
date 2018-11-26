@@ -62,7 +62,7 @@
 	layui.use('element', function(){
 	  var element = layui.element;	  
 	});
-	function returnIframe(url,id){
+	function returnIframe(url,id,titleName){
 		//$("#myiframe").attr("src",url);
 		$("#divf").hide();
 		$(".layui-tab").show();
@@ -72,7 +72,7 @@
 		            tabAdd: function (url,id) {
 		                //新增一个Tab项
 		                element.tabAdd('demo', {
-		                    title: url,
+		                    title: titleName,
 		                    //frameborder 属性规定是否显示框架周围的边框。0无边框1有边框       scrolling 规定是否在 iframe 中显示滚动条 yes no auto
 		                    content: '<iframe data-frameid="'+id+'" name="content" frameborder="0" width="100%" src="'+url+'"></iframe>',
 		                    id: id //实际使用一般是规定好的id，这里以时间戳模拟下
@@ -126,12 +126,9 @@
 </script>
 </head>
 <body>
-	<!-- <button class="layui-btn layui-btn-primary" id="page">page分页</button>
-	<button class="layui-btn" id="ztree">zTree</button>
-	<button class="layui-btn layui-btn-normal" id="form">form</button> -->
 	<div class="layui-layout layui-layout-admin">
   	<div class="layui-header">
-    <div class="layui-logo">XXX管理系统</div>
+    <div class="layui-logo">千里冰封万里雪飘</div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class="layui-nav layui-layout-left">
       <li class="layui-nav-item"><a href="javascript:void(0)"><i class="layui-icon">&#xe614;控制台</i></a></li>
@@ -149,15 +146,15 @@
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
         <a href="javascript:;">
-          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-          贤心
+          <img src="image/goku.jpg" class="layui-nav-img">
+          然
         </a>
         <dl class="layui-nav-child">
           <dd><a href="javascript:void(0)">基本资料</a></dd>
           <dd><a href="javascript:void(0)">安全设置</a></dd>
         </dl>
       </li>
-      <li class="layui-nav-item"><a href="/logout.do">退了</a></li>
+      <li class="layui-nav-item"><a href="/logout.do">退出</a></li>
     </ul>
   </div>
   
@@ -168,15 +165,15 @@
         <li class="layui-nav-item layui-nav-itemed">
           <a class="" href="javascript:;">One</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;" onclick='returnIframe("/pageView.do","1")'>page分页</a></dd>
-            <dd><a href="javascript:;" onclick='returnIframe("/ztreeView.do","2")'>ztree</a></dd>
-            <dd><a href="javascript:;" onclick='returnIframe("/form.do","3")'>form表单</a></dd>
+            <dd><a href="javascript:;" onclick='returnIframe("/pageView.do","1","分页展示")'>page</a></dd>
+            <dd><a href="javascript:;" onclick='returnIframe("/ztreeView.do","2","zTree")'>zTree</a></dd>
+            <dd><a href="javascript:;" onclick='returnIframe("/form.do","3","表单")'>form</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">Two</a>
           <dl class="layui-nav-child">
-            <dd><a href="javascript:;" onclick='returnIframe("/vue.do","4")'>vue.js</a></dd>
+            <dd><a href="javascript:;" onclick='returnIframe("/vue.do","4","vue")'>vue.js</a></dd>
             <dd><a href="javascript:;">列表二</a></dd>
             <dd><a href="javascript:;">超链接</a></dd>
           </dl>
