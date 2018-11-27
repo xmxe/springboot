@@ -114,7 +114,7 @@ layui.use('form', function(){
   });
 });
 function down(){
-	window.location.href="/excell.do"
+	window.location.href="/excel.do"
 }
 function tip(){
 	$.ajax({

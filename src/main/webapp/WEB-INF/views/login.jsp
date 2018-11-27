@@ -106,7 +106,7 @@ if (window != top)
 			return;
 		}
 		$.ajax({
-			url:'check.do',
+			url:'loginCheck.do',
 			data:{code:$("#code").val(),username:$("#username").val(),password:$("#password").val()},
 			dataType:'json',
 			success:function(data){

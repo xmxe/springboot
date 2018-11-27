@@ -200,7 +200,7 @@ public class MainService {
 		return s.charAt(r.nextInt(s.length()));
 	}
 	
-	public JSONObject index(HttpServletRequest request) {
+	public JSONObject loginCheck(HttpServletRequest request) {
 		String code = request.getParameter("code");
 		String name =request.getParameter("username");
 		String password = request.getParameter("password");

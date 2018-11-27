@@ -132,12 +132,12 @@ public class MainController {
 	}
 	
 	//校验登陆
-	@RequestMapping(value="/check")
+	@RequestMapping(value="/loginCheck")
 	@ResponseBody
-	public JSONObject index(HttpServletRequest request) {
+	public JSONObject loginCheck(HttpServletRequest request) {
 		JSONObject json = null;
 		try{
-			json = mainService.index(request);
+			json = mainService.loginCheck(request);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -145,7 +145,7 @@ public class MainController {
 	} 
 	
 	//excel
-	@RequestMapping(value="/excell")
+	@RequestMapping(value="/excel")
 	@ResponseBody
 	public void excel(HttpServletRequest request,HttpServletResponse response){
 		try{
