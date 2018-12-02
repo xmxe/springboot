@@ -198,14 +198,14 @@ if (window != top)
 			<label class="layui-form-label" style="font-family: '微软雅黑';color:#DCE5D7">用户名:</label>
 			<div class="layui-input-inline">
 				<input type="text" id="username" lay-verify="required"
-					placeholder="请输入" autocomplete="off" class="layui-input">
+					placeholder="请输入" autocomplete="off" class="layui-input" value="1">
 			</div>
 		</div>
 		<div class="layui-form-item">
 			<label class="layui-form-label" style="color: #CCC7F5">密&nbsp;&nbsp;&nbsp;码:</label>
 			<div class="layui-input-inline">
 				<input type="password" id="password" placeholder="请输入密码"
-					autocomplete="off" class="layui-input">
+					autocomplete="off" class="layui-input" value="1">
 			</div>
 		</div>
 		<div class="layui-form-item">
@@ -217,7 +217,7 @@ if (window != top)
 			</div>
 		</div>
 		<div class="layui-form" lay-filter="test1">
-			<label class="layui-form-label" style="color:#DCE5D7;margin-top:1px">记住密码:</label>
+			<label class="layui-form-label" style="color:#DCE5D7;padding-left: 30px">记住密码:</label>
 			<div style="float:left">
 				<input type="checkbox" id="yyy" lay-skin="switch" lay-text="ON|OFF" lay-filter="switchTest">
 			</div>					
