@@ -9,7 +9,7 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>home</title>
+<title>红磨坊</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="js/jquery.min.js" ></script>
 <script src="layui/layui.js"></script>
@@ -131,15 +131,15 @@
     <div class="layui-logo">千里冰封万里雪飘</div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class="layui-nav layui-layout-left">
-      <li class="layui-nav-item"><a href="javascript:void(0)"><i class="layui-icon">&#xe614;控制台</i></a></li>
-      <li class="layui-nav-item"><a href="javascript:void(0)"><i class="layui-icon">&#xe705;商品管理</i></a></li>
-      <li class="layui-nav-item"><a href="javascript:void(0)"><i class="layui-icon">&#xe612;用户</i></a></li>
+      <li class="layui-nav-item"><a href="javascript:void(0)"><i class="layui-icon">&#xe614;Goku</i></a></li>
+      <li class="layui-nav-item"><a href="javascript:void(0)"><i class="layui-icon">&#xe705;Naruto</i></a></li>
+      <li class="layui-nav-item"><a href="javascript:void(0)"><i class="layui-icon">&#xe612;Luffy</i></a></li>
       <li class="layui-nav-item">
-        <a href="javascript:;"><i class="layui-icon">&#xe60c;其它系统</i></a>
+        <a href="javascript:;"><i class="layui-icon">&#xe60c;Zoro</i></a>
         <dl class="layui-nav-child">
-          <dd><a href="javascript:void(0)"><i class="layui-icon">&#xe628;邮件管理</i></a></dd>
-          <dd><a href="javascript:void(0)"><i class="layui-icon">&#xe62c;消息管理</i></a></dd>
-          <dd><a href="javascript:void(0)"><i class="layui-icon">&#xe60e;授权管理</i></a></dd>
+          <dd><a href="javascript:void(0)"><i class="layui-icon">&#xe628;Nami</i></a></dd>
+          <dd><a href="javascript:void(0)"><i class="layui-icon">&#xe62c;Robin</i></a></dd>
+          <dd><a href="javascript:void(0)"><i class="layui-icon">&#xe60e;Fraky</i></a></dd>
         </dl>
       </li>
     </ul>
@@ -174,20 +174,20 @@
           <a href="javascript:;">Two</a>
           <dl class="layui-nav-child">
             <dd><a href="javascript:;" onclick='returnIframe("/vue.do","4","vue")'>vue.js</a></dd>
-            <dd><a href="javascript:;">列表二</a></dd>
-            <dd><a href="javascript:;">超链接</a></dd>
+            <dd><a href="javascript:;" onclick='returnIframe("/html5/elephant.html","5","elephant")'>elephant</a></dd>
+            <dd><a href="javascript:;" onclick='returnIframe("/html5/winder.html","6","winder")'>winder</a></dd>
           </dl>
         </li>
-        <li class="layui-nav-item"><a href="javascript:void(0)">云市场</a></li>
-        <li class="layui-nav-item"><a href="javascript:void(0)">发布商品</a></li>
+        <li class="layui-nav-item"><a href="javascript:void(0)" onclick='returnIframe("/html5/cat.html","7","cat")'>cat</a></li>
+        <li class="layui-nav-item"><a href="javascript:void(0)" onclick='returnIframe("/html5/winder.html","8","spring")'>spring</a></li>
       </ul>
     </div>
   </div>
   
-  <div class="layui-body">
+  <div class="layui-body" style="width:89.4%;height:93%">
     <!-- 内容主体区域 -->
     <div id="divf" style="width:100%;height:100%">
-    	<iframe scrolling="no" frameborder="0" width="100%" height="100%"  id="myiframe" src="image/ace.jpg"></iframe>
+    	<iframe scrolling="no" frameborder="0" width="100%" height="100%"  id="myiframe" src="html5/earth.html"></iframe>
     </div>
     <div class="layui-tab layui-tab-card" lay-filter="demo" lay-allowclose="true" style="display: none">
 		<ul class="layui-tab-title"></ul>
@@ -195,10 +195,10 @@
 	</div>
   </div>
   
-  <div class="layui-footer">
-    <!-- 底部固定区域 -->
-    © www.baidu.com - 百度公司
-  </div>
+  <!-- <div class="layui-footer">
+    底部固定区域
+    © localhost - 心如止水、顺其自然
+  </div> -->
 </div>
 </body>
 </html>
