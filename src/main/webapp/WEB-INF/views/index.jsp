@@ -74,7 +74,7 @@
 		                element.tabAdd('demo', {
 		                    title: titleName,
 		                    //frameborder 属性规定是否显示框架周围的边框。0无边框1有边框       scrolling 规定是否在 iframe 中显示滚动条 yes no auto
-		                    content: '<iframe data-frameid="'+id+'" name="content" frameborder="0" width="100%" src="'+url+'"></iframe>',
+		                    content: '<iframe data-frameid="'+id+'" name="content" frameborder="0" scrolling="no" width="100%" height="100%" src="'+url+'"></iframe>',
 		                    id: id //实际使用一般是规定好的id，这里以时间戳模拟下
 		                })
 		                //CustomRightClick(id);//绑定右键菜单
@@ -113,7 +113,7 @@
 	}
 	//iframe自适应高度
 	function FrameWH() {
-        var h = $(window).height() -41- 10 - 60 -10-44 -10;
+        var h = $(window).height();
         $("iframe").css("height",h+"px");
 		/* var ifm= document.getElementById("myiframe"); 
 	    ifm.height=document.documentElement.clientHeight; */
@@ -125,7 +125,7 @@
     })
 </script>
 </head>
-<body>
+<body style="overflow: hidden;">
 	<div class="layui-layout layui-layout-admin">
   	<div class="layui-header">
     <div class="layui-logo">千里冰封万里雪飘</div>
@@ -184,7 +184,7 @@
     </div>
   </div>
   
-  <div class="layui-body" style="width:89.4%;height:93%">
+  <div class="layui-body" style="width:100%;height:100%;overflow: hidden;">
     <!-- 内容主体区域 -->
     <div id="divf" style="width:100%;height:100%">
     	<iframe scrolling="no" frameborder="0" width="100%" height="100%"  id="myiframe" src="html5/earth.html"></iframe>
