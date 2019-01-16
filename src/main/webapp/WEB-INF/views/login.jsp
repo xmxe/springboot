@@ -15,7 +15,7 @@
 <title>登录</title>
 <script src="js/jquery-1.7.2.js"></script>
 <script src="layui/layui.js"></script>
-<script tsrc="camera/jquery.mobile.customized.min.js"></script>
+<script src="camera/jquery.mobile.customized.min.js"></script>
 <script src="js/jquery.cookie.js"></script>
 <script src="camera/jquery.easing.1.3.js"></script>
 <script src="camera/camera.min.js"></script>
