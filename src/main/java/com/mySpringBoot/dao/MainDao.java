@@ -1,10 +1,9 @@
 package com.mySpringBoot.dao;
 
 import java.util.List;
+import java.util.Map;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
 import com.mySpringBoot.entity.Book;
 import com.mySpringBoot.entity.Dept;
@@ -21,4 +20,6 @@ public interface MainDao {
 	List<Book> querySome(@Param(value="tj")String tj, @Param(value="start") int start,@Param(value="end") int end);
 	
 	List<Dept> findDept(); 
+	
+	List<Map<String,Object>> getDensity(Map<String,Object> map);
 }
