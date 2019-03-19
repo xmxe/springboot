@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.TreeSet;
 import java.util.function.Consumer;
 
@@ -74,5 +76,20 @@ public class MineTest {
             e.printStackTrace();
         }
     }
+	@Test
+	public void createTest() {
+		Timer timer;
+		timer = new Timer();
+		timer.schedule(new TimerTask(){
 
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				System.out.println("---");
+			}}, 0, 60000);
+		// 三个参数
+		// 第一个执行内容：内容是定时任务的执行内容，通过实现抽象类来完成这个动作
+		// 第二个参数内容：是在第多少时间之后开始执行定时任务内容，该参数不能小于0
+		// 第三个参数内容：是在两个任务之间的执行时间间隔，该参数不能小于等于0
+	}
 }
