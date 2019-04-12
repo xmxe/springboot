@@ -12,14 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.mySpringBoot.config.quartz.QuartzManager;
 
 @Controller
+@RequestMapping("**.do")
 public class IndexController {
     @Autowired
     QuartzManager quartManager;
-    
-	@RequestMapping("/")
-	public String login() {
-		return "login";
-	} 
 	/**
 	 * 用户注销
 	 * @param session

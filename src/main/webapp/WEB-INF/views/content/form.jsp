@@ -12,10 +12,10 @@
 <base href="<%=basePath%>">
 <title>layui</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="js/jquery-1.7.2.js"></script>
-<script src="js/jquery.tips.js"></script>
-<script src="layui/layui.js"></script>
-<link rel="stylesheet" href="layui/css/layui.css" media="all" />
+<script src="/resources/js/jquery-1.7.2.js"></script>
+<script src="/resources/js/jquery.tips.js"></script>
+<script src="/resources/layui/layui.js"></script>
+<link rel="stylesheet" href="/resources/layui/css/layui.css" media="all" />
 <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 <style type="text/css">
 	<%-- body {

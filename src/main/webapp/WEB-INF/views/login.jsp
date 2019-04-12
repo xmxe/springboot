@@ -13,14 +13,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <base href="<%=basePath%>">
 <title>登录</title>
-<script src="js/jquery-1.7.2.js"></script>
-<script src="layui/layui.js"></script>
-<script src="camera/jquery.mobile.customized.min.js"></script>
-<script src="js/jquery.cookie.js"></script>
-<script src="camera/jquery.easing.1.3.js"></script>
-<script src="camera/camera.min.js"></script>
-<link rel="stylesheet" href="layui/css/layui.css" />
-<link rel="stylesheet" href="camera/camera.css" />
+<script src="/resources/js/jquery-1.7.2.js"></script>
+<script src="/resources/layui/layui.js"></script>
+<script src="/resources/camera/jquery.mobile.customized.min.js"></script>
+<script src="/resources/js/jquery.cookie.js"></script>
+<script src="/resources/camera/jquery.easing.1.3.js"></script>
+<script src="/resources/camera/camera.min.js"></script>
+<link rel="stylesheet" href="/resources/layui/css/layui.css" />
+<link rel="stylesheet" href="/resources/camera/camera.css" />
 <style type="text/css">
 .center {
 	position: absolute; /*绝对定位*/
@@ -79,7 +79,7 @@ if (window != top)
 		        thumbnails: false,
 		        hover: false,
 		        opacityOnGrid: false,
-		        imagePath: 'image/'
+		        imagePath: '/resources/image/'
 		    });
 		    changebg();	
 
@@ -184,10 +184,10 @@ if (window != top)
 	<div id="templatemo_banner_slide">
 		<div>
 			<!-- 背景图片 -->
-			<div data-src="image/timg.jpg"></div>
-			<div data-src="image/goku.jpg"></div>
-			<div data-src="image/time.jpg"></div>
-			<div data-src="image/ace.jpg"></div>			
+			<div data-src="resources/image/timg.jpg"></div>
+			<div data-src="resources/image/goku.jpg"></div>
+			<div data-src="resources/image/time.jpg"></div>
+			<div data-src="resources/image/ace.jpg"></div>			
 		</div>
 	</div>	
 	<div class="center" id="center">

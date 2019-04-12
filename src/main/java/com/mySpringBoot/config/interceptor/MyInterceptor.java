@@ -17,7 +17,7 @@ public class MyInterceptor implements HandlerInterceptor{
 	 * 下一个Interceptor的preHandle 方法如果已经是最后一个Interceptor的时候就会是调用当前请求的Controller方法*/
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        logger.info("------preHandle------");
+        logger.info("------preHandle,请求处理之前调用------");
         HttpSession session = request.getSession(true);//request.getSession(false)等同于 如果当前没有session返回null
         Map<String,String> map = (Map<String, String>) session.getAttribute("user");
         if(map == null) {
@@ -30,7 +30,6 @@ public class MyInterceptor implements HandlerInterceptor{
         String password = map.get("password");
         //判断用户是否存在，不存在就跳转到登录界面
         if(!"1".equals(username) && !"1".equals(password)){
-            logger.info("------:跳转到login页面！");
             request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
             //response.sendRedirect("/");
             return false;

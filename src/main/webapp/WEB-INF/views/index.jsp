@@ -11,9 +11,9 @@
 <base href="<%=basePath%>">
 <title>红磨坊</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="js/jquery.min.js" ></script>
-<script src="layui/layui.js"></script>
-<link rel="stylesheet" href="layui/css/layui.css" media="all" />
+<script src="/resources/js/jquery.min.js" ></script>
+<script src="/resources/layui/layui.js"></script>
+<link rel="stylesheet" href="/resources/layui/css/layui.css" media="all" />
 <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 
 <script type="text/javascript">
@@ -146,7 +146,7 @@
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
         <a href="javascript:;">
-          <img src="image/goku.jpg" class="layui-nav-img">
+          <img src="/resources/image/goku.jpg" class="layui-nav-img">
           然
         </a>
         <dl class="layui-nav-child">
@@ -174,12 +174,12 @@
           <a href="javascript:;">Two</a>
           <dl class="layui-nav-child">
             <dd><a href="javascript:;" onclick='returnIframe("/vue.do","4","vue")'>vue.js</a></dd>
-            <dd><a href="javascript:;" onclick='returnIframe("/html5/elephant.html","5","elephant")'>elephant</a></dd>
-            <dd><a href="javascript:;" onclick='returnIframe("/html5/winder.html","6","winder")'>winder</a></dd>
+            <dd><a href="javascript:;" onclick='returnIframe("/resources/html5/elephant.html","5","elephant")'>elephant</a></dd>
+            <dd><a href="javascript:;" onclick='returnIframe("/resources/html5/winder.html","6","winder")'>winder</a></dd>
           </dl>
         </li>
-        <li class="layui-nav-item"><a href="javascript:void(0)" onclick='returnIframe("/html5/cat.html","7","cat")'>cat</a></li>
-        <li class="layui-nav-item"><a href="javascript:void(0)" onclick='returnIframe("/html5/winder.html","8","spring")'>spring</a></li>
+        <li class="layui-nav-item"><a href="javascript:void(0)" onclick='returnIframe("/resources/html5/cat.html","7","cat")'>cat</a></li>
+        <li class="layui-nav-item"><a href="javascript:void(0)" onclick='returnIframe("/resources/html5/winder.html","8","spring")'>spring</a></li>
       </ul>
     </div>
   </div>
@@ -187,7 +187,7 @@
   <div class="layui-body" style="width:100%;height:100%;overflow: hidden;">
     <!-- 内容主体区域 -->
     <div id="divf" style="width:100%;height:100%">
-    	<iframe scrolling="no" frameborder="0" width="100%" height="100%"  id="myiframe" src="html5/earth.html"></iframe>
+    	<iframe scrolling="no" frameborder="0" width="100%" height="100%"  id="myiframe" src="/resources/html5/earth.html"></iframe>
     </div>
     <div class="layui-tab layui-tab-card" lay-filter="demo" lay-allowclose="true" style="display: none">
 		<ul class="layui-tab-title"></ul>

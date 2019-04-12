@@ -10,9 +10,9 @@
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>page分页</title>
-<script src="js/jquery.min.js" ></script>
-<script src="layui/layui.js"></script>
-<link rel="stylesheet" href="layui/css/layui.css" />
+<script src="/resources/js/jquery.min.js" ></script>
+<script src="/resources/layui/layui.js"></script>
+<link rel="stylesheet" href="/resources/layui/css/layui.css" />
 <script type="text/javascript">
 	var next,pre,pageCount;
 	var tj = "";

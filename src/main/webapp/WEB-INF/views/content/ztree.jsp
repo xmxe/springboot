@@ -10,26 +10,26 @@
 <base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ztree</title>
-<script src="js/jquery.min.js"></script>
-<link rel="stylesheet" href="zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
-<script type="text/javascript" src="zTree_v3/js/jquery.ztree.core.js"></script>
-<script type="text/javascript" src="zTree_v3/js/jquery.ztree.excheck.js"></script>
-<script type="text/javascript" src="zTree_v3/js/jquery.ztree.exedit.js"></script>
+<script src="/resources/js/jquery.min.js"></script>
+<link rel="stylesheet" href="/resources/zTree_v3/css/zTreeStyle/zTreeStyle.css" type="text/css">
+<script type="text/javascript" src="/resources/zTree_v3/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="/resources/zTree_v3/js/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" src="/resources/zTree_v3/js/jquery.ztree.exedit.js"></script>
 <style type="text/css">
 .ztree li span.button.icon02_ico_docu,.ztree li span.button.icon02_ico_close{
-	background: url(zTree_v3/css/zTreeStyle/img/diy/1_close.png)
+	background: url(/resources/zTree_v3/css/zTreeStyle/img/diy/1_close.png)
 }
 .ztree li span.button.icon02_ico_open{
-	background: url(zTree_v3/css/zTreeStyle/img/diy/1_open.png)
+	background: url(/resources/zTree_v3/css/zTreeStyle/img/diy/1_open.png)
 }
 .ztree li span.button.icon03_ico_docu{
-	background: url(zTree_v3/css/zTreeStyle/img/diy/3.png)
+	background: url(/resources/zTree_v3/css/zTreeStyle/img/diy/3.png)
 }
 .ztree li span.button.pIcon01_ico_open,.ztree li span.button.pIcon01_ico_close{
-	background: url(zTree_v3/css/zTreeStyle/img/diy/7.png)
+	background: url(/resources/zTree_v3/css/zTreeStyle/img/diy/7.png)
 }
 .ztree li span.button.pIcon01_ico_docu{
-	background: url(zTree_v3/css/zTreeStyle/img/diy/7.png)
+	background: url(/resources/zTree_v3/css/zTreeStyle/img/diy/7.png)
 }
 </style>
 <script type="text/javascript">

@@ -116,10 +116,11 @@ public class ShiroConfiguration {
         filterChainDefinitionMap.put("/WEB-INF/views/index.jsp", "anon"); //表示可以匿名访问
         filterChainDefinitionMap.put("/loginCheck.do", "anon"); 
         filterChainDefinitionMap.put("/code.do", "anon");
-        filterChainDefinitionMap.put("/js/**", "anon");
-        filterChainDefinitionMap.put("/camera/**", "anon");
-        filterChainDefinitionMap.put("/image/**", "anon");
-        filterChainDefinitionMap.put("/layui/**", "anon");
+        filterChainDefinitionMap.put("/resources/js/**", "anon");
+        filterChainDefinitionMap.put("/resources/camera/**", "anon");
+        filterChainDefinitionMap.put("/resources/image/**", "anon");
+        filterChainDefinitionMap.put("/resources/layui/**", "anon");
+        //filterChainDefinitionMap.put("/resources/**", "anon");
         filterChainDefinitionMap.put("/*", "authc");//表示需要认证才可以访问
         filterChainDefinitionMap.put("/**", "authc");//表示需要认证才可以访问
         filterChainDefinitionMap.put("/*.*", "authc");
