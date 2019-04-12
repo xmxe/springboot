@@ -6,10 +6,11 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistration
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Component
-public class InterceptorConfiguration extends WebMvcConfigurationSupport {
+public class InterceptorConfiguration implements WebMvcConfigurer {
+	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		// 注册拦截器
@@ -30,18 +31,46 @@ public class InterceptorConfiguration extends WebMvcConfigurationSupport {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/resources/");
 	}
-	//首页
+	//指定首页
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		super.addViewControllers(registry);
-		registry.addViewController("/").setViewName("index");
+		//super.addViewControllers(registry);
+		registry.addViewController("/").setViewName("login");
 	    registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
 	    //实现一个请求到视图的映射，而无需书写controller
 	    //registry.addViewController("/index").setViewName("forward:/index.jsp");  
 	    
 	}
+	
+	
+	/*
+	 * 若直接继承WebMvcConfigurationSupport,会导致application.properties配置文件不生效，需要增加以下配置代替配置文件
+	 * 
+	//试图渲染解析
+	@Bean
+	public InternalResourceViewResolver resourceViewResolver()
+	{
+		InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
+		//请求视图文件的前缀地址
+		internalResourceViewResolver.setPrefix("/WEB-INF/views/");
+		//请求视图文件的后缀
+		internalResourceViewResolver.setSuffix(".jsp");
+		return internalResourceViewResolver;
+	}
+
+	@Override
+	public void configureViewResolvers(ViewResolverRegistry registry) {
+		super.configureViewResolvers(registry);
+		registry.viewResolver(resourceViewResolver());
+		registry.jsp("/WEB-INF/views/",".jsp");
+	}
+	
+	*/
+
 }
-/**在SpringBoot2.0及Spring 5.0 WebMvcConfigurerAdapter已被废弃, 1.直接实现WebMvcConfigurer （官方推荐）2.直接继承WebMvcConfigurationSupport
+
+/**在SpringBoot2.0及Spring 5.0 WebMvcConfigurerAdapter已被废弃, 
+ * 1.直接实现WebMvcConfigurer （官方推荐）2.直接继承WebMvcConfigurationSupport(继承此方法会导致application.properties不生效)
  * WebMvcConfigurerAdapter常用的方法
 // 解决跨域问题 
 public void addCorsMappings(CorsRegistry registry) ;
