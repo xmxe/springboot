@@ -40,7 +40,6 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.11</version>
 		</dependency>
 
 
@@ -55,7 +54,6 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
 			<scope>test</scope><!-- maven在编译的时候,src/main/java下是不引用<scope>test</scope>的jar,而编译src/test/java下的测试会引用<scope>test</scope>的jar -->
 		</dependency>
 
@@ -115,20 +113,22 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
-			<version>1.5.8.RELEASE</version>
-		</dependency>
+			</dependency>
 
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-pool2</artifactId>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.quartz-scheduler</groupId>
 			<artifactId>quartz</artifactId>
-			<version>2.2.1</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>4.5.5</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
@@ -223,12 +223,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>1.4.2.RELEASE</version> <!--若打成jar包访问SpringBoot项目只能指定1.4.2版本 -->
+				<!--<version>1.4.2.RELEASE</version> 若打成jar包访问SpringBoot项目只能指定1.4.2版本 -->
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.18.1</version>
 				<configuration>
 					<skipTests>true</skipTests>
 				</configuration>
@@ -236,7 +235,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
