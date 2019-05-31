@@ -113,7 +113,12 @@ public class MineTest {
 		int mid;
 		// 迭代进行二分查找
 		while (start <= end) {
-			mid = (start + end) / 2;
+			/*
+			 * 我从c需要方向说明溢出原因，如果你定义一个假如是16位的mid，
+			 * 那么如果start和end很大，二者求和超过16位那就溢出，高位那个进位其实被计算机舍弃了，那么得到的mid也就是错误的下标。
+			 * */
+			//mid=(start+end)/2 有可能溢出
+	        mid=start+(end-start)/2;
 			if (array[mid] == target) {
 				return mid;
 			} else if (array[mid] < target) {
