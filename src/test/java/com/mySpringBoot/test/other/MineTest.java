@@ -1,8 +1,8 @@
-package com.mySpringBoot.test;
+package com.mySpringBoot.test.other;
 
+import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.Timer;
@@ -14,8 +14,15 @@ import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.jaxws.endpoint.dynamic.JaxWsDynamicClientFactory;
 import org.apache.log4j.Logger;
 import org.junit.Test;
+import org.springframework.cglib.proxy.Enhancer;
 
 import com.mySpringBoot.service.LambdaService;
+import com.mySpringBoot.test.proxy.dynamicproxy.CglibProxy;
+import com.mySpringBoot.test.proxy.dynamicproxy.Dao;
+import com.mySpringBoot.test.proxy.dynamicproxy.DynamicProxyHandler;
+import com.mySpringBoot.test.proxy.staticproxy.BuyHouse;
+import com.mySpringBoot.test.proxy.staticproxy.impl.BuyHouseImpl;
+import com.mySpringBoot.test.proxy.staticproxy.impl.BuyHouseProxy;
 
 public class MineTest {
 
@@ -77,9 +84,8 @@ public class MineTest {
         }
     }
 	@Test
-	public void createTest() {
-		Timer timer;
-		timer = new Timer();
+	public void createTimer() {
+		Timer timer = new Timer();
 		timer.schedule(new TimerTask(){
 
 			@Override
@@ -130,5 +136,29 @@ public class MineTest {
 		return -1;
 	}
 	
+	@Test
+	public void staticProxy(){
+		BuyHouse bh = new BuyHouseProxy();
+		bh.buyHouse();
+	}
+	
+	@Test
+	public void dynamicProxy(){
+		BuyHouse buyHouse = new BuyHouseImpl();
+		BuyHouse proxyBuyHouse = (BuyHouse) Proxy.newProxyInstance(BuyHouse.class.getClassLoader(), new
+		Class[]{BuyHouse.class}, new DynamicProxyHandler(buyHouse));
+		proxyBuyHouse.buyHouse();
+	}
+	
+	@Test
+	public void cglibProxy(){
+		CglibProxy daoProxy = new CglibProxy();
+		Enhancer enhancer = new Enhancer();
+		enhancer.setSuperclass(Dao.class);
+		enhancer.setCallback(daoProxy);
+		Dao dao = (Dao) enhancer.create();
+		dao.update();
+		dao.select();
+	}
 	
 }

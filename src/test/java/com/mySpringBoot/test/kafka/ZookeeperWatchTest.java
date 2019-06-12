@@ -1,4 +1,4 @@
-package com.mySpringBoot.test;
+package com.mySpringBoot.test.kafka;
 
 import java.io.IOException;
 

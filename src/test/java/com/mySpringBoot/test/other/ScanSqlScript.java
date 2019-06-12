@@ -1,4 +1,4 @@
-package com.mySpringBoot.test;
+package com.mySpringBoot.test.other;
 
 import java.io.BufferedReader;
 import java.io.File;

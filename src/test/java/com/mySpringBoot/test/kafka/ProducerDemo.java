@@ -1,4 +1,4 @@
-package kafka;
+package com.mySpringBoot.test.kafka;
 
 import java.util.Properties;
 
