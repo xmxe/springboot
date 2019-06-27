@@ -231,7 +231,7 @@ public class MainService {
 		String[] handers = {"id","书名","作者","价格"};
 		List<Book> list = mainDao.querySome(null,1,5);	
 		try{
-			String filedisplay = "test.xls";
+			String filedisplay = "test.xlsx";
 			filedisplay = URLEncoder.encode(filedisplay, "UTF-8");			
 			//由浏览器指定下载路径
 			//response.reset();			

@@ -2,9 +2,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com</groupId>
+	<groupId>mySpringBoot</groupId>
 	<artifactId>mySpringBoot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>mySpringBoot</name>
@@ -22,7 +22,7 @@
 		<java.version>1.8</java.version>
 		<!-- 出现unkown error 这个问题的原因是2.1.5.RELEASE中maven插件升级到了3.1.2，
 		有些IDE插件不兼容。解决这个问题只需要在pom.xml 文件的properties中加入maven jar插件的版本号 -->
-		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>		
+		<!-- <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>	 -->	
 	</properties>
 
 
@@ -117,7 +117,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
-			</dependency>
+		</dependency>
 
 		<dependency>
 		    <groupId>org.apache.commons</groupId>
@@ -142,13 +142,6 @@
 			<version>5.1.2</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-spring -->
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-spring</artifactId>
-			<version>1.4.0</version>
-		</dependency>
-
 		<!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-all -->
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
@@ -156,13 +149,7 @@
 			<version>1.4.0</version>
 			<type>pom</type>
 		</dependency>
-
-		<!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-web -->
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-web</artifactId>
-			<version>1.4.0</version>
-		</dependency>
+		
 		<!-- cxf相关 -->
 		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-transports-http -->
 		<dependency>
@@ -175,13 +162,6 @@
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
 			<artifactId>cxf-rt-frontend-jaxws</artifactId>
-			<version>3.2.6</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-core -->
-		<dependency>
-		
-			<groupId>org.apache.cxf</groupId>
-			<artifactId>cxf-core</artifactId>
 			<version>3.2.6</version>
 		</dependency>
 
