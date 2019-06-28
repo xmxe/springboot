@@ -96,7 +96,7 @@
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
-			<scope>provided</scope>
+			<scope>provided</scope><!-- 对编译和测试有效 但在运行时无效-->
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/jstl/jstl -->
@@ -208,6 +208,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>mySpringBoot</finalName><!-- 打成jar包或war包的名称 -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
