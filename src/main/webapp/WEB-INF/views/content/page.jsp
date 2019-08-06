@@ -13,6 +13,11 @@
 <script src="/resources/js/jquery.min.js" ></script>
 <script src="/resources/layui/layui.js"></script>
 <link rel="stylesheet" href="/resources/layui/css/layui.css" />
+<style type="text/css">
+	td {
+		width: 20%;
+	}
+</style>
 <script type="text/javascript">
 	var next,pre,pageCount;
 	var tj = "";
