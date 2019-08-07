@@ -250,7 +250,7 @@ public class MainService {
             cellStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER); // 居中
             cellStyle.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
 			for (int i = 0; i < handers.length; i++) {
-			   sheet.setColumnWidth((short) i, (short) 4000);// 设置列宽
+			   sheet.setColumnWidth(i, 4000);// 设置列宽
 			}
 			//写标题了
 			 for (int i = 0; i < handers.length; i++) {

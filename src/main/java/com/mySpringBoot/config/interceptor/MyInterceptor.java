@@ -1,7 +1,5 @@
 package com.mySpringBoot.config.interceptor;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -9,6 +7,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.alibaba.fastjson.JSONObject;
 
 public class MyInterceptor implements HandlerInterceptor{
 	Logger logger = Logger.getLogger(MyInterceptor.class);
@@ -19,15 +19,15 @@ public class MyInterceptor implements HandlerInterceptor{
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         logger.info("------preHandle,请求处理之前调用------");
         HttpSession session = request.getSession(true);//request.getSession(false)等同于 如果当前没有session返回null
-        Map<String,String> map = (Map<String, String>) session.getAttribute("user");
-        if(map == null) {
+        Object objmap =  session.getAttribute("user");       
+        if(objmap == null) {
         	logger.info("------:跳转到login页面！");
         	request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
             //response.sendRedirect("/");
             return false;
         }
-        String username = map.get("username");
-        String password = map.get("password");
+        String username = JSONObject.parseObject(JSONObject.toJSONString(objmap)).getString("username");        
+        String password = JSONObject.parseObject(JSONObject.toJSONString(objmap)).getString("password");
         //判断用户是否存在，不存在就跳转到登录界面
         if(!"1".equals(username) && !"1".equals(password)){
             request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
@@ -51,4 +51,5 @@ public class MyInterceptor implements HandlerInterceptor{
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
     	logger.info("afterCompletion,视图渲染解析之后进行调用");
     }
+    
 }
