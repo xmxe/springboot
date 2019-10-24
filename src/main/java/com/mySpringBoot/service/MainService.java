@@ -34,6 +34,8 @@ import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -247,8 +249,8 @@ public class MainService {
 			HSSFRow rowFirst = sheet.createRow(0);//第一个sheet第一行为标题
 			rowFirst.setHeight((short) 500);			   
             HSSFCellStyle cellStyle = wb.createCellStyle();// 创建单元格样式对象  
-            cellStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER); // 居中
-            cellStyle.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+            cellStyle.setAlignment(HorizontalAlignment.CENTER); // 居中
+            cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
 			for (int i = 0; i < handers.length; i++) {
 			   sheet.setColumnWidth(i, 4000);// 设置列宽
 			}
@@ -274,6 +276,7 @@ public class MainService {
 			OutputStream os = response.getOutputStream();  
             wb.write(os);
             os.close();
+            wb.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}

@@ -14,14 +14,9 @@ import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.DataFormat;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-
-import com.mySpringBoot.entity.Book;
-import com.mySpringBoot.entity.HttpResult;
-import com.mySpringBoot.util.HttpClientUtil;
 
 public class WebSpiderTest {
 	public static void main(String[] args) throws Exception {
@@ -89,8 +84,8 @@ public class WebSpiderTest {
 		HSSFRow rowFirst = sheet.createRow(0);// 第一个sheet第一行为标题
 		rowFirst.setHeight((short) 500);
 		HSSFCellStyle cellStyle = wb.createCellStyle();// 创建单元格样式对象
-		cellStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER); // 居中
-		cellStyle.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+//		cellStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER); // 居中
+//		cellStyle.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
 		for (int i = 0; i < handers.length; i++) {
 			sheet.setColumnWidth((short) i, (short) 4000);// 设置列宽
 		}
@@ -133,8 +128,8 @@ public class WebSpiderTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-
 			os.close();
+			wb.close();
 		}
 	}
 

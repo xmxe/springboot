@@ -28,6 +28,8 @@ import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
 
 public class ScanSqlScript {
 	private static final String[] column_type = { "int", "bigint", "float", "char", "varchar", "nvarchar", "double","date", "datetime" };
@@ -190,8 +192,8 @@ public class ScanSqlScript {
 		HSSFRow rowFirst = sheet.createRow(0);//第一个sheet第一行为标题
 		rowFirst.setHeight((short) 500);			   
         HSSFCellStyle cellStyle = wb.createCellStyle();// 创建单元格样式对象  
-        cellStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER); // 居中
-        cellStyle.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);       
+        cellStyle.setAlignment(HorizontalAlignment.CENTER); // 居中
+        cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);       
 		
 		//写标题了
 		 for (int i = 0; i < handers.length; i++) {
@@ -229,7 +231,7 @@ public class ScanSqlScript {
 		 int count2 = 0;
 		 for(Iterator<Map.Entry<String,List<String>>> car2  = set2.iterator();car2.hasNext(); ){
 			 Map.Entry<String,List<String>> data2 = car2.next();
-			 String t2 = data2.getKey();
+//			 String t2 = data2.getKey();
 			 List<String> l2 = data2.getValue();
 			 String l1str = "";
 			 if(l2.size()>0){
@@ -261,6 +263,7 @@ public class ScanSqlScript {
 			 e.printStackTrace();
 		} finally{        
 			os.close();
+			wb.close();
 		 }
 	
 	}
