@@ -268,10 +268,11 @@ public class MainService {
 				HSSFRow row = sheet.createRow(i + 1);				
 				row.setHeight((short) 400);   // 设置每行的高度
 				//设置对应单元格的值
-				row.createCell(0).setCellValue(u.getId());
-				row.createCell(1).setCellValue(u.getBookname());
-				row.createCell(2).setCellValue(u.getBookauthor());
-				row.createCell(3).setCellValue(u.getBookprice());						
+				row.createCell(0).setCellValue(u.getId());row.getCell(0).setCellStyle(cellStyle);
+				row.createCell(1).setCellValue(u.getBookname());row.getCell(1).setCellStyle(cellStyle);
+				row.createCell(2).setCellValue(u.getBookauthor());row.getCell(2).setCellStyle(cellStyle);
+				row.createCell(3).setCellValue(u.getBookprice());row.getCell(3).setCellStyle(cellStyle);
+				
 			}
 			OutputStream os = response.getOutputStream();  
             wb.write(os);

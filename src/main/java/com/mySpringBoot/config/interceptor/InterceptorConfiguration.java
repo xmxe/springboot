@@ -31,6 +31,7 @@ public class InterceptorConfiguration implements WebMvcConfigurer {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/resources/");
 	}
+	
 	//指定首页
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
@@ -69,9 +70,11 @@ public class InterceptorConfiguration implements WebMvcConfigurer {
 
 }
 
-/**在SpringBoot2.0及Spring 5.0 WebMvcConfigurerAdapter已被废弃, 
- * 1.直接实现WebMvcConfigurer （官方推荐）2.直接继承WebMvcConfigurationSupport(继承此方法会导致application.properties不生效)
+/**在SpringBoot2.0及Spring 5.0 WebMvcConfigurerAdapter已被废弃,标记为过时。
+ * 	使用方式： 1.直接实现WebMvcConfigurer （官方推荐）
+ * 2.直接继承WebMvcConfigurationSupport(继承此方法会导致application.properties不生效)
  * WebMvcConfigurerAdapter常用的方法
+ * 
 // 解决跨域问题 
 public void addCorsMappings(CorsRegistry registry) ;
 

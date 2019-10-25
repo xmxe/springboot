@@ -24,14 +24,17 @@
 <style type="text/css">
 .center {
 	position: absolute; /*绝对定位*/
-	top: 20%; /*距顶部50%*/
+	top: 50%; /*距顶部50%*/
 	left: 45%;
 	margin: -100px 0 0 -150px;
 	/*设定这个div的margin-top的负值为自身的高度的一半,margin-left的值也是自身的宽度的一半的负值.(感觉在绕口令)*/
 	text-align: center;
 }
 #title{
-	margin-bottom: 50px
+	position: absolute; /*绝对定位*/
+	top: 30%; /*距顶部50%*/
+	left: 40%;
+	margin: -100px 0 0 -150px;
 }
 
 
@@ -189,11 +192,11 @@ if (window != top)
 			<div data-src="resources/image/time.jpg"></div>
 			<div data-src="resources/image/ace.jpg"></div>			
 		</div>
+	</div>
+	<div id="title">
+		<h1 style="font-size: 100px;color:#C5DAF7">SPRINGBOOT</h1>
 	</div>	
-	<div class="center" id="center">
-		<div id="title">
-			<h1 style="font-size: 100px;color:#C5DAF7">测试系统</h1>
-		</div>
+	<div class="center" id="center">		
 		<div class="layui-form-item">
 			<label class="layui-form-label" style="font-family: '微软雅黑';color:#DCE5D7">用户名:</label>
 			<div class="layui-input-inline">

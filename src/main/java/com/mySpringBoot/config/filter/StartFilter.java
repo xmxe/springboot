@@ -21,7 +21,7 @@ public class StartFilter implements Filter{
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		this.startWebsocketOnline();
-		System.out.println("startFilter开始启动");
+		System.out.println("startFilter开始启动并完成初始化，开启8889端口");
 	}
 
 	@Override
