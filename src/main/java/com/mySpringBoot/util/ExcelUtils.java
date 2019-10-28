@@ -1,5 +1,6 @@
 package com.mySpringBoot.util;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -92,7 +93,7 @@ public class ExcelUtils {
 			}
 			if (OFFICE_EXCEL_XLS.equals(suffiex) || OFFICE_EXCEL_XLSX.equals(suffiex)) {
 				try {
-					is = new FileInputStream(filepath);
+					is = new FileInputStream(new File(filepath));
 					wb = WorkbookFactory.create(is);
 				} finally {
 					if (is != null) {
@@ -439,8 +440,13 @@ public class ExcelUtils {
 	}
 
 	
+	/*
+	getPhysicalNumberOfCells 是获取不为空的列个数。 
+	
+	getLastCellNum 是获取最后一个不为空的列是第几个。*/
+	
 	/**
-	 * 读取指定列或指定列的数据
+	 * 读取指定行或指定列的数据
 	 * 
 	 * @param filePath 文件路径
 	 * @param sheetNo sheet页
@@ -454,12 +460,14 @@ public class ExcelUtils {
 			Sheet sheet = workbook.getSheetAt(sheetNo); // 获取表
 			Row row = null;
 			if(is) {
-				int rowNum = sheet.getPhysicalNumberOfRows(); // 获取总行数				
+				int rowNum = sheet.getPhysicalNumberOfRows(); // 获取总行数
+				//int rowNum = sheet.getLastRowNum();
 				for (int i = 0; i < rowNum; i++) { 
 					row = sheet.getRow(i);
-					Cell cell = row.getCell(num);
-					strLists.add(getXcellVal(cell));
-					
+					if(row != null) {
+						Cell cell = row.getCell(num);
+						strLists.add(getXcellVal(cell));
+					}									
 				}
 			}else {
 				row = sheet.getRow(num);//获取指定行
