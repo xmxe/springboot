@@ -21,6 +21,7 @@
 <script src="/resources/camera/camera.min.js"></script>
 <link rel="stylesheet" href="/resources/layui/css/layui.css" />
 <link rel="stylesheet" href="/resources/camera/camera.css" />
+<link rel="shortcut icon" href="/resources/favicon.ico">
 <style type="text/css">
 .center {
 	position: absolute; /*绝对定位*/

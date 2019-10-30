@@ -10,7 +10,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-import org.java_websocket.WebSocketImpl;
 import org.springframework.core.annotation.Order;
 
 
@@ -38,7 +37,7 @@ public class StartFilter implements Filter{
 	 * 启动在线管理服务
 	 */
 	public void startWebsocketOnline(){
-		WebSocketImpl.DEBUG = false;
+		
 		OnlineChatServer s;
 		try {
 				s = new OnlineChatServer(8889);

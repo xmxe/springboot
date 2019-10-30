@@ -117,6 +117,7 @@ public class ShiroConfiguration {
         filterChainDefinitionMap.put("/loginCheck.do", "anon"); 
         filterChainDefinitionMap.put("/code.do", "anon");
         filterChainDefinitionMap.put("/resources/js/**", "anon");
+        filterChainDefinitionMap.put("/resources/favicon.ico", "anon");
         filterChainDefinitionMap.put("/resources/camera/**", "anon");
         filterChainDefinitionMap.put("/resources/image/**", "anon");
         filterChainDefinitionMap.put("/resources/layui/**", "anon");

@@ -9,12 +9,15 @@ import org.java_websocket.WebSocket;
 import org.java_websocket.framing.Framedata;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 /**
  * 在线管理
  */
 public class OnlineChatServer extends WebSocketServer {
-
+	Logger logger = LoggerFactory.getLogger(OnlineChatServer.class);
 	public OnlineChatServer(int port) throws UnknownHostException {
 		super(new InetSocketAddress(port));
 	}
@@ -28,10 +31,8 @@ public class OnlineChatServer extends WebSocketServer {
 	 */
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {
-		// this.sendToAll( "new connection: " +
-		// handshake.getResourceDescriptor() );
-		// System.out.println("===" +
-		// conn.getRemoteSocketAddress().getAddress().getHostAddress());
+		// this.sendToAll( "new connection: "+handshake.getResourceDescriptor() );
+		logger.info("onOpen======{}" ,conn.getRemoteSocketAddress().getAddress().getHostAddress());
 	}
 
 	/**
@@ -39,7 +40,7 @@ public class OnlineChatServer extends WebSocketServer {
 	 */
 	@Override
 	public void onClose(WebSocket conn, int code, String reason, boolean remote) {
-		userLeave(conn);
+		userLeave(conn);//用户下线处理
 	}
 
 	/**
@@ -74,10 +75,11 @@ public class OnlineChatServer extends WebSocketServer {
 	 */
 	@Override
 	public void onError(WebSocket conn, Exception ex) {
-		// ex.printStackTrace();
+		ex.printStackTrace();
 		if (conn != null) {
 			// some errors like port binding failed may not be assignable to a
 			// specific websocket
+			System.err.println("websocket error != null");
 		}
 	}
 
@@ -200,6 +202,12 @@ public class OnlineChatServer extends WebSocketServer {
 		result.element("type", "addUser");
 		result.element("user", user);
 		OnlineChatServerPool.sendMessageToUser(conn, result.toString());
+	}
+
+	@Override
+	public void onStart() {
+		// TODO Auto-generated method stub
+		logger.info("WebSocket启动 -------{}","WebSocketServer onStart(");
 	}
 
 	// 假如SpringBoot项目以jar方式运行 当maven install生成jar包会报错

@@ -13,6 +13,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="/resources/js/jquery.min.js" ></script>
 <script src="/resources/layui/layui.js"></script>
+<link rel="shortcut icon" href="/resources/favicon.ico">
 <link rel="stylesheet" href="/resources/layui/css/layui.css" media="all" />
 <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 
