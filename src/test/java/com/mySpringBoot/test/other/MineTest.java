@@ -27,7 +27,7 @@ import com.mySpringBoot.test.proxy.staticproxy.impl.BuyHouseImpl;
 import com.mySpringBoot.test.proxy.staticproxy.impl.BuyHouseProxy;
 
 public class MineTest {
-
+	//https://mp.weixin.qq.com/s/8k92CCGg9I6EAR7pAq698A   Java 8：一文掌握 Lambda 表达式
 	protected Logger logger = Logger.getLogger(MineTest.class);
 	@Test
 	public void lambda() {	
