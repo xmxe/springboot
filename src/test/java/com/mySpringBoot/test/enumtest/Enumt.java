@@ -11,13 +11,11 @@ public class Enumt {
 
 	@Test
 	public void test1() {
-		for (EnumTest e : EnumTest.values()) {
-			System.out.println(e.toString());
+		for (MonEnum e : MonEnum.values()) {
+			System.out.println("枚举.values()返回数组遍历后的为"+e.toString());
 		}
 
-		System.out.println("----------------我是分隔线------------------");
-
-		EnumTest test = EnumTest.TUE;
+		MonEnum test = MonEnum.TUE;
 		switch (test) {
 		case MON:
 			System.out.println("今天是星期一");
@@ -25,7 +23,6 @@ public class Enumt {
 		case TUE:
 			System.out.println("今天是星期二");
 			break;
-		// ... ...
 		default:
 			System.out.println(test);
 			break;
@@ -34,9 +31,9 @@ public class Enumt {
 
 	@Test
 	public void test2() {
-		EnumTest test = EnumTest.TUE;
+		MonEnum test = MonEnum.TUE;
 		// compareTo(E o) 比较此枚举与指定对象的顺序。
-		switch (test.compareTo(EnumTest.MON)) {
+		switch (test.compareTo(MonEnum.MON)) {
 		case -1:
 			System.out.println("TUE 在 MON 之前");
 			break;
@@ -62,25 +59,46 @@ public class Enumt {
 
 	@Test
 	public void test3() {
-		System.out.println("EnumTest.FRI 的 value = " + EnumTest.FRI.getValue());
-		System.out.println("EnumTest.FRI 的 value = " + EnumTest.SUN.isRest());
+		System.out.println("EnumTest.FRI getValue() = " + MonEnum.FRI.getValue());
+		System.out.println("EnumTest.FRI isResr() = " + MonEnum.SUN.isRest());
+		System.out.println("枚举valueOf()返回的是enum "+MonEnum.valueOf("SUN").getValue());
 	}
 
 	@Test
 	public void test4() {
-		EnumSet<EnumTest> weekSet = EnumSet.allOf(EnumTest.class);
-		for (EnumTest day : weekSet) {
-			System.out.println(day);
+		EnumSet<MonEnum> weekSet = EnumSet.allOf(MonEnum.class);
+		for (MonEnum day : weekSet) {
+			System.out.println("枚举allOf"+day);
 		}
 
 		// EnumMap的使用
-		EnumMap<EnumTest, String> weekMap = new EnumMap<>(EnumTest.class);
-		weekMap.put(EnumTest.MON, "星期一");
-		weekMap.put(EnumTest.TUE, "星期二");
+		EnumMap<MonEnum, String> weekMap = new EnumMap<>(MonEnum.class);
+		weekMap.put(MonEnum.MON, "星期一");
+		weekMap.put(MonEnum.TUE, "星期二");
 		// ... ...
-		for (Iterator<Entry<EnumTest, String>> iter = weekMap.entrySet().iterator(); iter.hasNext();) {
-			Entry<EnumTest, String> entry = iter.next();
+		for (Iterator<Entry<MonEnum, String>> iter = weekMap.entrySet().iterator(); iter.hasNext();) {
+			Entry<MonEnum, String> entry = iter.next();
 			System.out.println(entry.getKey().name() + ":" + entry.getValue());
 		}
+	}
+	@Test
+	public void test5() {
+		/**
+		 * 以前写法
+		 */
+		String str = "SUN";
+		if(str.equals("SAT")) {
+			System.out.println(1);
+		}else if(str.equals("SUN")) {
+			System.out.println(2);
+		}else {
+			System.out.println(3);
+		}
+		
+		/**
+		 * 枚举替代if else if写法  一行代码搞定  如果需要再加判断只需要增加枚举类属性即可
+		 * valueOf()获取枚举类型
+		 */
+		MonEnum.valueOf(str).eval(1, 2);
 	}
 }
