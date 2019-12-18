@@ -98,6 +98,7 @@ public class Enumt {
 		/**
 		 * 枚举替代if else if写法  一行代码搞定  如果需要再加判断只需要增加枚举类属性即可
 		 * valueOf()获取枚举类型
+		 * https://mp.weixin.qq.com/s/GJBaopEqPMOhi2pGtenL9g
 		 */
 		MonEnum.valueOf(str).eval(1, 2);
 	}
