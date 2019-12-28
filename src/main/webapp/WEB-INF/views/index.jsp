@@ -78,7 +78,7 @@
 		                    content: '<iframe data-frameid="'+id+'" name="content" frameborder="0" scrolling="no" width="100%" height="100%" src="'+url+'"></iframe>',
 		                    id: id //实际使用一般是规定好的id，这里以时间戳模拟下
 		                })
-		                //CustomRightClick(id);//绑定右键菜单
+		                CustomRightClick(id);//绑定右键菜单
 		                FrameWH();//计算框架高度
 		            }, 
 		           tabChange: function (id) {
@@ -108,6 +108,25 @@
                     active.tabAdd(url, id);
                 }
             }
+			
+		   $(".rightmenu li").click(function () {
+
+		        //右键菜单中的选项被点击之后，判断type的类型，决定关闭所有还是关闭当前。
+		        if ($(this).attr("data-type") == "closethis") {
+		            //如果关闭当前，即根据显示右键菜单时所绑定的id，执行tabDelete
+		            active.tabDelete($(this).attr("data-id"))
+		        } else if ($(this).attr("data-type") == "closeall") {
+		            var tabtitle = $(".layui-tab-title li");
+		            var ids = new Array();
+		            $.each(tabtitle, function (i) {
+		                ids[i] = $(this).attr("lay-id");
+		            })
+		            //如果关闭所有 ，即将所有的lay-id放进数组，执行tabDeleteAll
+		            active.tabDeleteAll(ids);
+		        }
+
+		        $('.rightmenu').hide(); //最后再隐藏右键菜单
+		    });
 			//active.tabAdd(url,id);
 			active.tabChange(id);
 		})
@@ -119,6 +138,25 @@
 		/* var ifm= document.getElementById("myiframe"); 
 	    ifm.height=document.documentElement.clientHeight; */
     }
+    function CustomRightClick(id) {
+        //取消右键  rightmenu属性开始是隐藏的 ，当右击的时候显示，左击的时候隐藏
+        $('.layui-tab-title li').on('contextmenu', function () { return false; })
+        $('.layui-tab-title,.layui-tab-title li').click(function () {
+            $('.rightmenu').hide();
+        });
+        //桌面点击右击 
+        $('.layui-tab-title li').on('contextmenu', function (e) {
+            var popupmenu = $(".rightmenu");
+            popupmenu.find("li").attr("data-id",id); //在右键菜单中的标签绑定id属性
+            //判断右侧菜单的位置 
+            l = ($(document).width() - e.clientX) < popupmenu.width() ? (e.clientX - popupmenu.width()-200) : e.clientX-200;
+            t = ($(document).height() - e.clientY) < popupmenu.height() ? (e.clientY - popupmenu.height()-50) : e.clientY-50;
+            popupmenu.css({ left: l, top: t }).show(); //进行绝对定位
+            //alert("右键菜单")
+            return false;
+        });
+    }
+ 
 
 	//窗口大小改变时触发
     $(window).resize(function () {
@@ -190,13 +228,16 @@
     <div id="divf" style="width:100%;height:100%">
     	<iframe scrolling="no" frameborder="0" width="100%" height="100%"  id="myiframe" src="/resources/html5/earth.html"></iframe>
     </div>
-    <div class="layui-tab layui-tab-card" lay-filter="demo" lay-allowclose="true" style="display: none">
+    <div class="layui-tab layui-tab-card" lay-filter="demo" lay-allowclose="true" >
 		<ul class="layui-tab-title"></ul>
+		<ul class="rightmenu" style="display: none; position: absolute;">
+			<li data-type="closethis">关闭当前</li>
+			<li data-type="closeall">关闭所有</li>
+		</ul>
 		<div class="layui-tab-content"></div>
 	</div>
   </div>
-  
-  <!-- <div class="layui-footer">
+<!-- <div class="layui-footer">
     底部固定区域
     © localhost - 心如止水、顺其自然
   </div> -->
