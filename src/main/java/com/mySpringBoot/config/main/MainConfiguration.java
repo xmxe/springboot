@@ -1,4 +1,4 @@
-package com.mySpringBoot.config.global;
+package com.mySpringBoot.config.main;
 
 import javax.sql.DataSource;
 
@@ -14,9 +14,9 @@ import org.springframework.http.HttpStatus;
 import com.alibaba.druid.pool.DruidDataSource;
 
 @Configuration // 类似于xml中的<beans>
-
+//@EnableAspectJAutoProxy//开启自动代理
 @PropertySource("classpath:application.properties") // 这个注解导入刚才增加的jdbc配置文件
-public class GlobalConfiguration{
+public class MainConfiguration{
 	@Value("${jdbc.driver}")
 	private String driver;
 	@Value("${jdbc.url}")
@@ -39,7 +39,7 @@ public class GlobalConfiguration{
 	
 	// 统一页码处理配置
 	/*
-	 *springboot 1.x写法
+	 *springboot 1.5.x写法
 	@Bean
 	public EmbeddedServletContainerCustomizer containerCustomizer() {
 		return new EmbeddedServletContainerCustomizer() {

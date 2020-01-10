@@ -1,4 +1,4 @@
-package com.mySpringBoot.test.enumtest;
+package com.mySpringBoot.test.enumt;
 
 import java.util.EnumMap;
 import java.util.EnumSet;

@@ -1,4 +1,4 @@
-package com.mySpringBoot.config.global;
+package com.mySpringBoot.config.main;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,6 +9,11 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+/**
+ * 启动时加载
+ * @author Administrator
+ *
+ */
 @Component
 @Order(2)//@Order 注解中，数字越小，优先级越大，默认情况下，优先级的值为 Integer.MAX_VALUE，表示优先级最低。
 public class MyApplicationRunner implements ApplicationRunner {

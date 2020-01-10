@@ -1,4 +1,4 @@
-package com.mySpringBoot.test.enumtest;
+package com.mySpringBoot.test.enumt;
 
 public enum MonEnum {
 	//MON, TUE, WED, THU, FRI, SAT, SUN;
