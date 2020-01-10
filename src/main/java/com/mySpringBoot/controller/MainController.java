@@ -77,7 +77,9 @@ public class MainController {
 	
 	@RequestMapping("/getUserById")
 	@ResponseBody
-	public JSONObject getUserById(@RequestParam("username") String userId,@RequestParam("userId") String username) {
+	public JSONObject getUserById(@RequestParam(value = "username",required = false) String userId,
+			@RequestParam(value = "userId",defaultValue="1") String username) {
+		//如果加了@RequestParam注解，那么请求url里必须包含这一参数，否则会报400。那么如果允许不传呢？有两种办法：1）使用default值2）使用required值
 		User user = mainService.getUserById(Integer.valueOf(username));
 		JSONObject json = new JSONObject();
 		json.put("user",user);
