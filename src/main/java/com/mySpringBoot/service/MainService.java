@@ -44,6 +44,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.alibaba.fastjson.JSONObject;
+import com.mySpringBoot.config.aop.AopAction;
 import com.mySpringBoot.dao.MainDao;
 import com.mySpringBoot.entity.Book;
 import com.mySpringBoot.entity.Dept;
@@ -57,7 +58,9 @@ public class MainService {
 	@Autowired
 	MainDao mainDao;
 	
+	@AopAction//aop注解
 	public User getUserById(Integer userId) {
+		int a = 1/0;//测试aop @AfterThrowing
 		return mainDao.getUserById(userId);
 	}
 	
