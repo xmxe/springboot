@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.session.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -18,11 +20,13 @@ public class MyInterceptor implements HandlerInterceptor{
 	 * 下一个Interceptor的preHandle 方法如果已经是最后一个Interceptor的时候就会是调用当前请求的Controller方法*/
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        logger.info("拦截器preHandle------{}","请求处理之前调用");
-        HttpSession session = request.getSession(true);//request.getSession(false)等同于 如果当前没有session返回null
+        logger.info("拦截器preHandle------>{}","请求处理之前调用");
+//      HttpSession session = request.getSession(true);//request.getSession(false)等同于 如果当前没有session返回null
+        Session session = SecurityUtils.getSubject().getSession();  
         Object objmap =  session.getAttribute("user");       
+        
         if(objmap == null) {
-        	logger.info("用户未登录-------{}",":跳转到login页面！");
+        	logger.info("用户未登录------->{}",":跳转到login页面！");
         	request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
             //response.sendRedirect("/");
             return false;
@@ -50,7 +54,7 @@ public class MyInterceptor implements HandlerInterceptor{
      * 该方法将在整个请求结束之后，也就是在DispatcherServlet 渲染了对应的视图之后执行。用于进行资源清理。*/
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-    	logger.info("afterCompletion-------{}","视图渲染解析之后进行调用");
+    	logger.info("afterCompletion------->{}","视图渲染解析之后进行调用");
     }
     
 }

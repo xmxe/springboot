@@ -36,10 +36,10 @@ public class InterceptorConfiguration implements WebMvcConfigurer {
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		//super.addViewControllers(registry);
-		registry.addViewController("/").setViewName("login");
+		//registry.addViewController("/").setViewName("login");
 	    registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
 	    //实现一个请求到视图的映射，而无需书写controller
-	    //registry.addViewController("/index").setViewName("forward:/index.jsp");  
+	    registry.addViewController("/").setViewName("redirect:/index.do");  
 	    
 	}
 	

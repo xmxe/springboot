@@ -38,6 +38,7 @@ import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -211,9 +212,7 @@ public class MainService {
 		String password = request.getParameter("password");
 		String codeSession = (String) request.getSession().getAttribute("code");
 		JSONObject json = new JSONObject();
-		Map<String,String> map = new HashMap<>();
-		map.put("username", "1");map.put("password", "1");
-		request.getSession().setAttribute("user",map);
+		
 		if(code == null || "".equals(code)) {
 			json.put("message", "请输入验证码");
 			return json;
@@ -222,7 +221,12 @@ public class MainService {
 			if(!("1").equals(name) || !("1").equals(password)) {
 				json.put("message", "用户名或密码不正确");
 			}else {
-				SecurityUtils.getSubject().login(new UsernamePasswordToken(name, password));
+				Map<String,String> map = new HashMap<>();
+				map.put("username", "1");map.put("password", "1");				
+				Subject subject = SecurityUtils.getSubject();
+				subject.login(new UsernamePasswordToken(name, password));
+				subject.getSession(true).setAttribute("user",map);
+//				request.getSession().setAttribute("user",map);
 				json.put("message", "success");
 			}		
 		}else {
