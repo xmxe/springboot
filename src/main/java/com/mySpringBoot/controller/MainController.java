@@ -1,6 +1,8 @@
 package com.mySpringBoot.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -17,6 +19,7 @@ import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -210,4 +213,17 @@ public class MainController {
 		return result.getBody();
 	}
 	
+	@GetMapping("/fm")
+    public String fm(Model model) {
+        List<User> users = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            User user = new User();
+            user.setId(i);
+            user.setUsername("username>>>>" + i);
+            user.setPasswd("password>>>>" + i);
+            users.add(user);
+        }
+        model.addAttribute("users", users);
+        return "user";
+	}
 }
