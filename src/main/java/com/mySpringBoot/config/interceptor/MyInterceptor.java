@@ -20,25 +20,26 @@ public class MyInterceptor implements HandlerInterceptor{
 	 * 下一个Interceptor的preHandle 方法如果已经是最后一个Interceptor的时候就会是调用当前请求的Controller方法*/
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        logger.info("拦截器preHandle------>{}","请求处理之前调用");
-//      HttpSession session = request.getSession(true);//request.getSession(false)等同于 如果当前没有session返回null
+        logger.info("拦截器preHandle:{}","请求处理之前调用");
+//        HttpSession session = request.getSession(true);//request.getSession(false)等同于 如果当前没有session返回null
         Session session = SecurityUtils.getSubject().getSession();  
         Object objmap =  session.getAttribute("user");       
-        
-        if(objmap == null) {
-        	logger.info("用户未登录------->{}",":跳转到login页面！");
-        	request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
-            //response.sendRedirect("/");
-            return false;
-        }
-        String username = JSONObject.parseObject(JSONObject.toJSONString(objmap)).getString("username");        
-        String password = JSONObject.parseObject(JSONObject.toJSONString(objmap)).getString("password");
-        //判断用户是否存在，不存在就跳转到登录界面
-        if(!"1".equals(username) && !"1".equals(password)){
-            request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
-            //response.sendRedirect("/");
-            return false;
-        }       
+		 if(objmap == null) {
+			logger.info("用户未登录:{}","跳转到login页面！");
+			//Thymeleaf不能直接被访问，它严格遵守了MVC，只能被控制器访问
+			request.getRequestDispatcher("/").forward(request, response);
+//		    response.sendRedirect("/");
+		    return false;
+		}
+		/*      
+		String username = JSONObject.parseObject(JSONObject.toJSONString(objmap)).getString("username");        
+		String password = JSONObject.parseObject(JSONObject.toJSONString(objmap)).getString("password");
+		//判断用户是否存在，不存在就跳转到登录界面
+		if(!"1".equals(username) && !"1".equals(password)){
+		    request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+		    //response.sendRedirect("/");
+		    return false;
+		} */      
             return true;
 
     }
@@ -47,14 +48,14 @@ public class MyInterceptor implements HandlerInterceptor{
      * 可以在这个方法中对Controller 处理之后的ModelAndView 对象进行操作。*/
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,ModelAndView modelAndView) throws Exception {
-    	logger.info("postHandle------->{}","视图渲染解析之前进行调用");
+    	logger.info("postHandle:{}","视图渲染解析之前进行调用");
     }
 	   
     /*该方法也是需要当前对应的Interceptor的preHandle方法的返回值为true时才会执行，
      * 该方法将在整个请求结束之后，也就是在DispatcherServlet 渲染了对应的视图之后执行。用于进行资源清理。*/
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-    	logger.info("afterCompletion------->{}","视图渲染解析之后进行调用");
+    	logger.info("afterCompletion:{}","视图渲染解析之后进行调用");
     }
     
 }

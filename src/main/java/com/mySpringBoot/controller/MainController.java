@@ -32,10 +32,8 @@ import com.mySpringBoot.service.MainService;
 import com.mySpringBoot.util.HttpClientUtil;
 import com.alibaba.fastjson.JSONObject;
 
-
-//@RestController//@Controller+@ResponseBody
 @Controller
-@RequestMapping("**.do")
+//@RequestMapping("**.do")
 public class MainController {	
 	Logger logger = Logger.getLogger(MainController.class);
 	@Autowired

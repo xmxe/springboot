@@ -32,7 +32,7 @@ public class OnlineChatServer extends WebSocketServer {
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {
 		// this.sendToAll( "new connection: "+handshake.getResourceDescriptor() );
-		logger.info("onOpen======{}" ,conn.getRemoteSocketAddress().getAddress().getHostAddress());
+		logger.info("WebSocket-onOpen：{}" ,conn.getRemoteSocketAddress().getAddress().getHostAddress());
 	}
 
 	/**
@@ -48,6 +48,7 @@ public class OnlineChatServer extends WebSocketServer {
 	 */
 	@Override
 	public void onMessage(WebSocket conn, String message) {
+		logger.info("WebSocket-onMessage：{}",message);
 		message = message.toString();
 		if (null != message && message.startsWith("[join]")) {
 			this.userjoin(message.replaceFirst("\\[join\\]", ""), conn);
@@ -79,7 +80,7 @@ public class OnlineChatServer extends WebSocketServer {
 		if (conn != null) {
 			// some errors like port binding failed may not be assignable to a
 			// specific websocket
-			System.err.println("websocket error != null");
+			System.out.println("websocket error != null");
 		}
 	}
 
@@ -206,8 +207,7 @@ public class OnlineChatServer extends WebSocketServer {
 
 	@Override
 	public void onStart() {
-		// TODO Auto-generated method stub
-		logger.info("WebSocket启动 -------{}","WebSocketServer onStart(");
+		logger.info("WebSocket启动 :{}","WebSocketServer onStart(");
 	}
 
 	// 假如SpringBoot项目以jar方式运行 当maven install生成jar包会报错

@@ -12,6 +12,9 @@ import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreato
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
+
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.mgt.SecurityManager;
@@ -26,7 +29,7 @@ public class ShiroConfiguration {
     //配置核心安全事务管理器
     @Bean(name="securityManager")
     public SecurityManager securityManager(@Qualifier("myRealm") MyRealm authRealm,@Qualifier("sessionManager")DefaultWebSessionManager sessionManager) {
-        System.err.println("--------------shiro已经加载----------------");
+        System.out.println("--------------shiro已经加载----------------");
         DefaultWebSecurityManager manager=new DefaultWebSecurityManager();
         manager.setRealm(authRealm);
         manager.setSessionManager(sessionManager);       
@@ -113,20 +116,23 @@ public class ShiroConfiguration {
         bean.setSuccessUrl("/index");
         //配置访问权限
         LinkedHashMap<String, String> filterChainDefinitionMap=new LinkedHashMap<>();
-        filterChainDefinitionMap.put("/WEB-INF/views/index.jsp", "anon"); //表示可以匿名访问
-        filterChainDefinitionMap.put("/loginCheck.do", "anon"); 
-        filterChainDefinitionMap.put("/code.do", "anon");
-        filterChainDefinitionMap.put("/resources/js/**", "anon");
-        filterChainDefinitionMap.put("/resources/favicon.ico", "anon");
-        filterChainDefinitionMap.put("/resources/camera/**", "anon");
-        filterChainDefinitionMap.put("/resources/image/**", "anon");
-        filterChainDefinitionMap.put("/resources/layui/**", "anon");
-        //filterChainDefinitionMap.put("/resources/**", "anon");
+        filterChainDefinitionMap.put("/loginCheck", "anon"); //表示可以匿名访问
+        filterChainDefinitionMap.put("/code", "anon");
+        filterChainDefinitionMap.put("/static/**", "anon");
+//        filterChainDefinitionMap.put("/js/**", "anon");
+//        filterChainDefinitionMap.put("/favicon.ico", "anon");
+//        filterChainDefinitionMap.put("/camera/**", "anon");
+//        filterChainDefinitionMap.put("/image/**", "anon");
+//        filterChainDefinitionMap.put("/layui/**", "anon");
         filterChainDefinitionMap.put("/*", "authc");//表示需要认证才可以访问
         filterChainDefinitionMap.put("/**", "authc");//表示需要认证才可以访问
         filterChainDefinitionMap.put("/*.*", "authc");
         bean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return bean;
     }
-    
+    //html引用shiro标签所需要注册的bean
+    @Bean
+    public ShiroDialect shiroDialect() {
+        return new ShiroDialect();
+    }    
 }
