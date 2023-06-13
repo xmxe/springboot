@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link rel="shortcut icon" th:href="@{/static/favicon.ico}" type="image/x-icon">
+</head>
+<body>
+<!-- 验证当前用户是否为“访客”，即未认证（包含未记住）的用户。 -->
+<p shiro:guest="">Please <a href="login.html">login</a></p>
+
+<div shiro:user>
+	记住我能看到，但认证才能用(比如支付功能)
+</div>
+
+<!-- 认证通过或已记住的用户。 -->
+<p shiro:user="">
+	shiro:user
+</p>
+
+<!-- 已认证通过的用户。不包含已记住的用户，这是与user标签的区别所在。 -->
+<p shiro:authenticated="">
+	shiro:authenticated=""
+	<span shiro:principal="test"></span>
+</p>
+
+<!-- 未认证通过用户，与authenticated标签相对应。与guest标签的区别是，该标签包含已记住用户。 -->
+<p shiro:notAuthenticated="">
+	shiro:notAuthenticated=""
+</p>
+
+<!-- 验证当前用户是否属于该角色。 -->
+<p shiro:hasRole="user">shiro:hasRole=user</p><!-- 拥有该角色 -->
+
+<!-- 与hasRole标签逻辑相反，当用户不属于该角色时验证通过。 -->
+<p shiro:lacksRole="developer"><!-- 没有该角色 -->
+	shiro:lacksRole="developer"
+</p>
+
+<!-- 验证当前用户是否属于以下所有角色。 -->
+<p shiro:hasAllRoles="developer, user"><!-- 角色与判断 -->
+	shiro:hasAllRoles="developer, user"
+</p>
+
+<!-- 验证当前用户是否属于以下任意一个角色。  -->
+<p shiro:hasAnyRoles="admin, vip, developer,user"><!-- 角色或判断 -->
+	shiro:hasAnyRoles="admin, vip, developer,user"
+</p>
+
+<!--验证当前用户是否拥有指定权限。  -->
+<p shiro:hasPermission="user:add">
+	shiro:hasPermission="user:add"
+</p>
+
+<!-- 与hasPermission标签逻辑相反，当前用户没有制定权限时，验证通过。 -->
+<p shiro:lacksPermission="userInfo:del"><!-- 没有权限 -->
+	shiro:lacksPermission="userInfo:del"
+</p>
+
+<!-- 验证当前用户是否同时拥有以下所有权限 -->
+<p shiro:hasAllPermissions="userInfo:view, userInfo:add"><!-- 权限与判断 -->
+	shiro:hasAllPermissions="userInfo:view, userInfo:add"
+</p>
+
+<!-- 验证当前用户是否拥有以下任意一个权限。  -->
+<p shiro:hasAnyPermissions="user:add, userInfo:del"><!-- 权限或判断 -->
+	shiro:hasAnyPermissions="user:add, userInfo:del"
+</p>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--<%@ taglib prefix="privilege" uri="/privilege.tld"%>-->
+<head>
+    <title>layui</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{/static/js/jquery-1.7.2.js}" type="text/javascript"></script>
+    <script th:src="@{/static/js/jquery.tips.js}" type="text/javascript"></script>
+    <script th:src="@{/static/layui/layui.js}" type="text/javascript"></script>
+    <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" type="text/css"/>
+</head>
+<body>
+<form class="layui-form" action="">
+    <div class="layui-form-item">
+        <label class="layui-form-label">输入框</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" required lay-verify="required"
+                   placeholder="请输入标题" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码框</label>
+        <div class="layui-input-inline">
+            <input type="password" name="password" required
+                   lay-verify="required" placeholder="请输入密码" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-form-mid layui-word-aux">辅助文字</div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">选择框</label>
+        <div class="layui-input-block">
+            <select name="city" lay-verify="required">
+                <option value=""></option>
+                <option value="0">北京</option>
+                <option value="1">上海</option>
+                <option value="2">广州</option>
+                <option value="3">深圳</option>
+                <option value="4">杭州</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">复选框</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="like[write]" title="写作"> <input
+                type="checkbox" name="like[read]" title="阅读" checked> <input
+                type="checkbox" name="like[dai]" title="发呆">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">开关</label>
+        <div class="layui-input-block">
+            <input type="checkbox" name="switch" lay-skin="switch">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">单选框</label>
+        <div class="layui-input-block">
+            <input type="radio" name="sex" value="男" title="男"> <input
+                type="radio" name="sex" value="女" title="女" checked>
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">文本域</label>
+        <div class="layui-input-block">
+            <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+
+</form>
+<button id="dency" class="layui-btn layui-btn-primary" onclick="dency()" style="text-align: center">解密(查看服务器控制台)
+</button>
+<button id="tip" class="layui-btn layui-btn-primary" onclick="tip()" style="text-align: center">提示框</button>
+<button id="kuayu" class="layui-btn layui-btn-primary" onclick="kuayu()" style="text-align: center">跨域测试</button>
+<button class="layui-btn layui-btn-normal" onclick="download()" style="text-align: center">批量下载</button>
+<!-- <privilege:operation operationId="1" clazz="layui-btn layui-btn-normal" onClick="down()" name="下载"></privilege:operation> -->
+
+<script type="text/javascript">
+    //Demo
+    layui.use('form', function () {
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(formDemo)', function (data) {
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+    });
+
+    function down() {
+        window.location.href = "/excel"
+    }
+
+    function tip() {
+        $("#tip").tips({
+            side: 3,//1:上2:右3:下4:左
+            msg: 'tips',
+            time: 5,//5秒后关闭
+            bg: '#AE81FF',//背景色
+            color: '#FFF',//文字颜色，默认为白色
+
+        });
+
+    }
+
+    function kuayu() {
+        $.ajax({
+            url: 'http://127.0.0.1:8080/zhongzhu/appnewhouse/newhouseList',
+            data: {},
+            dataType: 'jsonp',
+            jsonp: "qqq",//此代码代表在路径后追加字段qqq: http://127.0.0.1:8080/zhongzhu/appnewhouse/newhouseList.do?qqq=success_jsonp,不加的话默认为callback
+            jsonpCallback: "success_jsonp", //代表追加字段的值，不写的话有默认值,jsonp默认会在路径后面追加参数，以便服务器调用
+            type: 'get',//jsonp必须为get请求
+            success: function (data) {
+                //服务器端返回示例:String qqq = request.getParameter("qqq");return qqq+"("+json+")";最终返回格式success_jsonp({"id":"3", "name":"zhangsan", "telephone":"13612345678"})
+                console.log(data);
+                alert(data);
+            },
+            error: function () {
+                alert("why error?");
+            }
+        });
+    }
+
+    function download() {
+        window.location.href = "download?filename=中文文件名测试.docx"
+    }
+
+    // ajax的返回值类型是json,text,html,xml类型，或者可以说ajax的接收类型只能是string字符串，不是流类型，所以无法实现文件下载。
+    // 但用ajax仍然可以获得文件的内容，该文件将被保留在内存中，无法将文件保存到磁盘。这是因为JavaScript无法和磁盘进行交互，否则这会是一个严重的安全问题，
+    // js无法调用到浏览器的下载处理机制和程序，会被浏览器阻塞。
+    function download() {
+        var rows = $('#dg_01').datagrid('getChecked');
+        if ($.isEmptyObject(rows)) {
+            $.messager.alert('提示', '请选择一行数据！');
+            return;
+        }
+
+        if (!rows || rows.length < 1) {
+            $.messager.alert("提示", "请选择要下载的文件！");
+            return;
+        }
+        if (rows.length == 1) {
+//		$.each(rows,function(i,row){
+            var iframe = document.createElement("iframe");
+            iframe.height = 0;
+            iframe.width = 0;
+            document.body.appendChild(iframe);
+            var name = rows[0].dcjz + '导出数据';
+            var ts = rows[0].ts;//扰动时间
+            var code = rows[0].code;
+            iframe.src = "lcModelCheckController/exportExcel.do?ts=" + ts + "&name=" + encodeURIComponent(name) + "&code=" + code;
+//	});
+        } else {
+            // 动态生成form表单下载
+            var url = "lcModelCheckController/batchExcel.do";
+            var form = '<form method="post" id="customForm" action="' + url + '" enctyped="multipart/form-data">';//action="'+url+'"
+            $.each(rows, function (i, row) {
+                var name = row.dcjz + '导出数据';
+                var ts = row.ts;//扰动时间
+                var code = row.code;
+                form += '<input name="name" type="hidden" value="' + name + '" />';
+                form += '<input name="ts" type="hidden" value="' + ts + '" />';
+                form += '<input name="code" type="hidden" value="' + code + '" />';
+            });
+            form += '</form>'
+            // form表单必须添加到body中 否则提交时(submit)在控制台会生成form submission canceled because the form is not connected警告无法完成提交请求
+            $(form).appendTo('body');
+            /*	$("#customForm").form({
+                    url:url,
+                    onSubmit:function(){
+                        $.custmask.show();
+
+                    },
+                    success:function(data){
+                        $.custmask.hide();
+                    }
+                });*/
+
+            $("#customForm").submit();
+
+            // 对于返回类型为流类型 无法将服务端的cookie返回到浏览器
+            /*var interval = setInterval(function(){
+                console.log(document.cookie)
+            },1000)*/
+
+//		$.post("lcModelCheckController/batchExcel.do",{ts:tsarr,name:namearr,code:codearr},function(){})
+        }
+
+    }
+
+    function dency() {
+        $.ajax({
+            url: "/decry",
+            async: false,
+            type: "POST",
+            contentType: 'application/json',
+            dataType: 'json',
+            data: "lC8EoMuEm6EpfD9AY8nUJA==",
+            success: function (data) {
+
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2 @@
+- [一探究竟：深度解析Java国际化底层类ResourceBundle](https://mp.weixin.qq.com/s/yDCk6I0Qnycw2JYP4UWd8g)
+- [Spring Boot国际化踩坑指南](https://mp.weixin.qq.com/s/aNZg2zW8mz5Kr7Nh4Sri3w)

@@ -1,0 +1,6 @@
+- [两种方式，实现SpringBoot中数据库密码加密](https://mp.weixin.qq.com/s/bNGjVDdGRT2Jj0W5tZzsUQ)
+- [Spring Boot保护敏感配置的4种方法](https://blog.csdn.net/youanyyou/article/details/123492090)
+- [Spring Boot加密配置中的敏感信息](https://mp.weixin.qq.com/s/t5wlql3kBPlsnhdJPvxeOQ)
+- [Springboot配置文件、隐私数据脱敏的最佳实践](https://mp.weixin.qq.com/s/IvuC0mN0uIs62Xa8LeOW1Q)
+- [Spring Boot配置文件这样加密，才足够安全！](https://mp.weixin.qq.com/s/CN2niF4yTpOs3cZYBcWDeQ)
+- [仅需三步完成SpringBoot日志脱敏](https://mp.weixin.qq.com/s/xr76Xxe6BudJXea5aCjGAw)

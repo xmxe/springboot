@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:flowable="http://flowable.org/bpmn"
+             typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.flowable.org/processdef">
+    <!--process：这表示一个流程，例如本文和大家分享的请假就是一个流程。-->
+    <process id="holidayRequest" name="Holiday Request" isExecutable="true">
+        <!--startEvent：这表示流程的开始，这就是一个开始事件-->
+        <startEvent id="startEvent"/>
+        <!--sequenceFlow：这就是连接各个流程节点之间的线条，这个里边一般有两个属性，sourceRef 和 targetRef，前者表示线条的起点，后者表示线条的终点。-->
+        <sequenceFlow sourceRef="startEvent" targetRef="approveTask"/>
+        <!--userTask：这就是一个具体的流程节点了，flowable:candidateGroups 属性表示这个节点该由哪个用户组中的用户来处理。-->
+        <userTask id="approveTask" name="Approve or reject request" flowable:candidateGroups="managers"/>
+        <sequenceFlow sourceRef="approveTask" targetRef="decision"/>
+        <!--exclusiveGateway：表示一个排他性网关，也就是那个菱形选择框-->
+        <exclusiveGateway id="decision"/>
+        <!--从排他性网关出来的线条有两个，大家注意看上面的代码，这两个线条中都涉及到一个变量 approved，如果这个变量为 true，
+        则 targeRef 就是 externalSystemCall；如果这个变量为 false，则 targetRef 就是 rejectLeave。-->
+        <sequenceFlow sourceRef="decision" targetRef="externalSystemCall">
+            <conditionExpression xsi:type="tFormalExpression">
+                <!--变量 ${}，这个变量是在流程执行的过程中传入进来的。-->
+                <![CDATA[ ${approved} ]]>
+            </conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="decision" targetRef="rejectLeave">
+            <conditionExpression xsi:type="tFormalExpression">
+                <![CDATA[ ${!approved} ]]>
+            </conditionExpression>
+        </sequenceFlow>
+        <!--serviceTask：这就是我们定义的一个具体的外部服务，如果在整个流程执行的过程中，你有一些需要自己完成的事情，
+        那么可以通过 serviceTask 来实现，这个节点会有一个 flowable:class 属性，这个属性的值就是一个自定义类。-->
+        <serviceTask id="externalSystemCall" name="Enter holidays in external system"
+                     flowable:class="org.javaboy.flowable02.flowable.Approve"/>
+        <sequenceFlow sourceRef="externalSystemCall" targetRef="holidayApprovedTask"/>
+
+        <userTask id="holidayApprovedTask" flowable:assignee="${employee}" name="Holiday approved"/>
+        <sequenceFlow sourceRef="holidayApprovedTask" targetRef="approveEnd"/>
+
+        <serviceTask id="rejectLeave" name="Send out rejection email"
+                     flowable:class="org.javaboy.flowable02.flowable.Reject"/>
+        <sequenceFlow sourceRef="rejectLeave" targetRef="rejectEnd"/>
+
+        <endEvent id="approveEnd"/>
+
+        <endEvent id="rejectEnd"/>
+
+    </process>
+</definitions>

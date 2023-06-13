@@ -1,0 +1,56 @@
+# 分库配置
+spring:
+  shardingsphere:
+    #数据源配置
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/ds0?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: root
+      ds1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/ds1?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: root
+    props:
+      sql:
+        show: true
+    #分片逻辑
+    sharding:
+      # 默认分库策略
+      default-database-strategy:
+        # 具体的分片策略(标准分片策略 - StandardShardingStrategy,复合分片策略 - ComplexShardingStrategy,行表达式分片策略 - InlineShardingStrategy,Hint分片策略 - HintShardingStrategy,不分片策略 - NoneShardingStrategy)
+        inline:
+          # 要分表的基建 根据userid去分库分表
+          sharding-column: user_id
+          # 算法表达式 userid%2去分库
+          algorithm-expression: ds$->{user_id % 2}
+      # 绑定表 这两个表的分库策略一致
+      binding-tables: t_order,t_order_item
+      # 广播表 避免出现笛卡尔积 会在不同库里都有份完整的数据
+      broadcast-tables: t_user
+      #表逻辑
+      tables:
+        t_order:
+          actual-data-nodes: ds$->{0..1}.t_order
+          # 密钥生成器
+          key-generator:
+            column: order_id
+            # 雪花算法
+            type: SNOWFLAKE
+            props:
+              worker:
+                # 机器ID，在主键生成方案设为 SNOWFLAKE 时机器ID 会参与位运算。
+                id: 10
+        t_order_item:
+          actual-data-nodes: ds$->{0..1}.t_order_item
+          key-generator:
+            column: order_item_id
+            type: SNOWFLAKE
+            props:
+              worker:
+                id: 12

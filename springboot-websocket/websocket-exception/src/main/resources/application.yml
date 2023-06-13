@@ -1,0 +1,12 @@
+# 不通过controller直接访问html:可以通过配置spring.resources.static-locations指定静态资源的位置，此时可以访问http://ip:port/静态资源(如.html .js .css)来访问
+spring:
+  web:
+    resources:
+      static-locations: classpath:/static/, classpath:/templates/
+
+server:
+  port: 18801
+
+# 密码，因为接口不需要权限，所以加了个密码做校验
+mySocket:
+  myPwd: jae_123

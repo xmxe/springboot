@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xmxe.mapper.MybatisMapper">
+
+	<select id="getUserById2" parameterType="Integer" resultType="user">
+		select * from user where id = #{user_id}
+	</select>
+
+	<!--mybatis foreach批量添加/更新写法-->
+	<insert id="insertList" parameterType="map">
+		begin try
+		insert into gs_job_pfr_mx (tag_code,val,time) values
+		<foreach collection="list" item="item" separator=","  index="index">
+			(#{item.tag},#{item.value},GETDATE())
+		</foreach>
+		end try
+		begin catch
+		update gs_job_pfr_mx set val =
+		<foreach collection="list" item="item" separator=" " open="case tag_code" close="end">
+			when #{item.tag} then #{item.value}
+		</foreach>,
+		time = GETDATE()
+		where tag_code in
+		<foreach collection="list" item="item" separator="," open="(" close=")">
+			#{item.tag}
+		</foreach>
+		end catch
+	</insert>
+
+	<!--mybatis trim标签-->
+	<update id="updateBatch" parameterType="user">
+		update table set
+		<trim suffixOverrides=",">
+			<if test="name!=null">name=#{name},</if>
+			<if test="jgdm!=null">jgdm=#{jgdm},</if>
+			<if test="xz!=null">xz=#{xz},</if>
+		</trim>
+		<where>id=#{id}</where>
+	</update>
+
+	<!--choose标签-->
+	<select id="selectByIdOrName" resultMap="BaseResultMap" parameterType="user">
+		select
+		<include refid="commonsSql" />
+		from user
+		where 1=1
+		<choose>
+			<when test="Id != null">
+				and id=#{Id}
+			</when>
+			<when test="name != null and name != ''">
+				and username=#{name}
+			</when>
+			<otherwise>
+				and 1=2
+			</otherwise>
+		</choose>
+	</select>
+
+	<resultMap id="BaseResultMap" type="com.xmxe.entity.User">
+		<id property="id" column="id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+		<result property="username" column="username" jdbcType="VARCHAR" javaType="java.lang.String"/>
+		<result property="password" column="password" jdbcType="VARCHAR" javaType="java.lang.String"/>
+	</resultMap>
+
+	<sql id="commonsSql" >
+		id,username,password
+	</sql>
+
+</mapper>

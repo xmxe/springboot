@@ -1,0 +1,22 @@
+jasypt:
+  encryptor:
+    # salt
+    password: G9w0BAQEFAASCBKYwggSiAgEAAoIBAQC
+#    algorithm: PBEWithMD5AndDES
+#    salt-generator-classname: org.jasypt.salt.RandomSaltGenerator
+#    iv-generator-classname: org.jasypt.iv.RandomIvGenerator
+
+    # 不配置默认为：ENC(...)
+#    property:
+#      prefix: "ENC@["
+#      suffix: "]"
+
+
+abc:
+  username: ENC(rfyAfJ6TiBEYcLFaANXnTlXcmpUwlLpZcVX4J1bxTb29bcF+skj8Z1epFAkvAQxG)
+  password: ENC(jpTStIp10zXeN6ul1+4N5fWxIGC7UUvXwlswEIhPCmvjF2k7HkSZ/OtRNSWjADCP)
+  # 待加密 使用maven插件 执行命令后配置文件内容改变 变成了密文
+  dec: DEC(abc)
+
+  # 可以使用maven插件mvn jasypt:encrypt -Djasypt.encryptor.password=xxx执行之后 查看编译后的配置文件 加密完成了
+  # mvn jasypt:decrypt -Djasypt.encryptor.password=xxx 解密完成 不会修改配置文件 只会在控制台输出解密结果

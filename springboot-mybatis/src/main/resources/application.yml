@@ -1,0 +1,56 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      stat-view-servlet:
+        enabled: false # 暂时没有适配 依赖包名还是javax.servlet.Servlet
+        url-pattern: /druid/*
+        reset-enable: false
+        login-username: admin
+        login-password: admin
+        allow: 127.0.0.1
+        deny: 192.168.1.122
+      web-stat-filter:
+        enabled: false # 暂时没有适配 里面的包名还是javax.servlet.Filter
+        url-pattern: /*
+        exclusions: /*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*
+
+      # 苞米豆动态数据源配置
+    dynamic:
+      # 默认数据源
+      primary: master
+      #设置严格模式,默认false不启动. 启动后在未匹配到指定数据源时候会抛出异常,不启动则使用默认数据源.
+      strict: false
+      # 以下是支持的全局默认值
+      druid:
+        initial-size: 3
+        min-idle: 3
+        max-active: 10
+        max-wait: 60000
+      datasource:
+        master:
+          # 或者serverTimezone=GMT%2B8 代表北京东八区
+          url: jdbc:mysql://localhost:3306/study?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=Asia/Shanghai
+          username: root
+          password: root
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          # 以下是独立参数，每个库可以重新设置
+          druid:
+            initial-size: 4
+            min-idle: 4
+            max-active: 11
+        slave:
+          # 或者serverTimezone=GMT%2B8 代表北京东八区
+          url: jdbc:mysql://localhost:3306/jnhouse?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=Asia/Shanghai
+          username: root
+          password: root
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          # 以下是独立参数，每个库可以重新设置
+          druid:
+            initial-size: 4
+            min-idle: 4
+            max-active: 11
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*Mapper.xml
