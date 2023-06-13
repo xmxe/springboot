@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link rel="shortcut icon" th:href="@{/static/favicon.ico}" type="image/x-icon">
+</head>
+<body>
+<h1>登录</h1>
+<p th:text="${msg}" style="color: red"></p>
+<!-- 必须为post请求 -->
+<form action="/login" method="post">
+	用户名：<input type="text" name="username"><br>
+	密码：<input type="password" name="password"><br>
+	<input type="checkbox" name="rememberMe" value="1" />记住我<br>
+	<input type="submit" />
+
+	<!-- 当前用户是否为“游客”，如果是未认证，也未记住的用户，那么就显示该标签中的内容 -->
+	<div shiro:guest="">
+		当前用户是否为“游客”，如果是未认证，也未记住的用户，那么就显示该标签中的内容
+	</div>
+
+	<div shiro:user>
+		记住我能看到，但认证才能用(比如支付功能)
+	</div>
+</form>
+
+</body>
+</html>

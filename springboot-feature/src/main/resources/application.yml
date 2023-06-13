@@ -1,0 +1,84 @@
+server:
+  servlet:
+    jsp:
+      init-parameters:
+        development: true
+    encoding:
+      force: true
+      charset: UTF-8
+#    context-path: /xmxe
+
+  tomcat:
+    uri-encoding: utf-8
+
+spring:
+  profiles:
+    active: dev
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      initial-size: 3
+      min-idle: 3
+      max-active: 10
+      max-wait: 60000
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: /*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: false
+        login-username: admin
+        login-password: admin
+        allow: 127.0.0.1
+        deny: 192.168.1.122
+      master:
+        # 或者serverTimezone=GMT%2B8 代表北京东八区
+        url: jdbc:mysql://localhost:3306/study?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=Asia/Shanghai
+        username: root
+        password: root
+      slave:
+        url: jdbc:mysql://localhost:3306/dxjtys?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=Asia/Shanghai
+        username: root
+        password: root
+
+  # 访问静态资源需要加上前缀/static/
+  mvc:
+    static-path-pattern: /static/**
+  #    view:
+  #      prefix: /WEB-INF/views/
+  #      suffix: .jsp
+
+  # 不通过controller直接访问html:可以通过配置spring.resources.static-locations指定静态资源的位置，此时可以访问http://ip:port/静态资源(如.html .js .css)来访问
+  thymeleaf:
+    prefix: classpath:/templates/
+    check-template-location: true
+    suffix: .html
+    encoding: UTF-8
+    #   servlet.content-type: text/html
+    mode: HTML5
+    cache: false
+  web:
+    resources:
+      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*Mapper.xml
+
+#logging:
+ # config: classpath:log4j2.xml
+
+
+# 自定义starter
+xmxe:
+  enabled: true
+  name: hello
+  age: 11
+  play: play
+
+zookeeper:
+  host: 127.0.0.1:2181  # zookeeper分布式锁测试

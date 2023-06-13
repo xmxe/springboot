@@ -1,0 +1,41 @@
+# 分表配置
+spring:
+  shardingsphere:
+    datasource:
+      names: ds0
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/ds0?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: root
+    # 分表配置
+    sharding:
+      # 默认分表策略
+      default-table-strategy:
+        # 具体的分片策略(标准分片策略 - StandardShardingStrategy,复合分片策略 - ComplexShardingStrategy,行表达式分片策略 - InlineShardingStrategy,Hint分片策略 - HintShardingStrategy,不分片策略 - NoneShardingStrategy)
+        inline:
+          # 要分表的基建 根据userid去分库分表
+          sharding-column: user_id
+          # 算法表达式 userid%4 +1去分表 这样肯定会分在t_order_1 t_order_2 t_order_3 t_order_4四个表中
+          algorithm-expression: t_order_${user_id % 4 + 1}
+      # 配置广播表
+      broadcast-tables: t_user
+      # 绑定的表 分表策略一致
+      binding-tables: t_order,t_order_item
+
+      tables:
+        t_order:
+          actual-data-nodes: ds0.t_order_$->{1..4}
+          key-generator:
+            # 主键
+            column: order_id
+            type: SNOWFLAKE
+            props:
+              worker:
+                id: 123
+          # 单独指定分表策略 不指定的话使用default-table-strategy(默认分表策略)
+          table-strategy:
+            inline:
+              sharding-column: user_id
+              algorithm-expression: t_order_${user_id % 4 + 1}

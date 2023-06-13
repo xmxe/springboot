@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<span>来自void方法@ModelAttribute 请求参数a=</span><p th:text="${a}"></p>
+<span>来自有返回值的@ModelAttribute</span>
+<table>
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>用户名</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="mes,stat:${messages}" th:class="${stat.odd}?'odd':'even'">
+        <td th:text="${mes}"></td>
+    </tr>
+    </tbody>
+</table>
+<span>@ModelAttribute和@RequestMapping一同使用:</span><p th:text="${attributeName}"></p>
+<!--
+th:fragment	布局标签，定义一个代码片段，方便其它地方引用	<div th:fragment="alert">
+th:include	布局标签，替换内容到引入的文件	<head th:include="layout :: htmlhead" th:with="title='xx'"></head> />
+th:replace	布局标签，替换整个标签到引入的文件	<div th:replace="fragments/header :: title"></div>
+ -->
+</body>
+</html>

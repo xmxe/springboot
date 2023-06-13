@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>登录</title>
+</head>
+<body>
+this is login.html
+</body>
+<script type="text/javascript">
+    var msg = getRequest('msg')
+    if (msg === '1') {
+        alert('此用户在其它终端已经早于您登录,您暂时无法登录');
+    } else if(msg === '2'){
+        alert('您被系统管理员强制下线或您的帐号在别处登录');
+    }
+
+    // 获取index.html跳转过来的参数
+    function getRequest(name) {
+        var url = window.location.search; //获取url中"?"符后的字串
+        // var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            if (str.indexOf("#" != -1)) {
+                str = str.substr(0);
+            }
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                if (strs[i].indexOf(name) != -1) {
+                    return strs[i].split("=")[1];
+                }
+            }
+        }
+        return null;
+    }
+
+</script>
+
+</html>

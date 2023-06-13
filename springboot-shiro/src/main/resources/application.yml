@@ -1,0 +1,21 @@
+spring:
+  mvc:
+    # 只有静态资源的访问路径为/static/**时，才会处理请求,当通过浏览器访问这些静态文件时,当把这个配置项除掉时，不用加static作为前缀亦可进行正常访问
+    static-path-pattern: /static/**
+  # 不通过controller直接访问html:可以通过配置spring.resources.static-locations指定静态资源的位置，此时可以访问http://ip:port/静态资源(如.html .js .css)来访问
+  web:
+    resources:
+      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+  thymeleaf:
+    prefix: classpath:/templates/
+    check-template-location: true
+    suffix: .html
+    encoding: UTF-8
+    #   servlet.content-type: text/html
+    mode: HTML
+    cache: false
+
+# bean中已配置就不需要在配置文件里配置
+#shiro:
+#  loginUrl: /
+#  successUrl: /index

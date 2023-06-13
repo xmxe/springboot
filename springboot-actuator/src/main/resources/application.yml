@@ -1,0 +1,10 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      # 允许端点对外暴露,或者直接配置 "*"
+#        include: [health,info,mappings]
+  endpoint:
+    health:
+      show-details: always

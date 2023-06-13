@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="shortcut icon" th:href="@{/static/favicon.ico}" type="image/x-icon">
+</head>
+<body>
+<h1>首页</h1>
+<h2 th:text="${msg}"></h2>
+
+<div shiro:hasPermission="user:add">
+  shiro:hasPermission="user:add
+</div>
+
+<div shiro:hasRole="user">
+  <p>shiro:hasRole=user</p>
+</div>
+<div shiro:hasRole="vip2">
+  <p>vip2</p>
+</div>
+
+<div shiro:user="true">
+  记住我或认证都能看到哦
+</div>
+
+<div shiro:user>
+  <a th:href="@{/logout}">注销</a>
+</div>
+
+</body>
+</html>

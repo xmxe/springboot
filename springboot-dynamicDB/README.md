@@ -1,0 +1,6 @@
+- [spring boot使用AbstractRoutingDataSource实现动态数据源切换](https://blog.csdn.net/qq_37502106/article/details/91044952)
+- [Spring Boot如何动态切换多数据源？](https://mp.weixin.qq.com/s/Cm8dp7NhoEWwY0C-Fhv98Q)
+- [dynamic-datasource-spring-boot-starter](https://www.kancloud.cn/tracy5546/dynamic-datasource/2264611)
+- [如何自定义SpringBoot多数据源的starter组件](https://mp.weixin.qq.com/s/h1qguwbQp6nNU-e9U1jlow)
+- [手把手教你玩多数据源动态切换-dynamicDB1](https://mp.weixin.qq.com/s/g71F3cnLtD4zqJGFCeJckQ)
+- [Spring Boot实现MySQL读写分离技术-dynamicDB2](https://mp.weixin.qq.com/s/v8-AY1Otbn34m0YjSV4imw)
