@@ -247,6 +247,7 @@ Set<Method> = HandlerMethodSelector.selectMethods(userType, new ReflectionUtils.
 - [Spring Boot源码分析(2.1.0.RELEASE)](https://github.com/yuanmabiji/spring-boot-2.1.0.RELEASE)
 - [Spring Boot相关漏洞学习资料](https://github.com/LandGrey/SpringBootVulExploit)
 - [springboot源码解析(一)：启动过程](https://mp.weixin.qq.com/s/y1GQ6hrZ3MOEozj25MBknw)
+- [3分钟了解SpringBoot的启动流程](https://mp.weixin.qq.com/s/eT2A76G-42MvvN6RMZcPMg)
 - [Spring Boot面试：说说自动配置的原理？](https://mp.weixin.qq.com/s/sjn847TZ814FcKCF3MPBqA)
 - [Spring Boot启动注解分析](https://mp.weixin.qq.com/s/n0BdIl6KGSuwxMqy77iugg)
 

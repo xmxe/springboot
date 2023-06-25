@@ -33,6 +33,7 @@
 		<module>springboot-flowable</module>
 		<module>springboot-jsj</module>
 		<module>springboot-state-machine</module>
+		<module>springboot-transactions</module>
     </modules>
 
 	<properties>

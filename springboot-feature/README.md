@@ -3,6 +3,7 @@
 - [SpringBoot多种读取配置文件中参数的方式](https://mp.weixin.qq.com/s?__biz=Mzg2MDYzODI5Nw==&mid=2247493953&idx=1&sn=f042ddbfafcea9d4e0bbb2b2522974b4&source=41#wechat_redirect)
 - [SpringBoot的@Value注解，高级特性，真心强大！](https://mp.weixin.qq.com/s/qm4VrNF61mIpVHr0laLwDw)
 - [Spring Boot中yaml文件：定义list集合、数组及注意事项](https://mp.weixin.qq.com/s/EqgFtVtKPTmTUGTZJ-RBtg)
+- [6种方式读取SpringBoot的配置，老鸟都这么玩（原理+实战）](https://mp.weixin.qq.com/s/wzqVJ5qb_eN6Nkz4ouAE-w)
 
 ## druid
 
