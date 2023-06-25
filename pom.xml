@@ -30,6 +30,7 @@
 		<module>springboot-admin</module>
 		<module>springboot-jsj</module>
 		<module>springboot-state-machine</module>
+		<module>springboot-transactions</module>
 		<!-- 与spring boot 3.0 不适配 -->
 		<!--<module>springboot-shiro</module>-->
 		<!--<module>springboot-cas</module>-->
