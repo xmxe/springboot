@@ -29,6 +29,7 @@
 - [优雅的实现Spring Boot异步线程间数据传递](https://mp.weixin.qq.com/s/vWZu_pjJIrqHzCyBcM70rg)
 - [Spring Boot + Canal实现数据库变化的实时监控](https://mp.weixin.qq.com/s/2Pjjj-_bkLLAO-IkWfoPcg)
 - [你绝对不知道的SpringBoot的外部化配置特性！](https://mp.weixin.qq.com/s/9zSrUGMmXbU6rW1LaoUFvQ)
+- [Spring Boot如何实现插件化开发模式](https://mp.weixin.qq.com/s/x3NMF8AdyJ0Bf15B4yS5Kw)
 
 ## 模式
 
@@ -51,6 +52,7 @@
 - [Spring Boot整合Canal+RabbitMQ监听数据变更](https://mp.weixin.qq.com/s/ze6JYUCQ75jOIUz9OoCfXA)
 - [SpringBoot整合RocketMQ，尝尝几大高级特性！](https://mp.weixin.qq.com/s/Kwp3CTAhF2ewW-cFoROPrQ)
 - [Spring Boot实现MySQL百万级数据量导出并避免OOM的解决方案](https://mp.weixin.qq.com/s/97sSiT3kVvJFQ0aCW_Blxg)
+- [SpringBoot整合MinIO实现视频的分片上传/断点续传](https://mp.weixin.qq.com/s/R4ZXK_FRNuFpl0d6hOD_Zg)
 
 ## retry
 

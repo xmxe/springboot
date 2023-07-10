@@ -12,7 +12,7 @@ mybatis:
     cache-enabled: true
 ```
 
-2. 在需要开启的mapper.xml中，添加以下代码（在<mapper namespace>下方）
+2. 在需要开启的mapper.xml中，添加以下代码（在<mapper namespace\>下方）
 ```xml
 <!-- 开启本mapper所在namespace的二级缓存 -->
 <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/> 
@@ -28,7 +28,8 @@ mybatis:
 </settings>
 
 ```
-
+- [说说MyBatis二级缓存？关联刷新实现?](https://mp.weixin.qq.com/s/pXGJGRuVWWmH5uf2qVMITg)
+- [为什么不推荐使用MyBatis二级缓存](https://mp.weixin.qq.com/s/LHNatyT9jdydJmHAzuHpmA)
 ## MyBatis连接数据库
 
 ```java
@@ -51,7 +52,6 @@ Mapper接口里的方法，是不能重载的，因为是使用全限名+方法�
 - [面试官问你MyBatis SQL是如何执行的？把这篇文章甩给他](https://mp.weixin.qq.com/s/3eBU2c2AlcsOvZYpAD337A)
 - [mybatis的mapper为啥只有接口没有实现类，它却能工作？](https://mp.weixin.qq.com/s/Aet3yVkcGZmgRwuRcfP8KQ)
 - [MyBatis常见面试题总结](https://mp.weixin.qq.com/s/NjeIGSGiXgp-TDF2IBm-Xg)
-- [说说MyBatis二级缓存？关联刷新实现?](https://mp.weixin.qq.com/s/pXGJGRuVWWmH5uf2qVMITg)
 - [1亿条数据批量插入MySQL，哪种方式最快？](https://mp.weixin.qq.com/s/TLqu384RS4FI6T3I1IydOQ)
 - [Mybatis中的DAO接口和XML文件里的SQL是如何建立关系的？](https://mp.weixin.qq.com/s/EE01Vyhjrw_Fcfx4-b2SJA)
 - [MyBatis批量插入别再乱用foreach了，5000条数据花了14分钟](https://mp.weixin.qq.com/s/V5WO0fQFXW8vgDQZzZ4n7w)
