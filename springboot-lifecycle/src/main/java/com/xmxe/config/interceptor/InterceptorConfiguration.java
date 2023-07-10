@@ -99,12 +99,15 @@ public class InterceptorConfiguration implements WebMvcConfigurer {
 	public void addFormatters(FormatterRegistry registry) {
 		// Converter接口定义了两个泛型类型参数，分别代表源类型(S)，目标类型(T)
 		// T convert(S source);
-		registry.addConverter((Converter<String, Date>) source -> {
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			try {
-				return dateFormat.parse(source);
-			} catch (ParseException e) {
-				throw new IllegalArgumentException("Invalid date format. Please use yyyy-MM-dd.");
+		registry.addConverter(new Converter<String, Date> () {
+			@Override
+			public Date convert(String source) {
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				try {
+					return dateFormat.parse(source);
+				} catch (ParseException e) {
+					throw new IllegalArgumentException("Invalid date format. Please use yyyy-MM-dd.");
+				}
 			}
 		});
 		/*
