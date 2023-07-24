@@ -23,7 +23,7 @@
 
 - [Spring Boot关于日期时间格式化处理方式总结](https://mp.weixin.qq.com/s/jn5BTbddcwDm1UptzG-zAA)
 - [Spring Boot请求路径可以定义成/**/**这种格式吗？](https://mp.weixin.qq.com/s/Bvn6JUaP53dPJRlrplEKSQ)
-- [一个依赖搞定Spring Boot反爬虫，防止接口盗刷！](https://mp.weixin.qq.com/s/kCWIT_61PFOYw-GMGXVTZQs)
+- [一个依赖搞定Spring Boot反爬虫，防止接口盗刷！](https://mp.weixin.qq.com/s/kCWIT_61PFOYw-GMGXVTZQ)
 - [SpringBoot+Filter实现Gzip压缩超大json对象，传输耗时大大减少](https://mp.weixin.qq.com/s/zBeHyIzR1b4I2x3LU40ceQ)
 - [SpringBoot玩一玩代码混淆，防止反编译代码泄露](https://mp.weixin.qq.com/s/v26j08vCqpH-O9jZaNKPDA)
 - [优雅的实现Spring Boot异步线程间数据传递](https://mp.weixin.qq.com/s/vWZu_pjJIrqHzCyBcM70rg)

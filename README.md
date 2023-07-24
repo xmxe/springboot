@@ -22,7 +22,7 @@
 | [springboot-shiro](https://github.com/xmxe/springboot/tree/3.x/springboot-shiro) |                     Springboot+Shiro                      |                                                              |
 | [springboot-starter](https://github.com/xmxe/springboot/tree/3.x/springboot-starter) |               自定义一个SpringBoot Starter                |  在springboot-feature中配置xmxe.enabled=true后自动加载bean   |
 | [springboot-state-machine](https://github.com/xmxe/springboot/tree/3.x/springboot-state-machine) |                       Spring状态机                        |                                                              |
-| [springboot-transactions](https://github.com/xmxe/springboot/tree/3.x/springboot-transactions) | 一个自定义注解直接搞定Spring Boot中的多线程事务处理太繁琐 |                  Aop+CountDownLatch+@Async                   |
+| [springboot-transactions](https://github.com/xmxe/springboot/tree/3.x/springboot-transactions) | 一个自定义注解直接搞定Spring Boot中的多线程事务处理 |                  Aop+CountDownLatch+@Async                   |
 | [springboot-upload](https://github.com/xmxe/springboot/tree/3.x/springboot-upload) |                    上传文件的几种方式                     | 基本上都自建ftp服务器实现文件上传，也可搭建类似于fastdfs之类的分布式文件系统实现文件管理，直接上传的方式大多数情况不在采用 |
 | [springboot-websocket](https://github.com/xmxe/springboot/tree/3.x/springboot-websocket) |                       集成websocket                       |                  实现服务端主动与客户端通信                  |
 | [springboot-webssh](https://github.com/xmxe/springboot/tree/3.x/springboot-webssh) |    fork from [this](https://github.com/NoCortY/WebSSH)    |    在webssh.html配置IP端口等信息,访问/websshpage 连接ssh     |
