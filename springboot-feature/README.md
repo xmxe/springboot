@@ -30,6 +30,8 @@
 - [Spring Boot + Canal实现数据库变化的实时监控](https://mp.weixin.qq.com/s/2Pjjj-_bkLLAO-IkWfoPcg)
 - [你绝对不知道的SpringBoot的外部化配置特性！](https://mp.weixin.qq.com/s/9zSrUGMmXbU6rW1LaoUFvQ)
 - [Spring Boot如何实现插件化开发模式](https://mp.weixin.qq.com/s/x3NMF8AdyJ0Bf15B4yS5Kw)
+- [Spring Boot业务组件化开发，维护起来很香~](https://mp.weixin.qq.com/s/bpmT30Nymm5Iz5Gt-EbX9w)
+- [Spring Boot + Spring Batch实现批处理任务](https://mp.weixin.qq.com/s/3pjRUugA56Yqwfm4geeadg)
 
 ## 模式
 
