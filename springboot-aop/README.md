@@ -22,3 +22,6 @@
 - [图解Spring AOP实现原理](https://mp.weixin.qq.com/s/c1kYhwSXZspDClCUaeoBYQ)
 - [Spring Boot中的AOP，到底是JDK还是Cglib动态代理？](https://mp.weixin.qq.com/s/G9hhDR-RTodwev8mhACyZg)
 - [@After,@Around,@Before的执行顺序※](https://mp.weixin.qq.com/s/oqtI6II5v7bs-FS7DylWOw)
+- [Spring中一个少见的引介增强IntroductionAdvisor](https://mp.weixin.qq.com/s/opcyaV5iLjYHaJuD9yEMUA)
+- [Spring AOP中，切点有多少种定义方式?](https://mp.weixin.qq.com/s/O-EGbaMCwHhToNvLvoCPfg)
+- [Spring AOP中的代理对象是怎么创建出来的？](https://mp.weixin.qq.com/s/fsX45Sz47Xnnx5C_xQVRMg)

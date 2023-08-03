@@ -1,5 +1,4 @@
 - [项目博文地址](https://so.csdn.net/so/search?q=sharding&t=blog&u=lsqingfeng)
-- [mybatis-plus文档](https://baomidou.com/pages/24112f/)
 - [SpringBoot + Sharding JDBC，一文搞定分库分表、读写分离](https://mp.weixin.qq.com/s/O1f_xvw5zxnqoYchcmCEmQ)
 - [SpringBoot2种方式快速实现分库分表，轻松拿捏！](https://mp.weixin.qq.com/s/sIyc6R-nkB-87iLCQSEGPQ)
 

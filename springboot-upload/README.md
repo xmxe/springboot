@@ -2,3 +2,4 @@
 - [大文件上传下载实现思路，分片、断点续传代码实现](https://mp.weixin.qq.com/s/OSX7ya8oZmGPGXrWZ7kMeQ)
 - [Spring Boot多线程异步上传图片、处理水印、缩略图](https://mp.weixin.qq.com/s/wshoAM5FuTHoecroapiAew)
 - [Spring Boot分片上传、断点续传、大文件极速秒传](https://mp.weixin.qq.com/s/mXvxFVyxZf-DYFVG8Y8pjg)
+- [Spring Boot实现文件断点下载，实战来了！](https://mp.weixin.qq.com/s/WdZO8EpN5T4DIuYCmfMU-w)
