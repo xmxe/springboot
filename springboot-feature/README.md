@@ -32,6 +32,7 @@
 - [Spring Boot如何实现插件化开发模式](https://mp.weixin.qq.com/s/x3NMF8AdyJ0Bf15B4yS5Kw)
 - [Spring Boot业务组件化开发，维护起来很香~](https://mp.weixin.qq.com/s/bpmT30Nymm5Iz5Gt-EbX9w)
 - [Spring Boot + Spring Batch实现批处理任务](https://mp.weixin.qq.com/s/3pjRUugA56Yqwfm4geeadg)
+- [Spring Boot别再用Date作为入参了，LocalDateTime、LocalDate真香！](https://mp.weixin.qq.com/s/nEeStkLgSvFdwCt56WNvcg)
 
 ## 模式
 

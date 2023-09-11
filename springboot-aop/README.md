@@ -17,6 +17,7 @@
 - [深入聊一聊Spring AOP实现机制！](https://mp.weixin.qq.com/s/mv_HTv9tjvcjij36Mu7jUQ)
 - [Spring AOP，应该不会有比这更详细的介绍了！](https://mp.weixin.qq.com/s/BRgsKmvrZWeqrb-E0hlr4A)
 - [Spring AOP、AspectJ、CGLIB都是什么关系？](https://mp.weixin.qq.com/s/aMnqanuvhxSBPanwin1e0w)
+- [似懂非懂的AspectJ](https://mp.weixin.qq.com/s/laeJBOmix77TkWYZGWtQCQ)
 - [Spring AOP与AspectJ有什么区别和联系？](https://mp.weixin.qq.com/s/5nq5HiY0E2UF0cCt1TPULQ)
 - [如果抛开Spring，如何自己实现AOP？](https://mp.weixin.qq.com/s/K4b9Lm-VV8zrgAAIPbRC6w)
 - [图解Spring AOP实现原理](https://mp.weixin.qq.com/s/c1kYhwSXZspDClCUaeoBYQ)
