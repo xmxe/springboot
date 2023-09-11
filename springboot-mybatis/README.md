@@ -63,3 +63,4 @@ Mapper接口里的方法，是不能重载的，因为是使用全限名+方法�
 - [MyBatis批量插入别再乱用foreach了，5000条数据花了14分钟](https://mp.weixin.qq.com/s/V5WO0fQFXW8vgDQZzZ4n7w)
 - [MyBatis批量插入的五种方式](https://mp.weixin.qq.com/s/baFO97l6772jDKcWkLhx_A)
 - [13秒插入30万条数据，这才是批量插入正确的姿势！](https://mp.weixin.qq.com/s/yjlam0vVHvveIqG20_sBqg)
+- [MyBatis架构与原理深入解析，面试随便问！](https://mp.weixin.qq.com/s/xZ9MJgPa6vYUfYLcJcgSlw)
