@@ -56,6 +56,7 @@
 - [SpringBoot整合RocketMQ，尝尝几大高级特性！](https://mp.weixin.qq.com/s/Kwp3CTAhF2ewW-cFoROPrQ)
 - [Spring Boot实现MySQL百万级数据量导出并避免OOM的解决方案](https://mp.weixin.qq.com/s/97sSiT3kVvJFQ0aCW_Blxg)
 - [SpringBoot整合MinIO实现视频的分片上传/断点续传](https://mp.weixin.qq.com/s/R4ZXK_FRNuFpl0d6hOD_Zg)
+- [Spring Boot项目Jar包加密，防止反编译](https://mp.weixin.qq.com/s/HWO0263J3p097Odr63s9zA)
 
 ## retry
 
@@ -63,6 +64,7 @@
 - [重试框架Spring-Retry和Guava-Retry，你知道该怎么选吗？](https://mp.weixin.qq.com/s/YXrMgbzgRlFGMf-BhwBupQ)
 - [Java远程调用失败？如何优雅的进行重试？](https://mp.weixin.qq.com/s/U_nm92ujCGArkii5ze7uaA)
 - [Spring Boot中使用spring-retry轻松解决重试](https://mp.weixin.qq.com/s/wfYmHJutFAnFnSJ5yV43lg)
+- [接口请求重试的8种方法，你用哪种？](https://mp.weixin.qq.com/s/IFfvVrfXYcp2oerA5WGALg)
 
 ## Thymeleaf 模板引擎
 

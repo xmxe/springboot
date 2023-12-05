@@ -5,3 +5,4 @@
 - [手把手教你玩多数据源动态切换-dynamicDB1](https://mp.weixin.qq.com/s/g71F3cnLtD4zqJGFCeJckQ)
 - [Spring Boot实现MySQL读写分离技术-dynamicDB2](https://mp.weixin.qq.com/s/v8-AY1Otbn34m0YjSV4imw)
 - [Spring Boot多数据源及事务解决方案](https://mp.weixin.qq.com/s/K_MFSt9HrbTnKXbDOEtCdg)
+- [SpringBoot实现动态切换数据源，这样做才更优雅！](https://mp.weixin.qq.com/s/shTTO91pwZfoiP7fP2RDIQ)

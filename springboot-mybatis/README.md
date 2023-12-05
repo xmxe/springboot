@@ -30,6 +30,7 @@ mybatis:
 ```
 - [说说MyBatis二级缓存？关联刷新实现?](https://mp.weixin.qq.com/s/pXGJGRuVWWmH5uf2qVMITg)
 - [为什么不推荐使用MyBatis二级缓存](https://mp.weixin.qq.com/s/LHNatyT9jdydJmHAzuHpmA)
+- [Mybatis的一级缓存与二级缓存](https://mp.weixin.qq.com/s/ssj2vAvI4uOlxjHI5jZNZQ)
 ## MyBatis连接数据库
 
 ```java
@@ -64,3 +65,4 @@ Mapper接口里的方法，是不能重载的，因为是使用全限名+方法�
 - [MyBatis批量插入的五种方式](https://mp.weixin.qq.com/s/baFO97l6772jDKcWkLhx_A)
 - [13秒插入30万条数据，这才是批量插入正确的姿势！](https://mp.weixin.qq.com/s/yjlam0vVHvveIqG20_sBqg)
 - [MyBatis架构与原理深入解析，面试随便问！](https://mp.weixin.qq.com/s/xZ9MJgPa6vYUfYLcJcgSlw)
+- [7张图解锁MyBatis整体脉络，让你轻松拿捏面试官](https://mp.weixin.qq.com/s/aBKVdkhPG53ergM1CIcUUw)
