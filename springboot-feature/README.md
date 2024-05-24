@@ -33,6 +33,7 @@
 - [Spring Boot业务组件化开发，维护起来很香~](https://mp.weixin.qq.com/s/bpmT30Nymm5Iz5Gt-EbX9w)
 - [Spring Boot + Spring Batch实现批处理任务](https://mp.weixin.qq.com/s/3pjRUugA56Yqwfm4geeadg)
 - [Spring Boot别再用Date作为入参了，LocalDateTime、LocalDate真香！](https://mp.weixin.qq.com/s/nEeStkLgSvFdwCt56WNvcg)
+- [try-catch这样写才足够优雅](https://mp.weixin.qq.com/s/j1LSUJiYFvj9VxLn3hFcww)
 
 ## 模式
 
@@ -57,6 +58,7 @@
 - [Spring Boot实现MySQL百万级数据量导出并避免OOM的解决方案](https://mp.weixin.qq.com/s/97sSiT3kVvJFQ0aCW_Blxg)
 - [SpringBoot整合MinIO实现视频的分片上传/断点续传](https://mp.weixin.qq.com/s/R4ZXK_FRNuFpl0d6hOD_Zg)
 - [Spring Boot项目Jar包加密，防止反编译](https://mp.weixin.qq.com/s/HWO0263J3p097Odr63s9zA)
+- [Spring Boot接口防抖(防重复提交)，轻松搞定](https://mp.weixin.qq.com/s/6V-_nEqAUhZxREQp6ZNdQw)
 
 ## retry
 
