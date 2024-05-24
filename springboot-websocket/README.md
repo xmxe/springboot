@@ -9,3 +9,4 @@
 - [实现web实时消息推送的方案总结](https://mp.weixin.qq.com/s/yBK5UG3Xkr5YMF-0jCbSjA)
 - [Spring Boot整合Socket实战案例，实现单点发送、广播群发，1对1，1对多](https://mp.weixin.qq.com/s/-lCSSYyr1KR4-aP1by22CQ)
 - [WebSocket的6种集成方式](https://mp.weixin.qq.com/s/lLCjXKUshXe_LYMjoywwBw)
+- [万字详解，带你彻底掌握WebSocket用法](https://mp.weixin.qq.com/s/F5bg9bAe3H6hLQ4XLeex4A)
