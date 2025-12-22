@@ -48,9 +48,9 @@ public class Result<T> {
 	 */
 	public enum ResultEnum {
 		SUCCESS(200, "接口调用成功"),
-		VALIDATE_FAILED(4001, "参数校验失败"),
-		COMMON_FAILED(5001, "接口调用失败"),
-		FORBIDDEN(4002, "没有权限访问资源");
+		VALIDATE_FAILED(400, "参数校验失败"),
+		COMMON_FAILED(500, "接口调用失败"),
+		FORBIDDEN(403, "没有权限访问资源");
 
 		ResultEnum(Integer code, String message){
 			this.code = code;

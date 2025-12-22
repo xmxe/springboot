@@ -1,6 +1,7 @@
 package com.xmxe.config;
 
 import com.xmxe.entity.Result;
+import com.xmxe.entity.SerResult;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -20,7 +21,7 @@ public class ReturnResponseBodyAdvice implements ResponseBodyAdvice<Object> {
 	@Override
 	public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
 		// 提供一定的灵活度，如果body已经被包装了，就不进行包装
-		if (body instanceof Result) {
+		if (body instanceof Result || body instanceof SerResult<?>) {
 			return body;
 		}
 		return Result.success(body);
